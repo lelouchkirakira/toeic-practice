@@ -1,5 +1,7 @@
 # TOEIC Practice
 
+Live at **[toeic.seikai.dev](https://toeic.seikai.dev)**.
+
 Standalone TOEIC Reading section drill app. Covers Part 5 (Incomplete Sentences), Part 6 (Text Completion), and Part 7 (Reading Comprehension) with offline question bank, timed mock tests, and score tracking.
 
 Originally extracted from [ai-english-tutor](https://github.com/seikaikyo/ai-english-tutor) -- the tutor keeps voice conversation practice, this app handles the multiple-choice test drilling with a proper quiz UI.
@@ -29,28 +31,32 @@ Originally extracted from [ai-english-tutor](https://github.com/seikaikyo/ai-eng
 ## Architecture
 
 ```
-frontend/                        backend/
-Vue 3 + TypeScript + PrimeVue    FastAPI + SQLModel + SQLite
+web/ (Vercel)                    dashai-go (Render)
+Next.js App Router + shadcn      Go, /toeic module
               |                           |
-              +--- /api proxy (Vite) -----+
+              +-- same-origin proxy ------+
+                 carries X-Origin-Key     |
                                           |
-                            +-------------+-------------+
-                            |                           |
-                      question_bank/               vocabulary/
-                      part5.json                   words.json
-                      part6.json                   (6,233 headwords)
-                      part7.json
+                                    Neon PostgreSQL
+                                    words, questions,
+                                    sessions, progress
 ```
 
-No external AI API needed, all questions come from local JSON data. The backend handles quiz session management, answer grading, vocabulary lookup, and statistics aggregation.
+No external AI API needed, all questions come from the database. The backend handles quiz session management, answer grading, vocabulary lookup, and statistics aggregation.
+
+The browser never calls the backend directly: `dashai-go` runs with origin lock enforced, so a route handler in `web/app/api/backend/toeic/` forwards same-origin requests with the key attached.
+
+### Previous stack
+
+`frontend/` (Vue 3 + PrimeVue) and `backend/` (FastAPI + SQLite) are the original implementation. Both are kept as a reference and are no longer deployed. Vue and PrimeVue are frozen under the project's stack rules, which is why the front end was rewritten.
 
 ## Tech stack
 
 | Layer | Stack |
 |-------|-------|
-| Frontend | Vue 3.5, TypeScript 5.9, Vite 7, PrimeVue 4 (Aura), Chart.js |
-| Backend | FastAPI, SQLModel, SQLite, Uvicorn |
-| Data | Structured JSON question bank (Part 5/6/7) and vocabulary list |
+| Frontend | Next.js App Router, TypeScript, shadcn, Tailwind, deployed on Vercel |
+| Backend | Go, inside the dashai-go service on Render, mounted at `/toeic` |
+| Data | Neon PostgreSQL (Singapore) |
 
 ## API
 
