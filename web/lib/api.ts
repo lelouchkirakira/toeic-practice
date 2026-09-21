@@ -1,0 +1,137 @@
+import type {
+  MockTestPayload,
+  QuizItem,
+  Question,
+  SessionHistory,
+  SessionResult,
+  StatsOverview,
+  SubmitPayload,
+  Word,
+  WordLevel,
+} from "./types";
+
+// 開發接 Python 的 /api，上線接 Go 的 /toeic，去掉 base 之後的路徑兩邊一致。
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE ?? "/api/backend/toeic";
+
+interface Envelope<T> {
+  success: boolean;
+  data?: T;
+  error?: { code: string; message: string };
+}
+
+export class ApiError extends Error {
+  readonly code: string;
+
+  constructor(message: string, code = "REQUEST_FAILED") {
+    super(message);
+    this.name = "ApiError";
+    this.code = code;
+  }
+}
+
+async function request<T>(path: string, init?: RequestInit): Promise<T> {
+  let res: Response;
+  try {
+    res = await fetch(`${API_BASE}${path}`, init);
+  } catch {
+    throw new ApiError("連不上後端服務，請確認服務有啟動", "NETWORK_ERROR");
+  }
+
+  // 後端可能在錯誤路徑回非 JSON，先取文字再解析，避免把解析錯誤蓋掉真正的狀態碼
+  const raw = await res.text();
+  let body: Envelope<T>;
+  try {
+    body = JSON.parse(raw) as Envelope<T>;
+  } catch {
+    throw new ApiError(`後端回應不是 JSON（HTTP ${res.status}）`, "BAD_RESPONSE");
+  }
+
+  if (!body.success) {
+    throw new ApiError(
+      body.error?.message ?? `後端回報失敗（HTTP ${res.status}）`,
+      body.error?.code ?? `HTTP_${res.status}`,
+    );
+  }
+  if (!res.ok) {
+    throw new ApiError(`後端回傳 HTTP ${res.status}`, `HTTP_${res.status}`);
+  }
+  if (body.data === undefined || body.data === null) {
+    throw new ApiError("後端回應缺少 data 欄位", "EMPTY_DATA");
+  }
+  return body.data;
+}
+
+function post<T>(path: string, payload: unknown): Promise<T> {
+  return request<T>(path, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+}
+
+export function fetchQuestions(part: string, count: number): Promise<QuizItem[]> {
+  return request<QuizItem[]>(
+    `/quiz/questions?part=${encodeURIComponent(part)}&count=${count}`,
+  );
+}
+
+export function fetchVocabularyQuiz(count: number): Promise<Question[]> {
+  return request<Question[]>(`/vocabulary/quiz?count=${count}`);
+}
+
+export function fetchMockTest(): Promise<MockTestPayload> {
+  return request<MockTestPayload>("/quiz/mock-test");
+}
+
+export function submitAnswers(payload: SubmitPayload): Promise<SessionResult> {
+  return post<SessionResult>("/quiz/submit", payload);
+}
+
+export interface WordQuery {
+  list: string;
+  bandMin: number;
+  bandMax: number;
+  level: string;
+  count: number;
+}
+
+export function fetchWords(query: WordQuery): Promise<Word[]> {
+  const params = new URLSearchParams();
+  if (query.list) params.set("list", query.list);
+  if (query.level) params.set("level", query.level);
+  params.set("band_min", String(query.bandMin));
+  params.set("band_max", String(query.bandMax));
+  params.set("count", String(query.count));
+  return request<Word[]>(`/vocabulary/words?${params.toString()}`);
+}
+
+export interface WordProgressResult {
+  word_id: string;
+  level: WordLevel;
+  review_count: number;
+  updated_at: string;
+}
+
+export function saveWordProgress(
+  wordId: string,
+  level: WordLevel,
+): Promise<WordProgressResult> {
+  return post<WordProgressResult>("/vocabulary/progress", {
+    word_id: wordId,
+    level,
+  });
+}
+
+export function fetchStatsOverview(): Promise<StatsOverview> {
+  return request<StatsOverview>("/stats");
+}
+
+export function fetchStatsHistory(limit = 20): Promise<SessionHistory[]> {
+  return request<SessionHistory[]>(`/stats/history?limit=${limit}`);
+}
+
+export function errorMessage(e: unknown, fallback: string): string {
+  if (e instanceof ApiError) return e.message;
+  if (e instanceof Error) return e.message;
+  return fallback;
+}
