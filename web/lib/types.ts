@@ -146,3 +146,31 @@ export interface ListeningReview {
   question_type: string;
   explanation: string;
 }
+
+/** 作答中的 Part 3 對話。題目與四個選項要顯示，所以照實給；正解與逐字稿不給。 */
+export interface DialogueQuestion {
+  id: string;
+  part: string;
+  audio: string;
+  questions: {
+    number: number;
+    text: string;
+    options: { label: string; text: string }[];
+  }[];
+}
+
+/** 作答結束後的檢討，含逐字稿與解析。 */
+export interface DialogueReview {
+  id: string;
+  part: string;
+  audio: string;
+  topic: string;
+  turns: { speaker: string; voice: string; text: string }[];
+  questions: {
+    number: number;
+    text: string;
+    options: { label: string; text: string }[];
+    answer: string;
+    explanation: string;
+  }[];
+}

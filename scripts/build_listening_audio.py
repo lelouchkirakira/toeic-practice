@@ -39,7 +39,7 @@ logger = logging.getLogger(__name__)
 GCP_PROJECT = "dashai-490610"
 TTS_URL = "https://texttospeech.googleapis.com/v1/text:synthesize"
 BLOB_API = "https://blob.vercel-storage.com"
-BLOB_PREFIX = "part2/"
+DEFAULT_PREFIX = "part2/"
 
 # 與單字音檔同一組聲音，voices 欄位用的就是這些 id
 VOICES = {
@@ -135,11 +135,11 @@ def blob_upload(pathname: str, data: bytes, token: str) -> str:
         return json.load(response)["url"]
 
 
-def blob_list(token: str) -> set[str]:
+def blob_list(token: str, prefix: str) -> set[str]:
     done: set[str] = set()
     cursor = None
     while True:
-        params = {"prefix": BLOB_PREFIX, "limit": "1000"}
+        params = {"prefix": prefix, "limit": "1000"}
         if cursor:
             params["cursor"] = cursor
         request = urllib.request.Request(
@@ -157,23 +157,36 @@ def blob_list(token: str) -> set[str]:
 
 
 def build_question(question: dict, token: str, workdir: Path) -> bytes:
-    voices = question.get("voices") or {}
-    prompt_voice = voices.get("prompt", "us-f")
-    response_voice = voices.get("responses", "gb-m")
-
+    """Part 2 是問句加三個回答，Part 3 是多輪對話，兩種都是合成後串接。"""
     silence = workdir / "gap.mp3"
     make_silence(silence, GAP_SECONDS)
-
     parts: list[Path] = []
-    prompt_file = workdir / "prompt.mp3"
-    prompt_file.write_bytes(synthesize(question["prompt"], prompt_voice, token))
-    parts.append(prompt_file)
 
-    for index, option in enumerate(question["options"]):
-        parts.append(silence)
-        option_file = workdir / f"option_{index}.mp3"
-        option_file.write_bytes(synthesize(option["text"], response_voice, token))
-        parts.append(option_file)
+    if question.get("turns"):
+        # Part 3：每一輪用該角色的聲音，輪與輪之間留停頓。
+        for index, turn in enumerate(question["turns"]):
+            if index > 0:
+                parts.append(silence)
+            turn_file = workdir / f"turn_{index}.mp3"
+            turn_file.write_bytes(
+                synthesize(turn["text"], turn.get("voice", "us-f"), token)
+            )
+            parts.append(turn_file)
+    else:
+        # Part 2：問句與三個回答由不同人講。
+        voices = question.get("voices") or {}
+        prompt_voice = voices.get("prompt", "us-f")
+        response_voice = voices.get("responses", "gb-m")
+
+        prompt_file = workdir / "prompt.mp3"
+        prompt_file.write_bytes(synthesize(question["prompt"], prompt_voice, token))
+        parts.append(prompt_file)
+
+        for index, option in enumerate(question["options"]):
+            parts.append(silence)
+            option_file = workdir / f"option_{index}.mp3"
+            option_file.write_bytes(synthesize(option["text"], response_voice, token))
+            parts.append(option_file)
 
     output = workdir / "joined.mp3"
     concat(parts, output, workdir)
@@ -183,6 +196,7 @@ def build_question(question: dict, token: str, workdir: Path) -> bytes:
 def main() -> int:
     parser = argparse.ArgumentParser(description="產生聽力 Part 2 音檔")
     parser.add_argument("questions", type=Path)
+    parser.add_argument("--prefix", default=DEFAULT_PREFIX, help="Blob 上的目錄，例如 part3/")
     parser.add_argument("--force", action="store_true", help="已存在的也重產")
     args = parser.parse_args()
 
@@ -195,7 +209,8 @@ def main() -> int:
         return 1
 
     questions = json.loads(args.questions.read_text(encoding="utf-8"))
-    existing = set() if args.force else blob_list(blob_token)
+    prefix = args.prefix if args.prefix.endswith("/") else args.prefix + "/"
+    existing = set() if args.force else blob_list(blob_token, prefix)
     gcp_token = gcloud_token()
 
     done = 0
@@ -203,7 +218,7 @@ def main() -> int:
     failed: list[tuple[str, str]] = []
 
     for question in questions:
-        pathname = f"{BLOB_PREFIX}{question['id']}.mp3"
+        pathname = f"{prefix}{question['id']}.mp3"
         if pathname in existing:
             continue
         try:

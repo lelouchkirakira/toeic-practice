@@ -1,4 +1,6 @@
 import type {
+  DialogueQuestion,
+  DialogueReview,
   ListeningQuestion,
   ListeningReview,
   MockTestPayload,
@@ -148,6 +150,18 @@ export function fetchListeningQuestions(
 export function fetchListeningReview(
   ids: string[],
 ): Promise<{ questions: ListeningReview[]; total: number }> {
+  return post("/listening/review", { ids });
+}
+
+export function fetchDialogueQuestions(
+  count: number,
+): Promise<{ questions: DialogueQuestion[]; total: number }> {
+  return request(`/listening/questions?part=3&count=${count}`);
+}
+
+export function fetchDialogueReview(
+  ids: string[],
+): Promise<{ questions: DialogueReview[]; total: number }> {
   return post("/listening/review", { ids });
 }
 
