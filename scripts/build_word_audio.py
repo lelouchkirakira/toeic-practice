@@ -47,12 +47,18 @@ TTS_URL = "https://texttospeech.googleapis.com/v1/text:synthesize"
 SPEAKING_RATE = 0.9
 
 # 多益聽力有美、英、加、澳四種口音，但 Google TTS 沒有獨立的加拿大英語，
-# 而加拿大腔與美式同屬北美音，實務上用 en-US 近似。三種都挑女聲，
-# 音色一致，差別只在口音。
+# 而加拿大腔與美式同屬北美音，實務上用 en-US 近似。
+#
+# 聽力的對話與短講本來就男女都有，Part 3 常常是一男一女，只練女聲的話
+# 換成男聲的低頻音域會不習慣，所以三種口音各給一男一女。
+# 目錄名就是前端用的 voice id，女聲沿用原本沒有後綴的名稱。
 ACCENTS = {
     "us": ("en-US", "en-US-Neural2-F"),
+    "us-m": ("en-US", "en-US-Neural2-D"),
     "gb": ("en-GB", "en-GB-Neural2-A"),
+    "gb-m": ("en-GB", "en-GB-Neural2-B"),
     "au": ("en-AU", "en-AU-Neural2-A"),
+    "au-m": ("en-AU", "en-AU-Neural2-B"),
 }
 
 BLOB_API = "https://blob.vercel-storage.com"

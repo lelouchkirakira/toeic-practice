@@ -5,8 +5,8 @@ import { Volume2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ACCENTS, audioUrlFor, useSpeech } from "@/hooks/use-speech";
-import type { AccentId } from "@/hooks/use-speech";
+import { ACCENTS, GENDERS, MALE_READY, audioUrlFor, useSpeech } from "@/hooks/use-speech";
+import type { AccentId, GenderId } from "@/hooks/use-speech";
 import type { Word, WordLevel } from "@/lib/types";
 
 const RATINGS: {
@@ -59,7 +59,9 @@ export function WordCard({
   pending,
   autoSpeak,
   accent,
+  gender,
   onAccentChange,
+  onGenderChange,
   onRate,
 }: {
   word: Word;
@@ -68,12 +70,14 @@ export function WordCard({
   pending: boolean;
   autoSpeak: boolean;
   accent: AccentId;
+  gender: GenderId;
   onAccentChange: (accent: AccentId) => void;
+  onGenderChange: (gender: GenderId) => void;
   onRate: (level: WordLevel) => void;
 }) {
   const [flipped, setFlipped] = useState(false);
   const { supported, speaking, speak } = useSpeech();
-  const audioUrl = audioUrlFor(word.id, accent);
+  const audioUrl = audioUrlFor(word.id, accent, gender);
 
   // 換到新的字時自動唸一次。翻面狀態也要跟著重置，不然會看到上一張的背面。
   useEffect(() => {
@@ -92,30 +96,6 @@ export function WordCard({
         <div className="flex items-center justify-between gap-2">
           <Badge variant="secondary">難度 {word.band}</Badge>
           <div className="flex items-center gap-1.5">
-            {supported ? (
-              <div className="flex overflow-hidden rounded-md border" role="group" aria-label="發音口音">
-                {ACCENTS.map((option) => (
-                  <button
-                    key={option.id}
-                    type="button"
-                    title={option.title}
-                    aria-pressed={accent === option.id}
-                    data-testid={`accent-${option.id}`}
-                    className={`px-2 py-1 text-xs transition-colors ${
-                      accent === option.id
-                        ? "bg-primary text-primary-foreground"
-                        : "text-muted-foreground hover:bg-muted"
-                    }`}
-                    onClick={() => {
-                      onAccentChange(option.id);
-                      speak(word.word, audioUrlFor(word.id, option.id));
-                    }}
-                  >
-                    {option.label}
-                  </button>
-                ))}
-              </div>
-            ) : null}
             {supported ? (
               <Button
                 type="button"
@@ -208,6 +188,63 @@ export function WordCard({
             </>
           )}
         </button>
+
+        {supported && ACCENTS.length > 1 ? (
+          <div className="space-y-1.5 text-xs">
+            <div className="flex items-center gap-2">
+              <span className="w-8 shrink-0 text-muted-foreground">口音</span>
+              <div className="flex flex-1 overflow-hidden rounded-md border" role="group" aria-label="發音口音">
+                {ACCENTS.map((option) => (
+                  <button
+                    key={option.id}
+                    type="button"
+                    title={option.title}
+                    aria-pressed={accent === option.id}
+                    data-testid={`accent-${option.id}`}
+                    className={`flex-1 py-1.5 transition-colors ${
+                      accent === option.id
+                        ? "bg-primary text-primary-foreground"
+                        : "text-muted-foreground hover:bg-muted"
+                    }`}
+                    onClick={() => {
+                      onAccentChange(option.id);
+                      speak(word.word, audioUrlFor(word.id, option.id, gender));
+                    }}
+                  >
+                    {option.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+            {MALE_READY ? (
+              <div className="flex items-center gap-2">
+                <span className="w-8 shrink-0 text-muted-foreground">聲音</span>
+                <div className="flex flex-1 overflow-hidden rounded-md border" role="group" aria-label="發音性別">
+                  {GENDERS.map((option) => (
+                    <button
+                      key={option.id}
+                      type="button"
+                      title={option.title}
+                      aria-pressed={gender === option.id}
+                      data-testid={`gender-${option.id}`}
+                      className={`flex-1 py-1.5 transition-colors ${
+                        gender === option.id
+                          ? "bg-primary text-primary-foreground"
+                          : "text-muted-foreground hover:bg-muted"
+                      }`}
+                      onClick={() => {
+                        onGenderChange(option.id);
+                        speak(word.word, audioUrlFor(word.id, accent, option.id));
+                      }}
+                    >
+                      {option.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ) : null}
+          </div>
+        ) : null}
 
         <div className="grid grid-cols-3 gap-2" data-testid="rate-row">
           {RATINGS.map((rating) => (

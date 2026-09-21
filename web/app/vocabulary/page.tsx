@@ -12,7 +12,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { DEFAULT_ACCENT, type AccentId } from "@/hooks/use-speech";
+import {
+  DEFAULT_ACCENT,
+  DEFAULT_GENDER,
+  type AccentId,
+  type GenderId,
+} from "@/hooks/use-speech";
 import { WordCard } from "@/components/vocabulary/word-card";
 import { ErrorNotice, InfoNotice, LoadingBlock } from "@/components/status";
 import { errorMessage, fetchWords, saveWordProgress } from "@/lib/api";
@@ -54,6 +59,7 @@ export default function VocabularyPage() {
   const [error, setError] = useState("");
   const [autoSpeak, setAutoSpeak] = useState(true);
   const [accent, setAccent] = useState<AccentId>(DEFAULT_ACCENT);
+  const [gender, setGender] = useState<GenderId>(DEFAULT_GENDER);
 
   // 自動發音的偏好記在這台裝置上。讀取可能因為隱私模式而失敗，失敗就用預設值。
   useEffect(() => {
@@ -64,6 +70,8 @@ export default function VocabularyPage() {
       if (savedAccent === "us" || savedAccent === "gb" || savedAccent === "au") {
         setAccent(savedAccent);
       }
+      const savedGender = window.localStorage.getItem("toeic:gender");
+      if (savedGender === "f" || savedGender === "m") setGender(savedGender);
     } catch {
       // 讀不到就維持預設
     }
@@ -73,6 +81,15 @@ export default function VocabularyPage() {
     setAccent(next);
     try {
       window.localStorage.setItem("toeic:accent", next);
+    } catch {
+      // 存不了就只在這次瀏覽有效
+    }
+  }, []);
+
+  const changeGender = useCallback((next: GenderId) => {
+    setGender(next);
+    try {
+      window.localStorage.setItem("toeic:gender", next);
     } catch {
       // 存不了就只在這次瀏覽有效
     }
@@ -296,7 +313,9 @@ export default function VocabularyPage() {
           pending={isSaving}
           autoSpeak={autoSpeak}
           accent={accent}
+          gender={gender}
           onAccentChange={changeAccent}
+          onGenderChange={changeGender}
           onRate={(wordLevel) => void rate(currentWord.id, wordLevel)}
         />
       ) : null}

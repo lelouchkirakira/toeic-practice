@@ -30,9 +30,20 @@ const ALL_ACCENTS = [
   { id: "au", label: "澳", title: "澳洲發音" },
 ] as const;
 
-export type AccentId = (typeof ALL_ACCENTS)[number]["id"];
+export const GENDERS = [
+  { id: "f", label: "女", title: "女聲" },
+  { id: "m", label: "男", title: "男聲" },
+] as const;
 
-/* 哪幾種口音的音檔已經備妥。音檔是分批產生的，還沒產完的口音先不要露出來，
+export type AccentId = (typeof ALL_ACCENTS)[number]["id"];
+export type GenderId = (typeof GENDERS)[number]["id"];
+
+/* 音檔的目錄名。女聲沿用沒有後綴的舊名稱，男聲加 -m，不必為了改名重產一次。 */
+function voiceDir(accent: AccentId, gender: GenderId): string {
+  return gender === "m" ? `${accent}-m` : accent;
+}
+
+/* 哪幾種聲音的音檔已經備妥。音檔是分批產生的，還沒產完的先不要露出來，
    免得使用者點了只得到 404 與一個音色不同的備援語音。 */
 const ENABLED = (process.env.NEXT_PUBLIC_ENABLED_ACCENTS ?? "us")
   .split(",")
@@ -41,11 +52,21 @@ const ENABLED = (process.env.NEXT_PUBLIC_ENABLED_ACCENTS ?? "us")
 
 export const ACCENTS = ALL_ACCENTS.filter((accent) => ENABLED.includes(accent.id));
 
-export const DEFAULT_ACCENT: AccentId = "us";
+/** 男聲要三種口音都備妥才露出，免得切了口音就沒聲音。 */
+export const MALE_READY = ACCENTS.every((accent) =>
+  ENABLED.includes(`${accent.id}-m`),
+);
 
-export function audioUrlFor(wordId: string, accent: AccentId): string | null {
+export const DEFAULT_ACCENT: AccentId = "us";
+export const DEFAULT_GENDER: GenderId = "f";
+
+export function audioUrlFor(
+  wordId: string,
+  accent: AccentId,
+  gender: GenderId = DEFAULT_GENDER,
+): string | null {
   if (!AUDIO_BASE || !wordId) return null;
-  return `${AUDIO_BASE}/${accent}/${wordId}.mp3`;
+  return `${AUDIO_BASE}/${voiceDir(accent, gender)}/${wordId}.mp3`;
 }
 
 function pickVoice(voices: SpeechSynthesisVoice[]): SpeechSynthesisVoice | null {
