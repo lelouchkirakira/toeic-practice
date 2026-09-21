@@ -157,7 +157,7 @@ export function useSpeech() {
       audioRef.current = audio;
       audio.onplaying = () => setSpeaking(true);
       audio.onended = () => setSpeaking(false);
-      // 音檔還沒產生好或網路不通時不要無聲失敗，改用瀏覽器語音。
+      // 音檔真的載不到（缺檔或斷線）才退回瀏覽器語音，這時不會有重複的風險。
       audio.onerror = () => {
         setSpeaking(false);
         audioRef.current = null;
@@ -166,9 +166,13 @@ export function useSpeech() {
 
       const started = audio.play();
       if (started) {
-        started.catch(() => {
+        started.catch((e: unknown) => {
           setSpeaking(false);
           audioRef.current = null;
+          // 自動換卡時沒有使用者手勢，瀏覽器會擋下播放並丟 NotAllowedError。
+          // 這種情況不能退回語音合成：合成不受同一條政策限制，會唸出來，
+          // 而音檔往往仍在稍後播出，結果同一個字被唸兩次。
+          if (e instanceof DOMException && e.name === "NotAllowedError") return;
           speakWithSynth(text);
         });
       }
