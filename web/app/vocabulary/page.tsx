@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { RefreshCw } from "lucide-react";
+import { RefreshCw, Volume2, VolumeX } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
@@ -51,6 +51,29 @@ export default function VocabularyPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
   const [error, setError] = useState("");
+  const [autoSpeak, setAutoSpeak] = useState(true);
+
+  // 自動發音的偏好記在這台裝置上。讀取可能因為隱私模式而失敗，失敗就用預設值。
+  useEffect(() => {
+    try {
+      const saved = window.localStorage.getItem("toeic:auto-speak");
+      if (saved !== null) setAutoSpeak(saved === "1");
+    } catch {
+      // 讀不到就維持預設
+    }
+  }, []);
+
+  const toggleAutoSpeak = useCallback(() => {
+    setAutoSpeak((value) => {
+      const next = !value;
+      try {
+        window.localStorage.setItem("toeic:auto-speak", next ? "1" : "0");
+      } catch {
+        // 存不了就只在這次瀏覽有效
+      }
+      return next;
+    });
+  }, []);
 
   // 篩選條件在輸入時不該觸發重抽，抽卡時才讀取當下的值
   const filterRef = useRef({ list, bandMin, bandMax, level, count });
@@ -197,14 +220,30 @@ export default function VocabularyPage() {
               </Select>
             </div>
 
-            <div className="flex items-end">
+            <div className="flex items-end gap-2">
               <Button
-                className="h-9 w-full"
+                className="h-9 flex-1"
                 data-testid="reload-words"
                 onClick={() => void load()}
               >
                 <RefreshCw data-icon="inline-start" />
                 重新抽卡
+              </Button>
+              <Button
+                variant={autoSpeak ? "secondary" : "outline"}
+                size="icon"
+                className="h-9 w-9 shrink-0"
+                aria-pressed={autoSpeak}
+                aria-label={autoSpeak ? "關閉自動發音" : "開啟自動發音"}
+                title={autoSpeak ? "自動發音：開" : "自動發音：關"}
+                data-testid="toggle-auto-speak"
+                onClick={toggleAutoSpeak}
+              >
+                {autoSpeak ? (
+                  <Volume2 className="size-4" aria-hidden />
+                ) : (
+                  <VolumeX className="size-4" aria-hidden />
+                )}
               </Button>
             </div>
           </div>
@@ -240,6 +279,7 @@ export default function VocabularyPage() {
           index={index}
           total={words.length}
           pending={isSaving}
+          autoSpeak={autoSpeak}
           onRate={(wordLevel) => void rate(currentWord.id, wordLevel)}
         />
       ) : null}

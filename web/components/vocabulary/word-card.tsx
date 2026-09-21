@@ -1,9 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Volume2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { useSpeech } from "@/hooks/use-speech";
 import type { Word, WordLevel } from "@/lib/types";
 
 const RATINGS: {
@@ -40,15 +42,24 @@ export function WordCard({
   index,
   total,
   pending,
+  autoSpeak,
   onRate,
 }: {
   word: Word;
   index: number;
   total: number;
   pending: boolean;
+  autoSpeak: boolean;
   onRate: (level: WordLevel) => void;
 }) {
   const [flipped, setFlipped] = useState(false);
+  const { supported, speaking, speak } = useSpeech();
+
+  // 換到新的字時自動唸一次。翻面狀態也要跟著重置，不然會看到上一張的背面。
+  useEffect(() => {
+    setFlipped(false);
+    if (autoSpeak && supported) speak(word.word);
+  }, [word.id, word.word, autoSpeak, supported, speak]);
 
   const listNames = Object.keys(word.lists ?? {});
   const inflections = word.inflections ?? [];
@@ -57,14 +68,29 @@ export function WordCard({
   return (
     <Card>
       <CardContent className="space-y-4">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between gap-2">
           <Badge variant="secondary">難度 {word.band}</Badge>
-          <span
-            className="text-sm tabular-nums text-muted-foreground"
-            data-testid="word-progress"
-          >
-            {index + 1} / {total}
-          </span>
+          <div className="flex items-center gap-2">
+            {supported ? (
+              <Button
+                type="button"
+                variant="ghost"
+                size="icon"
+                aria-label={`播放 ${word.word} 的發音`}
+                data-testid="speak-word"
+                className={speaking ? "text-primary" : undefined}
+                onClick={() => speak(word.word)}
+              >
+                <Volume2 className="size-5" aria-hidden />
+              </Button>
+            ) : null}
+            <span
+              className="text-sm tabular-nums text-muted-foreground"
+              data-testid="word-progress"
+            >
+              {index + 1} / {total}
+            </span>
+          </div>
         </div>
 
         <button
