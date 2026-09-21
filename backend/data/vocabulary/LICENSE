@@ -1,0 +1,32 @@
+The word list data in this directory (words.json) is derived from the
+New General Service List Project word lists:
+
+  New General Service List - Graded Reader (NGSL-GR 1.0)
+    by Browne, C., and Culligan, B.
+  TOEIC Service List (TSL 1.2)
+    by Browne, C., and Culligan, B.
+  Business Service List (BSL 1.2)
+    by Browne, C., and Culligan, B.
+  New Academic Word List (NAWL 1.2)
+    by Browne, C., Culligan, B., and Phillips, J.
+  New General Service List (NGSL 1.2), via the English definition file
+    by Browne, C., Culligan, B., and Phillips, J.
+
+Source: https://www.newgeneralservicelist.com/
+
+Licensed under a Creative Commons Attribution-ShareAlike 4.0 International
+License: https://creativecommons.org/licenses/by-sa/4.0/
+
+This data is NOT covered by the proprietary license that applies to this
+project's source code. It remains under CC BY-SA 4.0, which grants rights the
+proprietary license does not. The ShareAlike term applies: any redistribution
+of this file, modified or not, must carry the same CC BY-SA 4.0 license and
+this attribution.
+
+The definition_zh, phonetic and pos fields are derived from ECDICT
+(https://github.com/skywind3000/ECDICT, MIT License, Copyright (c) 2017
+Linwei), converted from Simplified to Traditional Chinese (Taiwan) by this
+project. Conversion errors are this project's responsibility.
+
+TOEIC is a registered trademark of Educational Testing Service (ETS). This
+project is not affiliated with, endorsed by, or sponsored by ETS.

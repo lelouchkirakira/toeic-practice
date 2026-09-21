@@ -8,3 +8,9 @@ venv/
 .DS_Store
 .vercel
 .env*.local
+
+# 字庫建置產物與快取。words.json 是 CC BY-SA 4.0 的衍生資料，
+# 不進這個 proprietary repo，改由 scripts/build_vocabulary.py 產生。
+.cache/
+backend/data/vocabulary/words.json
+backend/data/vocabulary/suspect_terms.txt

@@ -5,7 +5,8 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from .models.database import init_db
 from .services.question_bank import question_bank
-from .routers import quiz, stats
+from .services.vocabulary import vocabulary
+from .routers import quiz, stats, vocabulary as vocabulary_router
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -16,6 +17,8 @@ async def lifespan(app: FastAPI):
     init_db()
     question_bank.load()
     logger.info('題庫狀態: %s', question_bank.get_status())
+    vocabulary.load()
+    logger.info('字庫狀態: %s', vocabulary.get_status())
     yield
 
 
@@ -36,6 +39,7 @@ app.add_middleware(
 
 app.include_router(quiz.router)
 app.include_router(stats.router)
+app.include_router(vocabulary_router.router)
 
 
 @app.get('/')
@@ -43,7 +47,7 @@ async def root():
     return {
         'name': 'TOEIC Practice API',
         'version': '1.0.0',
-        'endpoints': ['/api/quiz', '/api/stats']
+        'endpoints': ['/api/quiz', '/api/stats', '/api/vocabulary']
     }
 
 
@@ -52,6 +56,7 @@ async def status():
     return {
         'success': True,
         'data': {
-            'question_bank': question_bank.get_status()
+            'question_bank': question_bank.get_status(),
+            'vocabulary': vocabulary.get_status()
         }
     }

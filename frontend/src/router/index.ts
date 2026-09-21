@@ -14,6 +14,11 @@ const router = createRouter({
       component: () => import('../views/MockTestView.vue')
     },
     {
+      path: '/vocabulary',
+      name: 'vocabulary',
+      component: () => import('../views/VocabularyView.vue')
+    },
+    {
       path: '/stats',
       name: 'stats',
       component: () => import('../views/StatsView.vue')

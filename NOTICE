@@ -1,0 +1,59 @@
+TOEIC Practice
+Copyright (c) 2026 SeiKai Kyo. All rights reserved.
+
+The source code of this project is proprietary. See LICENSE.
+
+This project bundles third-party data under separate open licenses. That data
+is NOT covered by the proprietary license above; the terms below govern it
+instead, and they grant rights the proprietary license does not.
+
+
+================================================================================
+Word lists: New General Service List Project
+================================================================================
+
+Files:  backend/data/vocabulary/words.json (headwords, frequency ranks, bands,
+        inflected forms, and English definitions)
+
+Source: https://www.newgeneralservicelist.com/
+
+  New General Service List (NGSL 1.2)
+    by Browne, C., Culligan, B., and Phillips, J.
+  New General Service List - Graded Reader (NGSL-GR 1.0)
+    by Browne, C., and Culligan, B.
+  TOEIC Service List (TSL 1.2)
+    by Browne, C., and Culligan, B.
+  Business Service List (BSL 1.2)
+    by Browne, C., and Culligan, B.
+  New Academic Word List (NAWL 1.2)
+    by Browne, C., Culligan, B., and Phillips, J.
+
+License: Creative Commons Attribution-ShareAlike 4.0 International
+         https://creativecommons.org/licenses/by-sa/4.0/
+
+The ShareAlike term applies. Any redistribution of the derived word list data,
+modified or not, must carry the same CC BY-SA 4.0 license and this attribution.
+
+
+================================================================================
+Chinese glosses and phonetics: ECDICT
+================================================================================
+
+Files:  backend/data/vocabulary/words.json (definition_zh, phonetic, pos fields)
+
+Source: https://github.com/skywind3000/ECDICT
+License: MIT License
+Copyright (c) 2017 Linwei
+
+The source data is written in Simplified Chinese. This project converts it to
+Traditional Chinese (Taiwan) with OpenCC (s2twp) plus a supplementary term map.
+Conversion errors are this project's responsibility, not the upstream author's.
+
+
+================================================================================
+TOEIC trademark
+================================================================================
+
+TOEIC is a registered trademark of Educational Testing Service (ETS). This
+project is not affiliated with, endorsed by, or sponsored by ETS. The word
+lists are derived from published corpus research, not from any ETS material.

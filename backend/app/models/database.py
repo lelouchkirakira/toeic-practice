@@ -36,6 +36,16 @@ class QuestionResult(SQLModel, table=True):
     created_at: datetime = Field(default_factory=datetime.now)
 
 
+class WordProgress(SQLModel, table=True):
+    __tablename__ = 'word_progress'
+
+    id: Optional[int] = Field(default=None, primary_key=True)
+    word_id: str = Field(index=True)
+    level: str  # unknown, fuzzy, known
+    review_count: int = Field(default=1)
+    updated_at: datetime = Field(default_factory=datetime.now)
+
+
 def init_db():
     DB_PATH.parent.mkdir(parents=True, exist_ok=True)
     SQLModel.metadata.create_all(engine)

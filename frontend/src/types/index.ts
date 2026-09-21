@@ -25,8 +25,50 @@ export interface Passage {
 export type QuizItem = Question | Passage
 
 export interface QuizConfig {
-  part: '5' | '6' | '7' | 'mixed'
+  part: '5' | '6' | '7' | 'mixed' | 'vocab'
   count: number
+}
+
+export interface WordListEntry {
+  rank: number
+  band?: number
+}
+
+export interface Word {
+  id: string
+  word: string
+  pos: string
+  phonetic: string
+  definition_en: string
+  definition_zh: string
+  lists: Record<string, WordListEntry>
+  band: number
+  inflections: string[]
+}
+
+export type WordLevel = 'unknown' | 'fuzzy' | 'known'
+
+export interface VocabularyFilter {
+  list: string
+  bandMin: number
+  bandMax: number
+  level: string
+  count: number
+}
+
+export interface WordLevelCount {
+  unknown: number
+  fuzzy: number
+  known: number
+  total: number
+}
+
+export interface VocabularyProgressSummary {
+  total_tracked: number
+  total_reviews: number
+  by_level: Record<WordLevel, number>
+  by_band: Record<string, WordLevelCount>
+  by_list: Record<string, WordLevelCount>
 }
 
 export interface SubmitPayload {

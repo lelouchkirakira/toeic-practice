@@ -14,7 +14,8 @@ const partOptions = [
   { label: 'Part 5 - Incomplete Sentences', value: '5' },
   { label: 'Part 6 - Text Completion', value: '6' },
   { label: 'Part 7 - Reading Comprehension', value: '7' },
-  { label: 'Mixed', value: 'mixed' }
+  { label: 'Mixed', value: 'mixed' },
+  { label: 'Vocabulary - Word Quiz', value: 'vocab' }
 ]
 
 const countOptions = [

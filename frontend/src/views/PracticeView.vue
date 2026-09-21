@@ -30,7 +30,7 @@ const {
 const started = computed(() => questions.value.length > 0 || passages.value.length > 0)
 
 function handleStart(part: string, count: number) {
-  startQuiz({ part: part as '5' | '6' | '7' | 'mixed', count })
+  startQuiz({ part: part as '5' | '6' | '7' | 'mixed' | 'vocab', count })
 }
 </script>
 

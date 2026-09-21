@@ -22,6 +22,12 @@ const items = computed(() => [
     class: route.path === '/mock-test' ? 'p-menuitem-active' : ''
   },
   {
+    label: 'Vocabulary',
+    icon: 'pi pi-book',
+    command: () => router.push('/vocabulary'),
+    class: route.path === '/vocabulary' ? 'p-menuitem-active' : ''
+  },
+  {
     label: 'Stats',
     icon: 'pi pi-chart-bar',
     command: () => router.push('/stats'),

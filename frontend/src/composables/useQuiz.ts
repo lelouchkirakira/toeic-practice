@@ -13,11 +13,12 @@ export function useQuiz() {
   const result = ref<SessionResult | null>(null)
   const config = ref<QuizConfig>({ part: '5', count: 10 })
 
+  // Part 6/7 走 passages，其餘（Part 5、mixed、vocab）走單題
   const currentQuestion = computed(() => {
-    if (config.value.part === '5' || config.value.part === 'mixed') {
-      return questions.value[currentIndex.value] || null
+    if (config.value.part === '6' || config.value.part === '7') {
+      return null
     }
-    return null
+    return questions.value[currentIndex.value] || null
   })
 
   const currentPassage = computed(() => {
@@ -28,10 +29,10 @@ export function useQuiz() {
   })
 
   const totalItems = computed(() => {
-    if (config.value.part === '5' || config.value.part === 'mixed') {
-      return questions.value.length
+    if (config.value.part === '6' || config.value.part === '7') {
+      return passages.value.length
     }
-    return passages.value.length
+    return questions.value.length
   })
 
   const progress = computed(() => {
@@ -58,15 +59,15 @@ export function useQuiz() {
     passages.value = []
 
     try {
-      const data = await api.get<Question[] | Passage[]>(
-        `/quiz/questions?part=${cfg.part}&count=${cfg.count}`
-      )
-      if (cfg.part === '5') {
-        questions.value = data as Question[]
-      } else if (cfg.part === '6' || cfg.part === '7') {
+      // 單字測驗走字庫端點，其餘走既有題庫端點
+      const path = cfg.part === 'vocab'
+        ? `/vocabulary/quiz?count=${cfg.count}`
+        : `/quiz/questions?part=${cfg.part}&count=${cfg.count}`
+      const data = await api.get<Question[] | Passage[]>(path)
+      if (cfg.part === '6' || cfg.part === '7') {
         passages.value = data as Passage[]
       } else {
-        // mixed - 統一以 questions 處理
+        // Part 5、mixed、vocab 統一以 questions 處理
         questions.value = data as Question[]
       }
     } catch (e) {
