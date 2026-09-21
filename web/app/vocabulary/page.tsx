@@ -15,6 +15,7 @@ import {
 import {
   DEFAULT_ACCENT,
   DEFAULT_GENDER,
+  MALE_READY,
   type AccentId,
   type GenderId,
 } from "@/hooks/use-speech";
@@ -71,7 +72,10 @@ export default function VocabularyPage() {
         setAccent(savedAccent);
       }
       const savedGender = window.localStorage.getItem("toeic:gender");
-      if (savedGender === "f" || savedGender === "m") setGender(savedGender);
+      // 男聲音檔撤掉之後，之前存過 m 的裝置要退回女聲，不然會去要一個不存在的檔。
+      if (savedGender === "f" || (savedGender === "m" && MALE_READY)) {
+        setGender(savedGender);
+      }
     } catch {
       // 讀不到就維持預設
     }

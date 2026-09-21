@@ -5,7 +5,15 @@ import { Volume2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ACCENTS, GENDERS, MALE_READY, audioUrlFor, useSpeech } from "@/hooks/use-speech";
+import {
+  ACCENTS,
+  EXAMPLE_AUDIO_READY,
+  GENDERS,
+  MALE_READY,
+  audioUrlFor,
+  exampleAudioUrlFor,
+  useSpeech,
+} from "@/hooks/use-speech";
 import type { AccentId, GenderId } from "@/hooks/use-speech";
 import type { Word, WordLevel } from "@/lib/types";
 
@@ -76,6 +84,8 @@ export function WordCard({
   onRate: (level: WordLevel) => void;
 }) {
   const [flipped, setFlipped] = useState(false);
+  // 單字與例句共用一個播放器，記住這次唸的是誰，播放中的顏色才不會亮在別顆按鈕上。
+  const [source, setSource] = useState<"word" | number>("word");
   const { supported, speaking, speak } = useSpeech();
   const audioUrl = audioUrlFor(word.id, accent, gender);
   const spokenIdRef = useRef("");
@@ -87,6 +97,7 @@ export function WordCard({
     if (spokenIdRef.current === word.id) return;
     spokenIdRef.current = word.id;
     setFlipped(false);
+    setSource("word");
     if (autoSpeak && supported) speak(word.word, audioUrl);
   }, [word.id, word.word, audioUrl, autoSpeak, supported, speak]);
 
@@ -108,8 +119,11 @@ export function WordCard({
                 size="icon"
                 aria-label={`播放 ${word.word} 的發音`}
                 data-testid="speak-word"
-                className={speaking ? "text-primary" : undefined}
-                onClick={() => speak(word.word, audioUrl)}
+                className={speaking && source === "word" ? "text-primary" : undefined}
+                onClick={() => {
+                  setSource("word");
+                  speak(word.word, audioUrl);
+                }}
               >
                 <Volume2 className="size-5" aria-hidden />
               </Button>
@@ -152,20 +166,6 @@ export function WordCard({
                   詞形變化：{inflections.join("、")}
                 </span>
               ) : null}
-              {examples.length > 0 ? (
-                <span className="w-full space-y-2 border-t pt-3 text-left">
-                  {examples.map((example, index) => (
-                    <span key={index} className="block">
-                      <span className="block text-sm leading-relaxed">
-                        {renderExample(example.en)}
-                      </span>
-                      <span className="block text-sm leading-relaxed text-muted-foreground">
-                        {example.zh}
-                      </span>
-                    </span>
-                  ))}
-                </span>
-              ) : null}
               {listNames.length > 0 ? (
                 <span className="flex flex-wrap justify-center gap-1.5">
                   {listNames.map((name) => (
@@ -194,6 +194,46 @@ export function WordCard({
           )}
         </button>
 
+        {flipped && examples.length > 0 ? (
+          <div
+            className="space-y-3 rounded-xl border border-border bg-muted/20 p-3"
+            data-testid="example-list"
+          >
+            {examples.map((example, index) => {
+              const number = index + 1;
+              const sentence = example.en.replace(/\*\*/g, "");
+              return (
+                <div key={index} className="flex items-start gap-2">
+                  {EXAMPLE_AUDIO_READY && supported ? (
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="icon"
+                      aria-label={`播放第 ${number} 句例句`}
+                      data-testid={`speak-example-${number}`}
+                      className={`size-7 shrink-0 ${
+                        speaking && source === number ? "text-primary" : ""
+                      }`}
+                      onClick={() => {
+                        setSource(number);
+                        speak(sentence, exampleAudioUrlFor(word.id, number));
+                      }}
+                    >
+                      <Volume2 className="size-4" aria-hidden />
+                    </Button>
+                  ) : null}
+                  <div className="space-y-0.5 text-left">
+                    <p className="text-sm leading-relaxed">{renderExample(example.en)}</p>
+                    <p className="text-sm leading-relaxed text-muted-foreground">
+                      {example.zh}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        ) : null}
+
         {supported && ACCENTS.length > 1 ? (
           <div className="space-y-1.5 text-xs">
             <div className="flex items-center gap-2">
@@ -213,6 +253,7 @@ export function WordCard({
                     }`}
                     onClick={() => {
                       onAccentChange(option.id);
+                      setSource("word");
                       speak(word.word, audioUrlFor(word.id, option.id, gender));
                     }}
                   >
@@ -239,6 +280,7 @@ export function WordCard({
                       }`}
                       onClick={() => {
                         onGenderChange(option.id);
+                        setSource("word");
                         speak(word.word, audioUrlFor(word.id, accent, option.id));
                       }}
                     >

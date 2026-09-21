@@ -21,6 +21,7 @@ const PREFERRED_VOICES = [
 ];
 
 const AUDIO_BASE = process.env.NEXT_PUBLIC_WORD_AUDIO_BASE ?? "";
+const EXAMPLE_AUDIO_BASE = process.env.NEXT_PUBLIC_EXAMPLE_AUDIO_BASE ?? "";
 
 /* 多益聽力有美、英、加、澳四種口音。Google TTS 沒有獨立的加拿大英語，
    而加拿大腔與美式同屬北美音，所以這裡提供三種。 */
@@ -68,6 +69,15 @@ export function audioUrlFor(
   if (!AUDIO_BASE || !wordId) return null;
   return `${AUDIO_BASE}/${voiceDir(accent, gender)}/${wordId}.mp3`;
 }
+
+/** 例句朗讀只做美式女聲一種。序號對應資料庫 examples 陣列的順序，從 1 起算。 */
+export function exampleAudioUrlFor(wordId: string, index: number): string | null {
+  if (!EXAMPLE_AUDIO_BASE || !wordId) return null;
+  return `${EXAMPLE_AUDIO_BASE}/${wordId}-${index}.mp3`;
+}
+
+/** 例句音檔備妥了沒。沒有就不要露出播放鍵，免得點了只得到 404。 */
+export const EXAMPLE_AUDIO_READY = Boolean(EXAMPLE_AUDIO_BASE);
 
 function pickVoice(voices: SpeechSynthesisVoice[]): SpeechSynthesisVoice | null {
   const english = voices.filter((v) => v.lang.startsWith("en"));
