@@ -3,13 +3,15 @@ import { ref, computed, watch } from 'vue'
 import Button from 'primevue/button'
 import type { Passage, AnswerItem } from '../types'
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   passage: Passage
   passageIndex: number
   totalPassages: number
   answeredMap: Map<string, AnswerItem>
   showFeedback?: boolean
-}>()
+}>(), {
+  showFeedback: true
+})
 
 const emit = defineEmits<{
   answer: [questionId: string, part: string, userAnswer: string, correctAnswer: string]
@@ -112,7 +114,7 @@ function getCorrectAnswer(q: typeof props.passage.questions[0]): string {
           <Button label="Confirm" size="small" @click="submitQuestion(qIdx)" />
         </div>
 
-        <div v-if="submittedQuestions.has(qIdx) && showFeedback !== false" class="q-feedback">
+        <div v-if="submittedQuestions.has(qIdx) && showFeedback" class="q-feedback">
           <div :class="['feedback-banner', isCorrect(qIdx) ? 'correct' : 'incorrect']">
             {{ isCorrect(qIdx) ? 'Correct!' : 'Incorrect' }}
           </div>

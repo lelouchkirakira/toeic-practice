@@ -65,6 +65,7 @@ function formatDate(iso: string): string {
 
 function partLabel(part: string): string {
   if (part === 'mixed') return 'Mixed'
+  if (part === 'vocab') return 'Vocabulary'
   return `Part ${part}`
 }
 
@@ -153,16 +154,26 @@ function accuracySeverity(acc: number): 'success' | 'warn' | 'danger' {
         <template #title>Recent Sessions</template>
         <template #content>
           <DataTable :value="history" :rows="10" stripedRows size="small">
-            <Column header="Date" field="created_at" :body="(row: any) => formatDate(row.created_at)" />
-            <Column header="Mode" field="mode" :body="(row: any) => row.mode === 'mock' ? 'Mock Test' : 'Practice'" />
-            <Column header="Part" field="part" :body="(row: any) => partLabel(row.part)" />
+            <Column header="Date" field="created_at">
+              <template #body="{ data }">{{ formatDate(data.created_at) }}</template>
+            </Column>
+            <Column header="Mode" field="mode">
+              <template #body="{ data }">{{ data.mode === 'mock' ? 'Mock Test' : 'Practice' }}</template>
+            </Column>
+            <Column header="Part" field="part">
+              <template #body="{ data }">{{ partLabel(data.part) }}</template>
+            </Column>
             <Column header="Score">
               <template #body="{ data }">
                 <Tag :value="`${data.score}%`" :severity="accuracySeverity(data.score)" />
               </template>
             </Column>
-            <Column header="Questions" :body="(row: any) => `${row.correct_count}/${row.total_questions}`" />
-            <Column header="Time" :body="(row: any) => formatTime(row.time_spent_seconds)" />
+            <Column header="Questions">
+              <template #body="{ data }">{{ data.correct_count }}/{{ data.total_questions }}</template>
+            </Column>
+            <Column header="Time">
+              <template #body="{ data }">{{ formatTime(data.time_spent_seconds) }}</template>
+            </Column>
           </DataTable>
         </template>
       </Card>

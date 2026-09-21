@@ -4,13 +4,15 @@ import Button from 'primevue/button'
 import Tag from 'primevue/tag'
 import type { Question, AnswerItem } from '../types'
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   question: Question
   index: number
   total: number
   answered?: AnswerItem
   showFeedback?: boolean
-}>()
+}>(), {
+  showFeedback: true
+})
 
 const emit = defineEmits<{
   answer: [questionId: string, userAnswer: string, correctAnswer: string, grammarCategory?: string]
@@ -83,7 +85,7 @@ function getOptionClass(opt: string): string {
       <Button label="Submit Answer" icon="pi pi-check" @click="submit" />
     </div>
 
-    <div v-if="submitted && showFeedback !== false" class="feedback">
+    <div v-if="submitted && showFeedback" class="feedback">
       <div :class="['feedback-banner', isCorrect ? 'correct' : 'incorrect']">
         {{ isCorrect ? 'Correct!' : 'Incorrect' }}
       </div>
