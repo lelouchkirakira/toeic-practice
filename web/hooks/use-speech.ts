@@ -143,7 +143,13 @@ export function useSpeech() {
       if (typeof window === "undefined" || !text.trim()) return;
 
       if (audioRef.current) {
-        audioRef.current.pause();
+        // 先把事件拆掉再停：被換掉的那個還掛著 onerror，之後觸發會去叫語音合成，
+        // 跟接手的音檔疊在一起就變成唸兩次。
+        const previous = audioRef.current;
+        previous.onplaying = null;
+        previous.onended = null;
+        previous.onerror = null;
+        previous.pause();
         audioRef.current = null;
       }
       if ("speechSynthesis" in window) window.speechSynthesis.cancel();
@@ -159,6 +165,7 @@ export function useSpeech() {
       audio.onended = () => setSpeaking(false);
       // 音檔真的載不到（缺檔或斷線）才退回瀏覽器語音，這時不會有重複的風險。
       audio.onerror = () => {
+        if (audioRef.current !== audio) return;
         setSpeaking(false);
         audioRef.current = null;
         speakWithSynth(text);
@@ -167,12 +174,19 @@ export function useSpeech() {
       const started = audio.play();
       if (started) {
         started.catch((e: unknown) => {
+          // 已經有更新的一次播放接手了，這次連狀態都不要動。
+          if (audioRef.current !== audio) return;
           setSpeaking(false);
           audioRef.current = null;
-          // 自動換卡時沒有使用者手勢，瀏覽器會擋下播放並丟 NotAllowedError。
-          // 這種情況不能退回語音合成：合成不受同一條政策限制，會唸出來，
-          // 而音檔往往仍在稍後播出，結果同一個字被唸兩次。
-          if (e instanceof DOMException && e.name === "NotAllowedError") return;
+          // 這兩種失敗都不能退回語音合成，退了就是同一個字唸兩次：
+          // NotAllowedError 是自動換卡沒有使用者手勢被擋下，音檔往往稍後仍會播出；
+          // AbortError 是被下一次播放中斷，那一次本來就會把聲音放出來。
+          if (
+            e instanceof DOMException &&
+            (e.name === "NotAllowedError" || e.name === "AbortError")
+          ) {
+            return;
+          }
           speakWithSynth(text);
         });
       }

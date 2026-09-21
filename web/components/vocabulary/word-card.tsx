@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Volume2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -78,9 +78,14 @@ export function WordCard({
   const [flipped, setFlipped] = useState(false);
   const { supported, speaking, speak } = useSpeech();
   const audioUrl = audioUrlFor(word.id, accent, gender);
+  const spokenIdRef = useRef("");
 
   // 換到新的字時自動唸一次。翻面狀態也要跟著重置，不然會看到上一張的背面。
+  // 只認 word.id：切口音或切男女聲也會換掉 audioUrl，但那時按鈕自己已經播了
+  // 一次，這裡再播一次就是同一個字唸兩次。
   useEffect(() => {
+    if (spokenIdRef.current === word.id) return;
+    spokenIdRef.current = word.id;
     setFlipped(false);
     if (autoSpeak && supported) speak(word.word, audioUrl);
   }, [word.id, word.word, audioUrl, autoSpeak, supported, speak]);
