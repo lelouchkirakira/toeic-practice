@@ -30,6 +30,7 @@ import subprocess
 import sys
 import threading
 import urllib.error
+import urllib.parse
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
@@ -106,9 +107,11 @@ def blob_list(token: str) -> set[str]:
     done: set[str] = set()
     cursor = None
     while True:
-        url = f"{BLOB_API}?prefix={BLOB_PREFIX}&limit=1000"
+        # cursor 裡有需要跳脫的字元，直接串進網址第二頁就會 400。
+        params = {"prefix": BLOB_PREFIX, "limit": "1000"}
         if cursor:
-            url += f"&cursor={cursor}"
+            params["cursor"] = cursor
+        url = f"{BLOB_API}?{urllib.parse.urlencode(params)}"
         request = urllib.request.Request(
             url, headers={"Authorization": f"Bearer {token}", "x-api-version": "7"}
         )
