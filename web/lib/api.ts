@@ -1,4 +1,6 @@
 import type {
+  ListeningQuestion,
+  ListeningReview,
   MockTestPayload,
   QuizItem,
   Question,
@@ -135,6 +137,18 @@ export function fetchStatsOverview(): Promise<StatsOverview> {
 
 export function fetchStatsHistory(limit = 20): Promise<SessionHistory[]> {
   return request<SessionHistory[]>(`/stats/history?limit=${limit}`);
+}
+
+export function fetchListeningQuestions(
+  count: number,
+): Promise<{ questions: ListeningQuestion[]; total: number }> {
+  return request(`/listening/questions?part=2&count=${count}`);
+}
+
+export function fetchListeningReview(
+  ids: string[],
+): Promise<{ questions: ListeningReview[]; total: number }> {
+  return post("/listening/review", { ids });
 }
 
 export function errorMessage(e: unknown, fallback: string): string {

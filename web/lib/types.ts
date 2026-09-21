@@ -126,3 +126,23 @@ export interface SessionHistory {
   time_spent_seconds: number;
   created_at: string;
 }
+
+/** 作答中的聽力題。刻意不含題目文字與答案，那些要作答完才拿得到。 */
+export interface ListeningQuestion {
+  id: string;
+  part: string;
+  audio: string;
+  option_labels: string[];
+}
+
+/** 作答結束後的檢討內容。 */
+export interface ListeningReview {
+  id: string;
+  part: string;
+  audio: string;
+  prompt: string;
+  options: { label: string; text: string }[];
+  answer: string;
+  question_type: string;
+  explanation: string;
+}
