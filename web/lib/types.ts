@@ -85,6 +85,13 @@ export interface Word {
   lists: Record<string, WordListEntry>;
   band: number;
   inflections: string[];
+  examples: WordExample[];
+}
+
+/** 例句。英文句子裡的目標單字用 **星號** 標出來，供前端 highlight。 */
+export interface WordExample {
+  en: string;
+  zh: string;
 }
 
 /** 作答後寫入的熟練度 */

@@ -38,6 +38,20 @@ const RATINGS: {
   },
 ];
 
+
+/** 把例句裡的 **目標單字** 轉成粗體。 */
+function renderExample(sentence: string) {
+  return sentence.split(/(\*\*[^*]+\*\*)/g).map((part, index) =>
+    part.startsWith("**") && part.endsWith("**") ? (
+      <strong key={index} className="font-semibold text-foreground">
+        {part.slice(2, -2)}
+      </strong>
+    ) : (
+      <span key={index}>{part}</span>
+    ),
+  );
+}
+
 export function WordCard({
   word,
   index,
@@ -69,6 +83,7 @@ export function WordCard({
 
   const listNames = Object.keys(word.lists ?? {});
   const inflections = word.inflections ?? [];
+  const examples = word.examples ?? [];
   const hasDefinition = Boolean(word.definition_zh || word.definition_en);
 
   return (
@@ -150,6 +165,20 @@ export function WordCard({
               {inflections.length > 0 ? (
                 <span className="text-sm text-muted-foreground break-words">
                   詞形變化：{inflections.join("、")}
+                </span>
+              ) : null}
+              {examples.length > 0 ? (
+                <span className="w-full space-y-2 border-t pt-3 text-left">
+                  {examples.map((example, index) => (
+                    <span key={index} className="block">
+                      <span className="block text-sm leading-relaxed">
+                        {renderExample(example.en)}
+                      </span>
+                      <span className="block text-sm leading-relaxed text-muted-foreground">
+                        {example.zh}
+                      </span>
+                    </span>
+                  ))}
                 </span>
               ) : null}
               {listNames.length > 0 ? (
