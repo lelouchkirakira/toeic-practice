@@ -12,8 +12,9 @@
 
 用法：
     export TOEIC_BLOB_TOKEN='vercel_blob_rw_...'
-    uv run scripts/build_word_audio.py --limit 10     # 先試跑
-    uv run scripts/build_word_audio.py                # 全部
+    uv run scripts/build_word_audio.py --limit 10          # 先試跑
+    uv run scripts/build_word_audio.py                     # 三種口音全部
+    uv run scripts/build_word_audio.py --accents gb,au     # 只補某幾種
 
 需要 gcloud 已登入且專案啟用 Text-to-Speech API。重跑是安全的：已經存在
 的音檔會被跳過，中斷之後接著跑即可。
@@ -43,13 +44,19 @@ WORDS_PATH = REPO_ROOT / "backend/data/vocabulary/words.json"
 
 GCP_PROJECT = "dashai-490610"
 TTS_URL = "https://texttospeech.googleapis.com/v1/text:synthesize"
-# Neural2-F 是女聲美式，跟 macOS 的 Samantha 音色接近，聽感一致。
-VOICE_NAME = "en-US-Neural2-F"
 SPEAKING_RATE = 0.9
 
+# 多益聽力有美、英、加、澳四種口音，但 Google TTS 沒有獨立的加拿大英語，
+# 而加拿大腔與美式同屬北美音，實務上用 en-US 近似。三種都挑女聲，
+# 音色一致，差別只在口音。
+ACCENTS = {
+    "us": ("en-US", "en-US-Neural2-F"),
+    "gb": ("en-GB", "en-GB-Neural2-A"),
+    "au": ("en-AU", "en-AU-Neural2-A"),
+}
+
 BLOB_API = "https://blob.vercel-storage.com"
-BLOB_PREFIX = "words/"
-WORKERS = 12
+WORKERS = 6
 
 
 def gcloud_token() -> str:
@@ -62,11 +69,12 @@ def gcloud_token() -> str:
     return out.stdout.strip()
 
 
-def synthesize(word: str, token: str) -> bytes:
+def synthesize(word: str, token: str, accent: str) -> bytes:
+    language_code, voice_name = ACCENTS[accent]
     payload = json.dumps(
         {
             "input": {"text": word},
-            "voice": {"languageCode": "en-US", "name": VOICE_NAME},
+            "voice": {"languageCode": language_code, "name": voice_name},
             "audioConfig": {"audioEncoding": "MP3", "speakingRate": SPEAKING_RATE},
         }
     ).encode()
@@ -102,13 +110,13 @@ def blob_upload(pathname: str, data: bytes, token: str) -> str:
         return json.load(response)["url"]
 
 
-def blob_list(token: str) -> set[str]:
+def blob_list(token: str, prefix: str) -> set[str]:
     """列出已上傳的音檔，用來跳過重跑。"""
     done: set[str] = set()
     cursor = None
     while True:
         # cursor 裡有需要跳脫的字元，直接串進網址第二頁就會 400。
-        params = {"prefix": BLOB_PREFIX, "limit": "1000"}
+        params = {"prefix": prefix, "limit": "1000"}
         if cursor:
             params["cursor"] = cursor
         url = f"{BLOB_API}?{urllib.parse.urlencode(params)}"
@@ -129,7 +137,18 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="產生單字發音並上傳")
     parser.add_argument("--limit", type=int, default=0, help="只處理前 N 個，0 表示全部")
     parser.add_argument("--workers", type=int, default=WORKERS)
+    parser.add_argument(
+        "--accents",
+        default=",".join(ACCENTS),
+        help=f"要產生的口音，逗號分隔，可選 {'、'.join(ACCENTS)}",
+    )
     args = parser.parse_args()
+
+    accents = [a.strip() for a in args.accents.split(",") if a.strip()]
+    unknown = [a for a in accents if a not in ACCENTS]
+    if unknown:
+        logger.error("不認識的口音: %s", "、".join(unknown))
+        return 1
 
     blob_token = os.environ.get("TOEIC_BLOB_TOKEN")
     if not blob_token:
@@ -140,56 +159,58 @@ def main() -> int:
     if args.limit:
         words = words[: args.limit]
 
-    logger.info("查詢已上傳的音檔")
-    existing = blob_list(blob_token)
-    todo = [w for w in words if f"{BLOB_PREFIX}{w['id']}.mp3" not in existing]
-    logger.info("  已存在 %d，待處理 %d\n", len(words) - len(todo), len(todo))
-    if not todo:
-        logger.info("沒有要做的事")
-        return 0
-
     gcp_token = gcloud_token()
-    lock = threading.Lock()
-    state = {"done": 0, "bytes": 0, "failed": []}
-    base_url: list[str] = []
+    failures = 0
 
-    def handle(word: dict) -> None:
-        pathname = f"{BLOB_PREFIX}{word['id']}.mp3"
-        try:
-            audio = synthesize(word["word"], gcp_token)
-            url = blob_upload(pathname, audio, blob_token)
-        except (urllib.error.HTTPError, urllib.error.URLError, KeyError) as exc:
+    for accent in accents:
+        prefix = f"words/{accent}/"
+        logger.info("[%s] 查詢已上傳的音檔", accent)
+        existing = blob_list(blob_token, prefix)
+        todo = [w for w in words if f"{prefix}{w['id']}.mp3" not in existing]
+        logger.info("  已存在 %d，待處理 %d", len(words) - len(todo), len(todo))
+        if not todo:
+            logger.info("  沒有要做的事\n")
+            continue
+
+        lock = threading.Lock()
+        state: dict = {"done": 0, "bytes": 0, "failed": []}
+
+        def handle(word: dict, _accent: str = accent, _prefix: str = prefix) -> None:
+            pathname = f"{_prefix}{word['id']}.mp3"
+            try:
+                audio = synthesize(word["word"], gcp_token, _accent)
+                blob_upload(pathname, audio, blob_token)
+            except (urllib.error.HTTPError, urllib.error.URLError, KeyError) as exc:
+                with lock:
+                    state["failed"].append((word["word"], str(exc)[:80]))
+                return
             with lock:
-                state["failed"].append((word["word"], str(exc)[:80]))
-            return
-        with lock:
-            state["done"] += 1
-            state["bytes"] += len(audio)
-            if not base_url:
-                base_url.append(url.rsplit("/", 2)[0])
-            if state["done"] % 250 == 0:
-                logger.info(
-                    "  %d / %d  (%.1f MB)",
-                    state["done"],
-                    len(todo),
-                    state["bytes"] / 1048576,
-                )
+                state["done"] += 1
+                state["bytes"] += len(audio)
+                if state["done"] % 500 == 0:
+                    logger.info(
+                        "  %d / %d  (%.1f MB)",
+                        state["done"],
+                        len(todo),
+                        state["bytes"] / 1048576,
+                    )
 
-    with ThreadPoolExecutor(max_workers=args.workers) as pool:
-        futures = [pool.submit(handle, w) for w in todo]
-        for future in as_completed(futures):
-            future.result()
+        with ThreadPoolExecutor(max_workers=args.workers) as pool:
+            futures = [pool.submit(handle, w) for w in todo]
+            for future in as_completed(futures):
+                future.result()
 
-    logger.info("")
-    logger.info("完成 %d / %d，共 %.1f MB", state["done"], len(todo), state["bytes"] / 1048576)
-    if base_url:
-        logger.info("音檔網址前綴：%s/%s", base_url[0], BLOB_PREFIX.rstrip("/"))
-    if state["failed"]:
-        logger.warning("失敗 %d 筆：", len(state["failed"]))
-        for word, reason in state["failed"][:10]:
-            logger.warning("  %s: %s", word, reason)
-        return 1
-    return 0
+        logger.info(
+            "  完成 %d / %d，共 %.1f MB", state["done"], len(todo), state["bytes"] / 1048576
+        )
+        if state["failed"]:
+            failures += len(state["failed"])
+            logger.warning("  失敗 %d 筆，降低 --workers 後重跑即可補上", len(state["failed"]))
+            for word, reason in state["failed"][:5]:
+                logger.warning("    %s: %s", word, reason)
+        logger.info("")
+
+    return 1 if failures else 0
 
 
 if __name__ == "__main__":

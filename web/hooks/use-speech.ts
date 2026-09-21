@@ -22,9 +22,21 @@ const PREFERRED_VOICES = [
 
 const AUDIO_BASE = process.env.NEXT_PUBLIC_WORD_AUDIO_BASE ?? "";
 
-export function audioUrlFor(wordId: string): string | null {
+/* 多益聽力有美、英、加、澳四種口音。Google TTS 沒有獨立的加拿大英語，
+   而加拿大腔與美式同屬北美音，所以這裡提供三種。 */
+export const ACCENTS = [
+  { id: "us", label: "美", title: "美式發音" },
+  { id: "gb", label: "英", title: "英式發音" },
+  { id: "au", label: "澳", title: "澳洲發音" },
+] as const;
+
+export type AccentId = (typeof ACCENTS)[number]["id"];
+
+export const DEFAULT_ACCENT: AccentId = "us";
+
+export function audioUrlFor(wordId: string, accent: AccentId): string | null {
   if (!AUDIO_BASE || !wordId) return null;
-  return `${AUDIO_BASE}/${wordId}.mp3`;
+  return `${AUDIO_BASE}/${accent}/${wordId}.mp3`;
 }
 
 function pickVoice(voices: SpeechSynthesisVoice[]): SpeechSynthesisVoice | null {

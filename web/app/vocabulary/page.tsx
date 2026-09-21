@@ -12,6 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { DEFAULT_ACCENT, type AccentId } from "@/hooks/use-speech";
 import { WordCard } from "@/components/vocabulary/word-card";
 import { ErrorNotice, InfoNotice, LoadingBlock } from "@/components/status";
 import { errorMessage, fetchWords, saveWordProgress } from "@/lib/api";
@@ -52,14 +53,28 @@ export default function VocabularyPage() {
   const [isSaving, setIsSaving] = useState(false);
   const [error, setError] = useState("");
   const [autoSpeak, setAutoSpeak] = useState(true);
+  const [accent, setAccent] = useState<AccentId>(DEFAULT_ACCENT);
 
   // 自動發音的偏好記在這台裝置上。讀取可能因為隱私模式而失敗，失敗就用預設值。
   useEffect(() => {
     try {
       const saved = window.localStorage.getItem("toeic:auto-speak");
       if (saved !== null) setAutoSpeak(saved === "1");
+      const savedAccent = window.localStorage.getItem("toeic:accent");
+      if (savedAccent === "us" || savedAccent === "gb" || savedAccent === "au") {
+        setAccent(savedAccent);
+      }
     } catch {
       // 讀不到就維持預設
+    }
+  }, []);
+
+  const changeAccent = useCallback((next: AccentId) => {
+    setAccent(next);
+    try {
+      window.localStorage.setItem("toeic:accent", next);
+    } catch {
+      // 存不了就只在這次瀏覽有效
     }
   }, []);
 
@@ -280,6 +295,8 @@ export default function VocabularyPage() {
           total={words.length}
           pending={isSaving}
           autoSpeak={autoSpeak}
+          accent={accent}
+          onAccentChange={changeAccent}
           onRate={(wordLevel) => void rate(currentWord.id, wordLevel)}
         />
       ) : null}
