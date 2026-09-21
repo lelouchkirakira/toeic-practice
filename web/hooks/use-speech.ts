@@ -2,16 +2,15 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
-/* 單字發音。用瀏覽器內建的 Web Speech API，不需要音檔也不需要 API 費用。
+/* 單字發音。
  *
- * 要知道的限制：唸出來的聲音來自「使用者自己的裝置」，不是我們決定的。
- * macOS 與 iOS 會挑到 Samantha，Chrome 與 Android 是 Google US English，
- * Windows 是微軟那幾個。所以每個人聽到的音色不一樣，也無法保證品質一致。
- * 要跨裝置一致就得改用雲端 TTS 或預先產生音檔。
+ * 優先播預先產生好的音檔（Google Cloud TTS，存在 Vercel Blob），所有人聽到
+ * 的是同一個聲音。音檔缺漏或載不到時才退回瀏覽器內建的 Web Speech API，
+ * 那個唸出來的聲音來自使用者自己的裝置，macOS 是 Samantha，Windows 與
+ * Android 各有各的，品質與音色都不一致，所以只當備援。
  */
 
-// 依序找第一個存在的。前面是各平台的預設英文語音，品質與自然度較好；
-// 找不到就退回任何 en-US，再退回任何英文。
+// 依序找第一個存在的，都找不到就用任何英文語音。
 const PREFERRED_VOICES = [
   "Samantha", // macOS / iOS 的預設美式語音
   "Google US English", // Chrome / Android
@@ -20,6 +19,13 @@ const PREFERRED_VOICES = [
   "Alex", // 較舊的 macOS
   "Daniel", // 英式
 ];
+
+const AUDIO_BASE = process.env.NEXT_PUBLIC_WORD_AUDIO_BASE ?? "";
+
+export function audioUrlFor(wordId: string): string | null {
+  if (!AUDIO_BASE || !wordId) return null;
+  return `${AUDIO_BASE}/${wordId}.mp3`;
+}
 
 function pickVoice(voices: SpeechSynthesisVoice[]): SpeechSynthesisVoice | null {
   const english = voices.filter((v) => v.lang.startsWith("en"));
@@ -33,14 +39,14 @@ function pickVoice(voices: SpeechSynthesisVoice[]): SpeechSynthesisVoice | null 
 }
 
 export function useSpeech() {
-  const [supported, setSupported] = useState(false);
   const [speaking, setSpeaking] = useState(false);
   const voiceRef = useRef<SpeechSynthesisVoice | null>(null);
-  const unlockedRef = useRef(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const synthAvailable = useRef(false);
 
   useEffect(() => {
     if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
-    setSupported(true);
+    synthAvailable.current = true;
 
     // getVoices 在 Chrome 第一次呼叫可能是空的，要等 voiceschanged。
     const load = () => {
@@ -55,49 +61,81 @@ export function useSpeech() {
     };
   }, []);
 
-  const stop = useCallback(() => {
+  const speakWithSynth = useCallback((text: string) => {
     if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
-    window.speechSynthesis.cancel();
+
+    const synth = window.speechSynthesis;
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.rate = 0.85;
+    utterance.lang = "en-US";
+    if (voiceRef.current) utterance.voice = voiceRef.current;
+
+    utterance.onstart = () => setSpeaking(true);
+    utterance.onend = () => setSpeaking(false);
+    utterance.onerror = () => setSpeaking(false);
+
+    // iOS Safari 只接受在使用者手勢的同步堆疊裡呼叫 speak，包進 setTimeout
+    // 會被拒絕而完全沒聲音。沒有東西在播時直接送出。
+    if (!synth.speaking && !synth.pending) {
+      synth.speak(utterance);
+      return;
+    }
+    synth.cancel();
+    window.setTimeout(() => synth.speak(utterance), 50);
+  }, []);
+
+  const stop = useCallback(() => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current = null;
+    }
+    if (typeof window !== "undefined" && "speechSynthesis" in window) {
+      window.speechSynthesis.cancel();
+    }
     setSpeaking(false);
   }, []);
 
+  /** text 是要唸的字，audioUrl 是預先產生好的音檔，沒有就退回瀏覽器語音。 */
   const speak = useCallback(
-    (text: string) => {
-      if (
-        typeof window === "undefined" ||
-        !("speechSynthesis" in window) ||
-        !text.trim()
-      ) {
+    (text: string, audioUrl?: string | null) => {
+      if (typeof window === "undefined" || !text.trim()) return;
+
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+      if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+
+      if (!audioUrl) {
+        speakWithSynth(text);
         return;
       }
 
-      const synth = window.speechSynthesis;
+      const audio = new Audio(audioUrl);
+      audioRef.current = audio;
+      audio.onplaying = () => setSpeaking(true);
+      audio.onended = () => setSpeaking(false);
+      // 音檔還沒產生好或網路不通時不要無聲失敗，改用瀏覽器語音。
+      audio.onerror = () => {
+        setSpeaking(false);
+        audioRef.current = null;
+        speakWithSynth(text);
+      };
 
-      const utterance = new SpeechSynthesisUtterance(text);
-      // 比正常語速稍慢，單字才聽得清楚。
-      utterance.rate = 0.85;
-      utterance.lang = "en-US";
-      if (voiceRef.current) utterance.voice = voiceRef.current;
-
-      utterance.onstart = () => setSpeaking(true);
-      utterance.onend = () => setSpeaking(false);
-      utterance.onerror = () => setSpeaking(false);
-
-      // iOS Safari 只接受在使用者手勢的同步堆疊裡呼叫 speak，包進
-      // setTimeout 就會被拒絕而完全沒聲音。沒有東西在播時直接送出。
-      if (!synth.speaking && !synth.pending) {
-        synth.speak(utterance);
-        unlockedRef.current = true;
-        return;
+      const started = audio.play();
+      if (started) {
+        started.catch(() => {
+          setSpeaking(false);
+          audioRef.current = null;
+          speakWithSynth(text);
+        });
       }
-
-      // 正在播才需要先停。Chrome 在 cancel 之後立刻 speak 會被吃掉，隔一拍再送；
-      // 這條路徑一定是在已經播過一次之後，所以不受 iOS 的手勢限制。
-      synth.cancel();
-      window.setTimeout(() => synth.speak(utterance), 50);
     },
-    [],
+    [speakWithSynth],
   );
+
+  // 有音檔就一定播得出來，沒有音檔才取決於裝置有沒有語音引擎。
+  const supported = Boolean(AUDIO_BASE) || synthAvailable.current;
 
   return { supported, speaking, speak, stop };
 }
