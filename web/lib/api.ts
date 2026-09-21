@@ -10,6 +10,8 @@ import type {
   WordLevel,
 } from "./types";
 
+import { learnerId } from "./learner";
+
 // 開發接 Python 的 /api，上線接 Go 的 /toeic，去掉 base 之後的路徑兩邊一致。
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE ?? "/api/backend/toeic";
 
@@ -30,9 +32,14 @@ export class ApiError extends Error {
 }
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
+  // 這個站沒有登入，後端靠這個標頭把各人的進度分開。
+  const headers = new Headers(init?.headers);
+  const learner = learnerId();
+  if (learner) headers.set("X-Learner-Id", learner);
+
   let res: Response;
   try {
-    res = await fetch(`${API_BASE}${path}`, init);
+    res = await fetch(`${API_BASE}${path}`, { ...init, headers });
   } catch {
     throw new ApiError("連不上後端服務，請確認服務有啟動", "NETWORK_ERROR");
   }

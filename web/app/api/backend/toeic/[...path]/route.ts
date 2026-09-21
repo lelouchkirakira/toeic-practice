@@ -14,7 +14,7 @@ const BACKEND_ORIGIN =
 const ORIGIN_KEY = process.env.ORIGIN_KEY ?? "";
 
 // 只轉送必要的標頭，避免把 cookie 之類的東西帶去後端。
-const PASS_REQUEST = ["content-type", "accept", "accept-language"];
+const PASS_REQUEST = ["content-type", "accept", "accept-language", "x-learner-id"];
 const PASS_RESPONSE = ["content-type", "cache-control"];
 
 async function proxy(request: Request, path: string[]): Promise<Response> {
