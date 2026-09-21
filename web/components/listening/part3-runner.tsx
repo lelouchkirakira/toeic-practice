@@ -293,13 +293,27 @@ export function Part3Runner() {
                   return (
                     <Button
                       key={option.label}
-                      variant={chosen ? "secondary" : "outline"}
-                      className="h-auto w-full justify-start py-2 text-left text-sm whitespace-normal"
+                      variant="outline"
+                      aria-pressed={chosen}
+                      // 選中要一眼看得出來：主色外框加底色，選項代號反白成圓標。
+                      className={`h-auto w-full justify-start py-2 text-left text-sm whitespace-normal ${
+                        chosen
+                          ? "border-2 border-primary bg-primary/10 font-medium"
+                          : ""
+                      }`}
                       disabled={phase !== "answering"}
                       data-testid={`dialogue-q${q.number}-${option.label}`}
                       onClick={() => choose(q.number, option.label)}
                     >
-                      <span className="mr-2 font-semibold">{option.label}</span>
+                      <span
+                        className={`mr-2 inline-flex size-5 shrink-0 items-center justify-center rounded-full text-xs font-semibold ${
+                          chosen
+                            ? "bg-primary text-primary-foreground"
+                            : "border border-border"
+                        }`}
+                      >
+                        {option.label}
+                      </span>
                       {option.text}
                     </Button>
                   );

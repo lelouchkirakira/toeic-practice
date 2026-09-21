@@ -287,7 +287,12 @@ export function Part2Runner() {
                 key={label}
                 variant="outline"
                 size="lg"
-                className="flex h-auto w-full flex-col gap-0.5 py-2.5"
+                aria-pressed={answers[index]?.picked === label}
+                className={`flex h-auto w-full flex-col gap-0.5 py-2.5 ${
+                  answers[index]?.picked === label
+                    ? "border-2 border-primary bg-primary/10"
+                    : ""
+                }`}
                 disabled={phase !== "answering"}
                 data-testid={`listening-option-${label}`}
                 onClick={() => pick(label)}
