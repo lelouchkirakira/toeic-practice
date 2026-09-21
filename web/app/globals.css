@@ -128,3 +128,31 @@
     @apply font-sans;
   }
 }
+
+/* 聽力播放時的波形。純裝飾，用 aria-hidden 讓讀螢幕軟體略過。 */
+@keyframes listening-bar {
+  0%,
+  100% {
+    transform: scaleY(0.3);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+.listening-wave span {
+  display: block;
+  width: 0.375rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  background: var(--primary);
+  transform-origin: center;
+  animation: listening-bar 0.9s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .listening-wave span {
+    animation: none;
+    transform: scaleY(0.6);
+  }
+}

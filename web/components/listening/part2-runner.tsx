@@ -244,6 +244,17 @@ export function Part2Runner() {
 
       <Card>
         <CardContent className="space-y-6">
+          <div className="text-center">
+            <p className="text-4xl font-bold tabular-nums" data-testid="listening-big-number">
+              {Math.min(index + 1, questions.length)}
+              <span className="text-xl font-normal text-muted-foreground">
+                {" "}
+                / {questions.length}
+              </span>
+            </p>
+            <p className="text-xs text-muted-foreground">題號</p>
+          </div>
+
           <div className="flex min-h-40 flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed border-border bg-muted/30 px-4 py-8 text-center">
             {phase === "loading" ? (
               <>
@@ -252,7 +263,17 @@ export function Part2Runner() {
               </>
             ) : phase === "playing" ? (
               <>
-                <Headphones className="size-8 animate-pulse text-primary" aria-hidden />
+                <span className="listening-wave flex items-end gap-1.5" aria-hidden>
+                  {[0, 1, 2, 3, 4, 5, 6].map((bar) => (
+                    <span
+                      key={bar}
+                      style={{
+                        animationDelay: `${bar * 0.12}s`,
+                        height: `${[16, 28, 40, 48, 40, 28, 16][bar]}px`,
+                      }}
+                    />
+                  ))}
+                </span>
                 <span className="text-sm text-muted-foreground" data-testid="listening-state">
                   播放中，仔細聽
                 </span>
