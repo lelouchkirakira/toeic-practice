@@ -18,6 +18,10 @@ import type { ListeningQuestion, ListeningReview } from "@/lib/types";
 const AUDIO_BASE = process.env.NEXT_PUBLIC_BLOB_BASE ?? "";
 const QUESTION_COUNT = 10;
 
+// A、B、C 對應的是聽到的三個回答的順序，畫面上要講明白，
+// 不然只看到三顆字母會不知道在選什麼。
+const ORDINALS = ["第一個", "第二個", "第三個"];
+
 type Phase = "loading" | "ready" | "playing" | "answering" | "done" | "finished";
 
 interface Answer {
@@ -236,6 +240,11 @@ export default function ListeningPage() {
 
       <Progress value={questions.length ? (index / questions.length) * 100 : 0} />
 
+      <p className="text-sm text-muted-foreground">
+        應答問題：你會聽到一個問句，接著是三個回答。題目與選項都不會顯示在畫面上，
+        聽完後選出最適合的那個回答。每題只播一次。
+      </p>
+
       <Card>
         <CardContent className="space-y-6">
           <div className="flex min-h-40 flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed border-border bg-muted/30 px-4 py-8 text-center">
@@ -276,17 +285,20 @@ export default function ListeningPage() {
           </div>
 
           <div className="grid grid-cols-3 gap-2" data-testid="listening-options">
-            {(current?.option_labels ?? ["A", "B", "C"]).map((label) => (
+            {(current?.option_labels ?? ["A", "B", "C"]).map((label, i) => (
               <Button
                 key={label}
                 variant="outline"
                 size="lg"
-                className="h-12 w-full text-base"
+                className="flex h-auto w-full flex-col gap-0.5 py-2.5"
                 disabled={phase !== "answering"}
                 data-testid={`listening-option-${label}`}
                 onClick={() => pick(label)}
               >
-                {label}
+                <span className="text-base font-semibold">{label}</span>
+                <span className="text-xs font-normal opacity-70">
+                  {ORDINALS[i] ?? `第 ${i + 1} 個`}回答
+                </span>
               </Button>
             ))}
           </div>
