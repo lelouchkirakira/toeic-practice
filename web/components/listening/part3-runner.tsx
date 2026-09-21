@@ -18,11 +18,25 @@ import type { DialogueQuestion, DialogueReview } from "@/lib/types";
 const AUDIO_BASE = process.env.NEXT_PUBLIC_BLOB_BASE ?? "";
 const DIALOGUE_COUNT = 3;
 
+/* Part 4 的短講是單人獨白，但題目形狀與作答節奏跟 Part 3 的對話一樣，
+   所以共用這個元件，只有文案與段落用詞不同。 */
+const COPY = {
+  "3": {
+    hint: "對話題：先看完三個題目，按下播放後對話只播一次，聽完再作答。",
+    unit: "段",
+  },
+  "4": {
+    hint: "短講題：先看完三個題目，按下播放後短講只播一次，聽完再作答。",
+    unit: "篇",
+  },
+} as const;
+
 type Phase = "loading" | "reading" | "playing" | "answering" | "finished";
 
 /* Part 3 的節奏跟 Part 2 不同：題目與四個選項要先看得到，實際考試也會給
    時間讀題再播對話。所以流程是讀題、播放一次、三題一起作答、進下一段。 */
-export function Part3Runner() {
+export function Part3Runner({ part = "3" }: { part?: "3" | "4" }) {
+  const copy = COPY[part];
   const [dialogues, setDialogues] = useState<DialogueQuestion[]>([]);
   const [index, setIndex] = useState(0);
   const [phase, setPhase] = useState<Phase>("loading");
@@ -44,9 +58,9 @@ export function Part3Runner() {
     setReviews([]);
     setIndex(0);
     try {
-      const data = await fetchDialogueQuestions(DIALOGUE_COUNT);
+      const data = await fetchDialogueQuestions(DIALOGUE_COUNT, part);
       if (data.questions.length === 0) {
-        setError("題庫裡沒有對話題");
+        setError(`題庫裡沒有${copy.unit === "篇" ? "短講" : "對話"}題`);
         return;
       }
       setDialogues(data.questions);
@@ -54,7 +68,7 @@ export function Part3Runner() {
     } catch (e) {
       setError(errorMessage(e, "載入題目失敗"));
     }
-  }, []);
+  }, [part, copy.unit]);
 
   useEffect(() => {
     void load();
@@ -120,7 +134,7 @@ export function Part3Runner() {
           const chosen = picked[`${dialogue.id}:${q.number}`] ?? "";
           return {
             question_id: `${dialogue.id}-${q.number}`,
-            part: "3",
+            part,
             user_answer: chosen,
             correct_answer: q.answer,
             is_correct: chosen === q.answer,
@@ -129,7 +143,7 @@ export function Part3Runner() {
       );
       await submitAnswers({
         mode: "practice",
-        part: "3",
+        part,
         answers: graded,
         time_spent_seconds: 0,
       });
@@ -138,7 +152,7 @@ export function Part3Runner() {
       setError(errorMessage(e, "取得檢討內容失敗"));
       setPhase("finished");
     }
-  }, [dialogues, isLast, picked]);
+  }, [dialogues, isLast, picked, part]);
 
   if (error && phase !== "finished") {
     return (
@@ -177,7 +191,7 @@ export function Part3Runner() {
           <Card key={dialogue.id}>
             <CardContent className="space-y-3">
               <div className="flex items-center justify-between gap-2">
-                <Badge variant="secondary">第 {i + 1} 段</Badge>
+                <Badge variant="secondary">第 {i + 1} {copy.unit}</Badge>
                 {AUDIO_BASE ? (
                   <Button
                     variant="ghost"
@@ -243,14 +257,14 @@ export function Part3Runner() {
     <div className="space-y-4">
       <div className="flex items-center justify-between gap-2">
         <span className="text-sm tabular-nums text-muted-foreground" data-testid="dialogue-progress">
-          第 {Math.min(index + 1, dialogues.length)} 段 / 共 {dialogues.length} 段
+          第 {Math.min(index + 1, dialogues.length)} {copy.unit} / 共 {dialogues.length} {copy.unit}
         </span>
       </div>
 
       <Progress value={dialogues.length ? (index / dialogues.length) * 100 : 0} />
 
       <p className="text-sm text-muted-foreground">
-        對話題：先看完三個題目，按下播放後對話只播一次，聽完再作答。
+        {copy.hint}
       </p>
 
       <Card>
@@ -329,7 +343,7 @@ export function Part3Runner() {
               onClick={() => void next()}
               data-testid="dialogue-next"
             >
-              {answeredAll ? (isLast ? "看結果" : "下一段") : "三題都要作答"}
+              {answeredAll ? (isLast ? "看結果" : `下一${copy.unit}`) : "三題都要作答"}
             </Button>
           ) : null}
         </CardContent>

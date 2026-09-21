@@ -155,8 +155,9 @@ export function fetchListeningReview(
 
 export function fetchDialogueQuestions(
   count: number,
+  part: "3" | "4" = "3",
 ): Promise<{ questions: DialogueQuestion[]; total: number }> {
-  return request(`/listening/questions?part=3&count=${count}`);
+  return request(`/listening/questions?part=${part}&count=${count}`);
 }
 
 export function fetchDialogueReview(
