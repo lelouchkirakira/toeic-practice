@@ -24,13 +24,22 @@ const AUDIO_BASE = process.env.NEXT_PUBLIC_WORD_AUDIO_BASE ?? "";
 
 /* 多益聽力有美、英、加、澳四種口音。Google TTS 沒有獨立的加拿大英語，
    而加拿大腔與美式同屬北美音，所以這裡提供三種。 */
-export const ACCENTS = [
+const ALL_ACCENTS = [
   { id: "us", label: "美", title: "美式發音" },
   { id: "gb", label: "英", title: "英式發音" },
   { id: "au", label: "澳", title: "澳洲發音" },
 ] as const;
 
-export type AccentId = (typeof ACCENTS)[number]["id"];
+export type AccentId = (typeof ALL_ACCENTS)[number]["id"];
+
+/* 哪幾種口音的音檔已經備妥。音檔是分批產生的，還沒產完的口音先不要露出來，
+   免得使用者點了只得到 404 與一個音色不同的備援語音。 */
+const ENABLED = (process.env.NEXT_PUBLIC_ENABLED_ACCENTS ?? "us")
+  .split(",")
+  .map((value) => value.trim())
+  .filter(Boolean);
+
+export const ACCENTS = ALL_ACCENTS.filter((accent) => ENABLED.includes(accent.id));
 
 export const DEFAULT_ACCENT: AccentId = "us";
 
