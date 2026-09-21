@@ -26,7 +26,10 @@ Originally extracted from [ai-english-tutor](https://github.com/seikaikyo/ai-eng
 - **Mock test mode**: 75-minute countdown timer, Part 5/6/7 section tabs with question navigation dots, deferred grading, TOEIC score range estimation (450-495 down to Below 300)
 - **Score tracking**: SQLite-backed session history, per-Part accuracy, weak grammar category identification (< 60% on 3+ attempts)
 - **124 questions**: 30 Part 5 sentences, 15 Part 6 passages (56 blanks), 15 Part 7 passages (38 comprehension questions)
-- **6,233-word vocabulary**: flashcards with English definitions, Traditional Chinese glosses, phonetics and inflected forms, filterable by source list and difficulty band, plus a four-choice vocabulary quiz that feeds the same score tracking
+- **6,228-word vocabulary**: flashcards with English definitions, Traditional Chinese glosses, phonetics, inflected forms and two workplace example sentences each, filterable by source list and difficulty band, plus a four-choice vocabulary quiz that feeds the same score tracking
+- **Pronunciation in six voices**: American, British and Australian, male and female, generated once and served as audio so every listener hears the same thing regardless of their device
+- **Listening Part 2**: 25 question-response items played once with nothing on screen, the way the real section works; the prompt, the options and the answer stay server-side until the round is over
+- **Per-browser progress**: each browser gets an anonymous id on first visit, so several people can share the link without their progress and scores mixing
 
 ## Architecture
 
@@ -71,7 +74,11 @@ The browser never calls the backend directly: `dashai-go` runs with origin lock 
 | `/api/vocabulary/quiz?count=10&band=3` | GET | Fetch four-choice vocabulary questions |
 | `/api/vocabulary/progress` | POST | Record how well a word is known |
 | `/api/vocabulary/progress/summary` | GET | Progress counts per band and per list |
+| `/api/listening/questions?part=2&count=10` | GET | Fetch listening items; audio and option labels only |
+| `/api/listening/review` | POST | Release the full text and explanations after answering |
 | `/api/status` | GET | Question bank and vocabulary health check |
+
+Every request carries an `X-Learner-Id` header. Writes without it are rejected; reads without it return nothing rather than another person's data.
 
 ## Setup
 
