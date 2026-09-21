@@ -49,21 +49,8 @@ export function useSpeech() {
     load();
     window.speechSynthesis.addEventListener("voiceschanged", load);
 
-    // iOS Safari 只允許在使用者手勢裡開始播放，先用一段無聲的解鎖。
-    const unlock = () => {
-      if (unlockedRef.current) return;
-      unlockedRef.current = true;
-      const silent = new SpeechSynthesisUtterance("");
-      silent.volume = 0;
-      window.speechSynthesis.speak(silent);
-    };
-    document.addEventListener("touchstart", unlock, { once: true });
-    document.addEventListener("click", unlock, { once: true });
-
     return () => {
       window.speechSynthesis.removeEventListener("voiceschanged", load);
-      document.removeEventListener("touchstart", unlock);
-      document.removeEventListener("click", unlock);
       window.speechSynthesis.cancel();
     };
   }, []);
@@ -84,7 +71,7 @@ export function useSpeech() {
         return;
       }
 
-      window.speechSynthesis.cancel();
+      const synth = window.speechSynthesis;
 
       const utterance = new SpeechSynthesisUtterance(text);
       // 比正常語速稍慢，單字才聽得清楚。
@@ -96,8 +83,18 @@ export function useSpeech() {
       utterance.onend = () => setSpeaking(false);
       utterance.onerror = () => setSpeaking(false);
 
-      // iOS 上 cancel 之後立刻 speak 有機會被吃掉，隔一個 tick 再送。
-      window.setTimeout(() => window.speechSynthesis.speak(utterance), 50);
+      // iOS Safari 只接受在使用者手勢的同步堆疊裡呼叫 speak，包進
+      // setTimeout 就會被拒絕而完全沒聲音。沒有東西在播時直接送出。
+      if (!synth.speaking && !synth.pending) {
+        synth.speak(utterance);
+        unlockedRef.current = true;
+        return;
+      }
+
+      // 正在播才需要先停。Chrome 在 cancel 之後立刻 speak 會被吃掉，隔一拍再送；
+      // 這條路徑一定是在已經播過一次之後，所以不受 iOS 的手勢限制。
+      synth.cancel();
+      window.setTimeout(() => synth.speak(utterance), 50);
     },
     [],
   );
