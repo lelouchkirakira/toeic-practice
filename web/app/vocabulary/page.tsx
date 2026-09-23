@@ -29,7 +29,7 @@ import {
   saveBookmark,
   saveWordProgress,
 } from "@/lib/api";
-import { takeReviewFlag } from "@/lib/review-handoff";
+import { takeReviewFlag, takeStudyWord } from "@/lib/review-handoff";
 import type { Word, WordLevel } from "@/lib/types";
 
 // Select 不接受空字串當值，「全部」用哨兵值表示，送出前轉回空字串
@@ -129,7 +129,7 @@ export default function VocabularyPage() {
   const filterRef = useRef({ list, bandMin, bandMax, level, count, bookmarkOnly });
   filterRef.current = { list, bandMin, bandMax, level, count, bookmarkOnly };
 
-  const load = useCallback(async (override?: { bookmarkOnly?: boolean }) => {
+  const load = useCallback(async (override?: { bookmarkOnly?: boolean }, lead?: Word) => {
     const filter = { ...filterRef.current, ...override };
     const min = Math.min(filter.bandMin, filter.bandMax);
     const max = Math.max(filter.bandMin, filter.bandMax);
@@ -147,7 +147,10 @@ export default function VocabularyPage() {
         count: filter.count,
         bookmarked: filter.bookmarkOnly,
       });
-      setWords(data);
+      // 從別的頁面指定的字排第一張；本來就抽到的話是移到最前面不是多一張。
+      setWords(
+        lead ? [lead, ...data.filter((item) => item.id !== lead.id)] : data,
+      );
       setLoadedBookmarkOnly(filter.bookmarkOnly);
     } catch (e) {
       setError(errorMessage(e, "載入單字失敗"));
@@ -158,6 +161,11 @@ export default function VocabularyPage() {
 
   // 從書籤頁按「用書籤複習」進來的話，第一次抽卡就帶著書籤條件，不白抽一輪再重抽。
   useEffect(() => {
+    const lead = takeStudyWord<Word>();
+    if (lead) {
+      void load(undefined, lead);
+      return;
+    }
     if (takeReviewFlag()) {
       // React 19 的 react-hooks/set-state-in-effect：包 microtask 避免 cascading render
       queueMicrotask(() => setBookmarkOnly(true));

@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ErrorNotice, LoadingBlock } from "@/components/status";
 import { errorMessage, fetchBookmarks, saveBookmark } from "@/lib/api";
-import { REVIEW_FLAG } from "@/lib/review-handoff";
+import { REVIEW_FLAG, setStudyWord } from "@/lib/review-handoff";
 import type { Word } from "@/lib/types";
 
 const LIST_LIMIT = 200;
@@ -116,9 +116,18 @@ export default function BookmarksPage() {
                   <CardContent className="flex items-start justify-between gap-3 py-3">
                     <div className="min-w-0 space-y-1">
                       <div className="flex flex-wrap items-baseline gap-2">
-                        <span className="text-base font-semibold break-words">
+                        <button
+                          type="button"
+                          data-testid={`study-${word.id}`}
+                          title={`去背 ${word.word}`}
+                          className="text-base font-semibold break-words underline decoration-dotted underline-offset-4 hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                          onClick={() => {
+                            setStudyWord(word);
+                            router.push("/vocabulary");
+                          }}
+                        >
                           {word.word}
-                        </span>
+                        </button>
                         {word.phonetic ? (
                           <span className="text-sm text-muted-foreground break-words">
                             [{word.phonetic}]

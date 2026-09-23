@@ -15,3 +15,25 @@ export function takeReviewFlag(): boolean {
     return false;
   }
 }
+
+const STUDY_KEY = "toeic:study-word";
+
+/** 從別的頁面指定背單字頁的第一張。存整筆，讀完就清掉。 */
+export function setStudyWord(word: unknown): void {
+  try {
+    window.sessionStorage.setItem(STUDY_KEY, JSON.stringify(word));
+  } catch {
+    // 存不了就只是沒有指定，背單字頁照常抽卡
+  }
+}
+
+export function takeStudyWord<T>(): T | null {
+  try {
+    const raw = window.sessionStorage.getItem(STUDY_KEY);
+    if (!raw) return null;
+    window.sessionStorage.removeItem(STUDY_KEY);
+    return JSON.parse(raw) as T;
+  } catch {
+    return null;
+  }
+}
