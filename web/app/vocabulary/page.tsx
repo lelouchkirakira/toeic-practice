@@ -440,6 +440,7 @@ export default function VocabularyPage() {
         bookmarks={bookmarks}
         bookmarkTotal={bookmarkTotal}
         looked={looked}
+        onPick={jumpTo}
       />
     </div>
   );

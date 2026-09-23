@@ -9,10 +9,10 @@ function shortDefinition(word: Word): string {
   return raw.split(/[;；]/)[0].trim();
 }
 
-/** 側欄的字：上面單字與音標，下面一行釋義。 */
-function PanelWord({ word }: { word: Word }) {
-  return (
-    <li className="border-b border-dotted border-border pb-2 last:border-0 last:pb-0">
+/** 側欄的字：上面單字與音標，下面一行釋義。整塊可以點，點了就去背那個字。 */
+function PanelWord({ word, onPick }: { word: Word; onPick?: (word: Word) => void }) {
+  const body = (
+    <>
       <div className="flex items-baseline justify-between gap-2">
         <span className="font-medium">{word.word}</span>
         {word.phonetic ? (
@@ -24,6 +24,24 @@ function PanelWord({ word }: { word: Word }) {
       <p className="truncate text-xs text-muted-foreground">
         {shortDefinition(word)}
       </p>
+    </>
+  );
+
+  return (
+    <li className="border-b border-dotted border-border last:border-0">
+      {onPick ? (
+        <button
+          type="button"
+          data-testid={`panel-word-${word.id}`}
+          title={`去背 ${word.word}`}
+          className="w-full cursor-pointer px-1 py-2 text-left hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-ring"
+          onClick={() => onPick(word)}
+        >
+          {body}
+        </button>
+      ) : (
+        <div className="px-1 py-2">{body}</div>
+      )}
     </li>
   );
 }
@@ -39,12 +57,14 @@ export function StudyPanel({
   bookmarks,
   bookmarkTotal,
   looked,
+  onPick,
 }: {
   index: number;
   total: number;
   bookmarks: Word[];
   bookmarkTotal: number;
   looked: Word[];
+  onPick?: (word: Word) => void;
 }) {
   return (
     <aside className="hidden w-60 shrink-0 space-y-6 border-l border-border pl-5 text-sm lg:block">
@@ -73,9 +93,9 @@ export function StudyPanel({
             還沒有標記，卡片右上角點書籤就會收進來。
           </p>
         ) : (
-          <ul className="space-y-2">
+          <ul>
             {bookmarks.map((word) => (
-              <PanelWord key={word.id} word={word} />
+              <PanelWord key={word.id} word={word} onPick={onPick} />
             ))}
           </ul>
         )}
@@ -96,9 +116,9 @@ export function StudyPanel({
             點例句裡有虛線的字就會記在這裡。
           </p>
         ) : (
-          <ul className="space-y-2" data-testid="looked-list">
+          <ul data-testid="looked-list">
             {looked.map((word) => (
-              <PanelWord key={word.id} word={word} />
+              <PanelWord key={word.id} word={word} onPick={onPick} />
             ))}
           </ul>
         )}
