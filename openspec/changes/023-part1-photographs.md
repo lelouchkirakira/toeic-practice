@@ -25,14 +25,14 @@ Openverse，只取 CC0（不必標註、可商用）。Unsplash 被它的反機�
 
 - `scripts/check_questions.py`：看得懂 Part 1 的格式，檢查四句 A 到 D、正解、授權 CC0、解析要交代錯的選項
 - `scripts/import_to_neon.py`：匯入清單加 part1
-- `scripts/build_part1_audio.py`：10 月要跑的語音腳本，四句各一檔加字母 D，約 2,069 字元；10 月 1 日前會自己拒絕執行
+- `scripts/build_part1_audio.py`：10 月要跑的語音腳本，四句各一檔加字母 D，約 2,069 字元。Google 帳單月份以美國太平洋時間切換，台灣 10 月 1 日 15:00 前仍算 9 月，所以用太平洋時間判斷並留一小時緩衝，台灣 10 月 1 日 16:00 前一律拒絕，沒有強制參數
 - `lib/part2-sequence.ts`：播放串抽成通用的 `playChain`，Part 2 與 Part 1 共用；打亂順序支援四個
 - `components/listening/part1-runner.tsx`：照片、播放、A 到 D、檢討頁附照片來源
 - `app/listening/page.tsx`：`NEXT_PUBLIC_PART1_READY=1` 才露出 Part 1 分頁
 
 ## 10 月上線步驟
 
-1. 確認額度已重置，跑 `python3 scripts/build_part1_audio.py`
+1. 台灣時間 10 月 1 日 16:00 以後，跑 `python3 scripts/build_part1_audio.py`（時間未到腳本會拒絕）
 2. commit 產出的音檔
 3. Vercel 設 `NEXT_PUBLIC_PART1_READY=1` 並重新部署
 
