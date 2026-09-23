@@ -104,6 +104,8 @@ export interface WordQuery {
   bandMax: number;
   level: string;
   count: number;
+  /** 只抽標記過書籤的字 */
+  bookmarked?: boolean;
 }
 
 export function fetchWords(query: WordQuery): Promise<Word[]> {
@@ -113,6 +115,7 @@ export function fetchWords(query: WordQuery): Promise<Word[]> {
   params.set("band_min", String(query.bandMin));
   params.set("band_max", String(query.bandMax));
   params.set("count", String(query.count));
+  if (query.bookmarked) params.set("bookmarked", "1");
   return request<Word[]>(`/vocabulary/words?${params.toString()}`);
 }
 
@@ -130,6 +133,22 @@ export function saveWordProgress(
   return post<WordProgressResult>("/vocabulary/progress", {
     word_id: wordId,
     level,
+  });
+}
+
+export interface BookmarkResult {
+  word_id: string;
+  bookmarked: boolean;
+}
+
+// 書籤跟熟練度分開存，標記不會動到熟練度也不會換卡。
+export function saveBookmark(
+  wordId: string,
+  bookmarked: boolean,
+): Promise<BookmarkResult> {
+  return post<BookmarkResult>("/vocabulary/bookmark", {
+    word_id: wordId,
+    bookmarked,
   });
 }
 

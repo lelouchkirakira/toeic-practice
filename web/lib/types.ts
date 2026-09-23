@@ -86,6 +86,8 @@ export interface Word {
   band: number;
   inflections: string[];
   examples: WordExample[];
+  /** 這個學習者有沒有把這個字加進書籤 */
+  bookmarked?: boolean;
 }
 
 /** 例句。英文句子裡的目標單字用 **星號** 標出來，供前端 highlight。 */

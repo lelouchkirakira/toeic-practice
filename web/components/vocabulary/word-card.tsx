@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Volume2 } from "lucide-react";
+import { Bookmark, Volume2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -71,6 +71,7 @@ export function WordCard({
   onAccentChange,
   onGenderChange,
   onRate,
+  onToggleBookmark,
 }: {
   word: Word;
   index: number;
@@ -82,6 +83,7 @@ export function WordCard({
   onAccentChange: (accent: AccentId) => void;
   onGenderChange: (gender: GenderId) => void;
   onRate: (level: WordLevel) => void;
+  onToggleBookmark: () => void;
 }) {
   const [flipped, setFlipped] = useState(false);
   // 單字與例句共用一個播放器，記住這次唸的是誰，播放中的顏色才不會亮在別顆按鈕上。
@@ -101,6 +103,7 @@ export function WordCard({
     if (autoSpeak && supported) speak(word.word, audioUrl);
   }, [word.id, word.word, audioUrl, autoSpeak, supported, speak]);
 
+  const bookmarked = word.bookmarked ?? false;
   const listNames = Object.keys(word.lists ?? {});
   const inflections = word.inflections ?? [];
   const examples = word.examples ?? [];
@@ -128,6 +131,22 @@ export function WordCard({
                 <Volume2 className="size-5" aria-hidden />
               </Button>
             ) : null}
+            <Button
+              type="button"
+              variant="ghost"
+              size="icon"
+              aria-pressed={bookmarked}
+              aria-label={bookmarked ? "移除書籤" : "加入書籤"}
+              title={bookmarked ? "移除書籤" : "加入書籤"}
+              data-testid="toggle-bookmark"
+              className={bookmarked ? "text-primary" : undefined}
+              onClick={onToggleBookmark}
+            >
+              <Bookmark
+                className={`size-5${bookmarked ? " fill-current" : ""}`}
+                aria-hidden
+              />
+            </Button>
             <span
               className="text-sm tabular-nums text-muted-foreground"
               data-testid="word-progress"

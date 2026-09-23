@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { RefreshCw, Volume2, VolumeX } from "lucide-react";
+import { Bookmark, RefreshCw, Volume2, VolumeX } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
@@ -21,7 +21,12 @@ import {
 } from "@/hooks/use-speech";
 import { WordCard } from "@/components/vocabulary/word-card";
 import { ErrorNotice, InfoNotice, LoadingBlock } from "@/components/status";
-import { errorMessage, fetchWords, saveWordProgress } from "@/lib/api";
+import {
+  errorMessage,
+  fetchWords,
+  saveBookmark,
+  saveWordProgress,
+} from "@/lib/api";
 import type { Word, WordLevel } from "@/lib/types";
 
 // Select 不接受空字串當值，「全部」用哨兵值表示，送出前轉回空字串
@@ -52,6 +57,9 @@ export default function VocabularyPage() {
   const [bandMax, setBandMax] = useState(12);
   const [level, setLevel] = useState(ALL);
   const [count, setCount] = useState(20);
+  const [bookmarkOnly, setBookmarkOnly] = useState(false);
+  // 空狀態的說明要對應這一輪實際抽卡用的條件，不是使用者後來又改到一半的開關。
+  const [loadedBookmarkOnly, setLoadedBookmarkOnly] = useState(false);
 
   const [words, setWords] = useState<Word[]>([]);
   const [index, setIndex] = useState(0);
@@ -112,8 +120,8 @@ export default function VocabularyPage() {
   }, []);
 
   // 篩選條件在輸入時不該觸發重抽，抽卡時才讀取當下的值
-  const filterRef = useRef({ list, bandMin, bandMax, level, count });
-  filterRef.current = { list, bandMin, bandMax, level, count };
+  const filterRef = useRef({ list, bandMin, bandMax, level, count, bookmarkOnly });
+  filterRef.current = { list, bandMin, bandMax, level, count, bookmarkOnly };
 
   const load = useCallback(async () => {
     const filter = filterRef.current;
@@ -131,8 +139,10 @@ export default function VocabularyPage() {
         bandMax: max,
         level: filter.level === ALL ? "" : filter.level,
         count: filter.count,
+        bookmarked: filter.bookmarkOnly,
       });
       setWords(data);
+      setLoadedBookmarkOnly(filter.bookmarkOnly);
     } catch (e) {
       setError(errorMessage(e, "載入單字失敗"));
     } finally {
@@ -154,6 +164,26 @@ export default function VocabularyPage() {
       setError(errorMessage(e, "熟練度寫入失敗"));
     } finally {
       setIsSaving(false);
+    }
+  }
+
+  // 標記先改畫面再送，送失敗退回原狀。標記不換卡也不動熟練度。
+  async function toggleBookmark(word: Word) {
+    const next = !word.bookmarked;
+    const apply = (value: boolean) =>
+      setWords((list) =>
+        list.map((item) =>
+          item.id === word.id ? { ...item, bookmarked: value } : item,
+        ),
+      );
+
+    apply(next);
+    setError("");
+    try {
+      await saveBookmark(word.id, next);
+    } catch (e) {
+      apply(!next);
+      setError(errorMessage(e, "書籤寫入失敗"));
     }
   }
 
@@ -266,6 +296,23 @@ export default function VocabularyPage() {
                 重新抽卡
               </Button>
               <Button
+                variant={bookmarkOnly ? "secondary" : "outline"}
+                size="icon"
+                className="h-9 w-9 shrink-0"
+                aria-pressed={bookmarkOnly}
+                aria-label={
+                  bookmarkOnly ? "改抽全部單字" : "只抽書籤的字"
+                }
+                title={bookmarkOnly ? "只抽書籤的字：開" : "只抽書籤的字：關"}
+                data-testid="toggle-bookmark-only"
+                onClick={() => setBookmarkOnly((value) => !value)}
+              >
+                <Bookmark
+                  className={`size-4${bookmarkOnly ? " fill-current" : ""}`}
+                  aria-hidden
+                />
+              </Button>
+              <Button
                 variant={autoSpeak ? "secondary" : "outline"}
                 size="icon"
                 className="h-9 w-9 shrink-0"
@@ -291,7 +338,13 @@ export default function VocabularyPage() {
       {isLoading ? <LoadingBlock label="正在抽卡" /> : null}
 
       {!isLoading && words.length === 0 ? (
-        <InfoNotice message="沒有符合條件的單字，換個篩選條件再試一次。" />
+        <InfoNotice
+          message={
+            loadedBookmarkOnly
+              ? "還沒有標記任何單字，先在卡片上點書籤。"
+              : "沒有符合條件的單字，換個篩選條件再試一次。"
+          }
+        />
       ) : null}
 
       {!isLoading && isFinished ? (
@@ -321,6 +374,7 @@ export default function VocabularyPage() {
           onAccentChange={changeAccent}
           onGenderChange={changeGender}
           onRate={(wordLevel) => void rate(currentWord.id, wordLevel)}
+          onToggleBookmark={() => void toggleBookmark(currentWord)}
         />
       ) : null}
     </div>
