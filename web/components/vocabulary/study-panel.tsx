@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import type { Word } from "@/lib/types";
+import type { Activity, Word } from "@/lib/types";
 
 /** 側欄一行放不下整串釋義，取第一個義項就夠認出是哪個字。 */
 function shortDefinition(word: Word): string {
@@ -57,6 +57,7 @@ export function StudyPanel({
   bookmarks,
   bookmarkTotal,
   looked,
+  activity,
   onPick,
 }: {
   index: number;
@@ -64,6 +65,7 @@ export function StudyPanel({
   bookmarks: Word[];
   bookmarkTotal: number;
   looked: Word[];
+  activity: Activity | null;
   onPick?: (word: Word) => void;
 }) {
   return (
@@ -82,6 +84,33 @@ export function StudyPanel({
             <dd className="tabular-nums text-foreground">{index}</dd>
           </div>
         </dl>
+      </section>
+
+      <section>
+        <h2 className="mb-2 text-xs tracking-wider text-primary">學習歷程</h2>
+        <dl className="space-y-1 text-muted-foreground">
+          <div className="flex justify-between">
+            <dt>待複習</dt>
+            <dd className="tabular-nums text-foreground" data-testid="due-count">
+              {activity ? activity.due : "—"}
+            </dd>
+          </div>
+          <div className="flex justify-between">
+            <dt>今天評過</dt>
+            <dd className="tabular-nums text-foreground">{activity ? activity.today : "—"}</dd>
+          </div>
+          <div className="flex justify-between">
+            <dt>連續天數</dt>
+            <dd className="tabular-nums text-foreground">
+              {activity ? activity.streak_days : "—"}
+            </dd>
+          </div>
+        </dl>
+        {activity && activity.due > 0 ? (
+          <p className="mt-1 text-xs text-muted-foreground">
+            抽卡會自動先抽到期的字，不用自己挑。
+          </p>
+        ) : null}
       </section>
 
       <section>

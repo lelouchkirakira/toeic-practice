@@ -73,6 +73,19 @@ export interface SessionResult {
 /** 例句點字查詢的結果，key 是送出去的原 token。 */
 export type LookupEntries = Record<string, Word>;
 
+export interface ActivityDay {
+  date: string;
+  count: number;
+}
+
+/** 學習歷程摘要：最近幾天的評分次數、今天已評、待複習、連續天數。 */
+export interface Activity {
+  days: ActivityDay[];
+  today: number;
+  due: number;
+  streak_days: number;
+}
+
 export interface BookmarkList {
   words: Word[];
   total: number;

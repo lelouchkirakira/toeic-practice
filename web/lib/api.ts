@@ -1,4 +1,5 @@
 import type {
+  Activity,
   BookmarkList,
   LookupEntries,
   DialogueQuestion,
@@ -145,6 +146,10 @@ export async function lookupTokens(tokens: string[]): Promise<LookupEntries> {
     tokens,
   });
   return data.entries ?? {};
+}
+
+export function fetchActivity(days = 30): Promise<Activity> {
+  return request<Activity>(`/vocabulary/activity?days=${days}`);
 }
 
 // 書籤頁要的是穩定排序的完整清單，不能用隨機抽樣的 /vocabulary/words。

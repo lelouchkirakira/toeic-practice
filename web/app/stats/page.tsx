@@ -14,6 +14,7 @@ import {
 import { ErrorNotice, InfoNotice, LoadingBlock } from "@/components/status";
 import {
   errorMessage,
+  fetchActivity,
   fetchStatsHistory,
   fetchStatsOverview,
 } from "@/lib/api";
@@ -27,12 +28,14 @@ import {
   partShortLabel,
   scoreTone,
 } from "@/lib/format";
-import type { SessionHistory, StatsOverview } from "@/lib/types";
+import { ActivityChart } from "@/components/vocabulary/activity-chart";
+import type { Activity, SessionHistory, StatsOverview } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
 export default function StatsPage() {
   const [overview, setOverview] = useState<StatsOverview | null>(null);
   const [history, setHistory] = useState<SessionHistory[]>([]);
+  const [activity, setActivity] = useState<Activity | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -45,6 +48,7 @@ export default function StatsPage() {
         fetchStatsHistory(20),
       ]);
       setOverview(overviewData);
+      setActivity(await fetchActivity(30).catch(() => null));
       setHistory(historyData);
     } catch (e) {
       setError(errorMessage(e, "載入統計失敗"));
@@ -60,11 +64,22 @@ export default function StatsPage() {
   if (isLoading) return <LoadingBlock label="正在載入統計" />;
   if (error) return <ErrorNotice message={error} />;
 
+  // 沒做過測驗不代表沒學習：背單字的活動是另一份資料，有就要顯示。
   if (!overview || overview.total_sessions === 0) {
     return (
       <div className="space-y-5">
         <h1 className="text-xl font-semibold">統計</h1>
-        <InfoNotice message="還沒有紀錄。做一輪練習或模擬考之後就會看到數字。" />
+        <InfoNotice message="還沒有測驗紀錄。做一輪練習或模擬考之後就會看到答題數字。" />
+        {activity && activity.days.some((day) => day.count > 0) ? (
+          <Card>
+            <CardHeader>
+              <CardTitle>背單字活動</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ActivityChart activity={activity} />
+            </CardContent>
+          </Card>
+        ) : null}
       </div>
     );
   }
@@ -86,6 +101,17 @@ export default function StatsPage() {
           testId="overall-accuracy"
         />
       </div>
+
+      {activity && activity.days.length > 0 ? (
+        <Card>
+          <CardHeader>
+            <CardTitle>背單字活動</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ActivityChart activity={activity} />
+          </CardContent>
+        </Card>
+      ) : null}
 
       {partEntries.length > 0 ? (
         <Card>

@@ -24,13 +24,14 @@ import { StudyPanel } from "@/components/vocabulary/study-panel";
 import { ErrorNotice, InfoNotice, LoadingBlock } from "@/components/status";
 import {
   errorMessage,
+  fetchActivity,
   fetchBookmarks,
   fetchWords,
   saveBookmark,
   saveWordProgress,
 } from "@/lib/api";
 import { takeReviewFlag, takeStudyWord } from "@/lib/review-handoff";
-import type { Word, WordLevel } from "@/lib/types";
+import type { Activity, Word, WordLevel } from "@/lib/types";
 
 // Select 不接受空字串當值，「全部」用哨兵值表示，送出前轉回空字串
 const ALL = "all";
@@ -47,6 +48,7 @@ const BAND_OPTIONS = Array.from({ length: 12 }, (_, i) => i + 1);
 
 const LEVEL_OPTIONS = [
   { value: ALL, label: "全部" },
+  { value: "due", label: "該複習的" },
   { value: "new", label: "未學" },
   { value: "learning", label: "學習中" },
   { value: "known", label: "已熟" },
@@ -66,6 +68,7 @@ export default function VocabularyPage() {
   const [bookmarks, setBookmarks] = useState<Word[]>([]);
   const [bookmarkTotal, setBookmarkTotal] = useState(0);
   const [looked, setLooked] = useState<Word[]>([]);
+  const [activity, setActivity] = useState<Activity | null>(null);
 
   const [words, setWords] = useState<Word[]>([]);
   const [index, setIndex] = useState(0);
@@ -181,6 +184,7 @@ export default function VocabularyPage() {
     try {
       await saveWordProgress(wordId, wordLevel);
       setIndex((value) => value + 1);
+      void loadActivity();
     } catch (e) {
       setError(errorMessage(e, "熟練度寫入失敗"));
     } finally {
@@ -223,9 +227,18 @@ export default function VocabularyPage() {
     }
   }, []);
 
+  const loadActivity = useCallback(async () => {
+    try {
+      setActivity(await fetchActivity(30));
+    } catch {
+      // 側欄拿不到歷程不影響背單字本身
+    }
+  }, []);
+
   useEffect(() => {
     void loadBookmarks();
-  }, [loadBookmarks]);
+    void loadActivity();
+  }, [loadBookmarks, loadActivity]);
 
   // 從例句跳過來的字插在目前這個位置，原本那張往後挪一格，評完就回到它。
   // 本來就在這一輪裡的話是搬過來，不是再放一張。
@@ -448,6 +461,7 @@ export default function VocabularyPage() {
         bookmarks={bookmarks}
         bookmarkTotal={bookmarkTotal}
         looked={looked}
+        activity={activity}
         onPick={jumpTo}
       />
     </div>
