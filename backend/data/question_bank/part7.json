@@ -12,7 +12,8 @@
           "To inform staff about upcoming construction work",
           "To introduce the new facilities manager"
         ],
-        "answer": 3
+        "answer": 3,
+        "explanation": "The opening line says the writer is writing to inform staff that the third-floor conference rooms will be undergoing renovation starting April 1, so the message announces construction work. The option about requesting feedback on the renovation design is wrong because the email asks for nothing except that affected staff contact facilities to rebook rooms."
       },
       {
         "question": "What should employees do if they have meetings booked in the third-floor rooms?",
@@ -22,7 +23,8 @@
           "Move their meetings to the first floor independently",
           "Wait for further instructions from Jennifer Walsh"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation": "The second paragraph tells anyone with events booked in the third-floor rooms to contact facilities@techcorp.com to arrange alternative spaces. The option about cancelling meetings until April 20 is wrong because that date is when the work finishes, and the email tells staff to use the second-floor meeting rooms in the meantime."
       }
     ]
   },
@@ -39,7 +41,8 @@
           "To request a product catalog from the company",
           "To cancel an order he no longer needs"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation": "The subject line refers to a delayed shipment for Order #OS-7742, and the first paragraph says the chairs ordered on May 25 for delivery by May 31 had still not arrived on June 3. The option about placing a new order for office furniture is wrong because the order was already placed and the writer is chasing it, not buying again."
       },
       {
         "question": "What does Marcus Lee say about the tracking page?",
@@ -49,7 +52,8 @@
           "It shows the order was cancelled",
           "It has not been updated for several days"
         ],
-        "answer": 4
+        "answer": 4,
+        "explanation": "The first paragraph says the tracking page has shown In Transit for the past five days without any update, which is the same as saying it has not been updated for several days. The option saying the page shows the order has already been delivered is wrong because the writer states the items have not arrived."
       },
       {
         "question": "What will Marcus Lee do if the order does not arrive by June 10?",
@@ -59,7 +63,8 @@
           "Visit the company's physical store",
           "Accept a partial delivery"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation": "The second paragraph says that if the order cannot be delivered by June 10 the writer would like to request a full refund. The option about reordering the same items from a different supplier is wrong because no other supplier appears anywhere in the email."
       }
     ]
   },
@@ -76,7 +81,8 @@
           "To report on last year's gala results",
           "To invite alumni to an upcoming event"
         ],
-        "answer": 4
+        "answer": 4,
+        "explanation": "The first line says the writer is delighted to invite alumni to the InnovateHub Annual Networking Gala on October 14, so the email is an invitation to an event. The option about a change in membership fees is wrong because the only price given is the 75 dollar ticket for non-members, and nothing says any fee has changed."
       },
       {
         "question": "What is indicated about non-members who wish to attend?",
@@ -86,7 +92,8 @@
           "They should contact Dr. Patricia Holm directly",
           "They will receive a complimentary ticket if they register early"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation": "The RSVP paragraph states that tickets are complimentary for current members while non-members may attend at a fee of 75 dollars. The option saying they are not permitted to attend the gala is wrong because that same sentence lets non-members attend once they pay."
       }
     ]
   },
@@ -103,7 +110,8 @@
           "She was charged an incorrect amount",
           "The blender was damaged during shipping"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation": "The first paragraph says that after using the blender fewer than ten times the motor began making a loud grinding noise and the unit stopped operating entirely. The option about the blender being damaged during shipping is wrong because the writer describes a failure that appeared during normal use and says she did not misuse the appliance."
       },
       {
         "question": "What did Sandra Park include with her email?",
@@ -113,7 +121,8 @@
           "A video showing the problem",
           "A written repair request form"
         ],
-        "answer": 3
+        "answer": 3,
+        "explanation": "The second paragraph says she has attached a short video of the malfunction for reference. The option about a copy of the original receipt is wrong because the email only names the purchase price of 149.99 dollars and never says any receipt was sent."
       },
       {
         "question": "What does Sandra Park threaten to do if she does not receive a response?",
@@ -123,7 +132,8 @@
           "Post a negative review online",
           "File a complaint with a consumer protection agency"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation": "The final paragraph says that if she does not hear back within five business days she will dispute the charge with her credit card provider. The option about posting a negative review online is wrong because no review or public complaint is mentioned in the email."
       }
     ]
   },
@@ -140,7 +150,8 @@
           "At least five years in digital marketing analytics",
           "Certification in project management"
         ],
-        "answer": 3
+        "answer": 3,
+        "explanation": "The Requirements list includes a minimum of 5 years of experience in digital marketing analytics. The option about a graduate degree in computer science is wrong because the ad asks only for a bachelor's degree in Marketing, Business, or a related field."
       },
       {
         "question": "What benefit does Vertex Digital Solutions offer regarding work location?",
@@ -150,7 +161,8 @@
           "A company-provided home office setup",
           "Relocation assistance to San Francisco"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation": "The What We Offer list includes flexible remote work options of up to 3 days per week. The option describing a fully remote arrangement from any country is wrong because the ad caps remote work at three days and locates the job in San Francisco."
       }
     ]
   },
@@ -167,7 +179,8 @@
           "12 hours",
           "48 hours"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation": "The product description says the double-wall vacuum insulation keeps drinks hot for up to 12 hours and cold for up to 24 hours, so a cold drink stays cold for 24 hours. The choice 12 hours is the figure the ad gives for hot drinks, while 8 hours and 48 hours appear nowhere in the advertisement."
       },
       {
         "question": "What will customers receive if they buy the mug before January 31?",
@@ -177,7 +190,8 @@
           "A second mug at half price",
           "A complimentary insulated sleeve"
         ],
-        "answer": 4
+        "answer": 4,
+        "explanation": "The Limited-Time Offer line says that buying any PolarMax mug before January 31 comes with a free insulated sleeve valued at 12 dollars. The option about free shipping on all orders is wrong because shipping is never mentioned in the advertisement."
       }
     ]
   },
@@ -194,7 +208,8 @@
           "Large multinational corporations",
           "Individual freelancers and contractors"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation": "The opening paragraph says the service is priced for small and medium businesses. The option naming large multinational corporations is wrong because the price point is aimed at smaller firms and no multinational customers are mentioned."
       },
       {
         "question": "What does the Business plan include that the Starter plan does not?",
@@ -204,7 +219,8 @@
           "Phone support in addition to email support",
           "A dedicated account manager"
         ],
-        "answer": 3
+        "answer": 3,
+        "explanation": "The plan table gives Starter email only support and gives Business email plus phone support, so the phone channel is what the Business plan adds. The option about a dedicated account manager is wrong because the table assigns a dedicated manager to the Enterprise plan, not to Business."
       },
       {
         "question": "The word \"migration\" in the advertisement is closest in meaning to:",
@@ -214,7 +230,8 @@
           "Installation",
           "Upgrade"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation": "Migration assistance is offered to companies moving off outdated local servers, so migration here means the transfer of existing data to the new service. Installation would mean setting software up, and Subscription would mean the billing plan, and neither is what the word describes in this sentence."
       }
     ]
   },
@@ -231,7 +248,8 @@
           "SingaFreight's new warehousing facilities",
           "A merger between two Singapore-based firms"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation": "The first sentence says GlobalBridge Holdings has completed the acquisition of SingaFreight Logistics, and the rest of the article describes that purchase. The option about expansion into the European market is wrong because the article says the deal expands the company's footprint in Southeast Asia."
       },
       {
         "question": "What can be inferred about SingaFreight from the article?",
@@ -241,7 +259,8 @@
           "It recently expanded into Vietnam and Thailand",
           "It operates in more than one country in Southeast Asia"
         ],
-        "answer": 4
+        "answer": 4,
+        "explanation": "The second paragraph says SingaFreight manages warehousing facilities in Singapore, Malaysia, and Indonesia, so it works in more than one country. The option saying it recently expanded into Vietnam and Thailand is wrong because neither country is named anywhere in the article."
       },
       {
         "question": "According to the article, what will happen to SingaFreight's management team?",
@@ -251,7 +270,8 @@
           "They will relocate to GlobalBridge's headquarters",
           "They will receive a share of the acquisition proceeds"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation": "The last paragraph says SingaFreight's existing management team will remain in place through a transition period of about 12 months. The option saying they will be replaced by GlobalBridge executives immediately contradicts that sentence."
       }
     ]
   },
@@ -268,7 +288,8 @@
           "Hybrid work is changing demand patterns in commercial real estate",
           "Coworking spaces are replacing traditional offices permanently"
         ],
-        "answer": 3
+        "answer": 3,
+        "explanation": "The first sentence says the adoption of hybrid work models is leaving a visible mark on commercial real estate markets, and the article then covers falling office demand and rising warehouse demand. The option saying coworking spaces are replacing traditional offices permanently is wrong because the closing paragraph says the long-term impact still depends on how companies structure their policies."
       },
       {
         "question": "According to the survey cited in the article, what percentage of large companies reduced their office space since 2022?",
@@ -278,7 +299,8 @@
           "33%",
           "72%"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation": "The second paragraph cites the Workspace Analytics Group survey finding that 67% of companies with more than 500 employees have reduced their total office space since 2022. The figures 50%, 33% and 72% do not appear anywhere in the article."
       },
       {
         "question": "What does the article suggest about warehouse and logistics space?",
@@ -288,7 +310,8 @@
           "It is no longer needed due to automation",
           "Demand for it has increased alongside e-commerce growth"
         ],
-        "answer": 4
+        "answer": 4,
+        "explanation": "The third paragraph says demand for warehouse and logistics space has surged alongside the growth of e-commerce, partially offsetting losses in the office sector. The option saying it is experiencing the same decline as office space is wrong because the article presents warehousing as the segment that is not suffering."
       }
     ]
   },
@@ -305,7 +328,8 @@
           "The challenges of expanding a small business internationally",
           "The growth journey of a family-founded food company"
         ],
-        "answer": 4
+        "answer": 4,
+        "explanation": "The article follows Nori Foods from a family-run noodle shop founded by the Ishida sisters in 2015 to a brand sold in over 3,000 retail locations, so it is the growth story of one company. The option about the challenges of expanding a small business internationally is wrong because every expansion described stays inside the United States."
       },
       {
         "question": "What does the article indicate about Nori Foods' online subscription service?",
@@ -315,7 +339,8 @@
           "It currently generates more than a third of the company's revenue",
           "It was created specifically for international customers"
         ],
-        "answer": 3
+        "answer": 3,
+        "explanation": "The second paragraph says the direct-to-consumer subscription service launched in 2020 now accounts for 35% of total revenue, which is more than a third. The option saying it replaced all of the company's retail partnerships is wrong because the article still reports distribution to over 3,000 retail locations."
       }
     ]
   },
@@ -332,7 +357,8 @@
           "To remind patrons about overdue book return deadlines",
           "To advertise summer reading programs for children"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation": "The notice opens by advising that the library will operate on a reduced schedule in July and August and then lists the new daily hours. The option about the launch of new digital library services is wrong because the digital services are mentioned only to say they stay available as before."
       },
       {
         "question": "What is indicated about the library's digital services during summer?",
@@ -342,7 +368,8 @@
           "They will continue to be accessible around the clock",
           "They will require a special summer membership"
         ],
-        "answer": 3
+        "answer": 3,
+        "explanation": "The notice says all digital library services, including e-book lending and online databases, remain available 24 hours a day throughout the summer. The option saying they will be temporarily suspended during August is wrong because that same sentence covers the whole summer without interruption."
       }
     ]
   },
@@ -359,7 +386,8 @@
           "To remind staff of the annual budget review process",
           "To introduce a new online expense management system"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation": "The heading reads Updated Expense Reimbursement Policy and the memo asks staff to review four updates to that policy. The option about a new online expense management system is wrong because no system or software is introduced, only rules on receipts, deadlines, allowances and approvals."
       },
       {
         "question": "According to the updated policy, which of the following is NOT mentioned as a change?",
@@ -369,7 +397,8 @@
           "The domestic meal allowance amount",
           "The international meal allowance amount"
         ],
-        "answer": 4
+        "answer": 4,
+        "explanation": "Item 3 says the domestic meal allowance rose from 55 to 70 dollars while the international travel allowance remains unchanged at 120 dollars per day, so the international amount is the one that was not changed. The receipt requirement threshold in item 1 and the submission deadline in item 2 are both presented as updates, so those options are wrong."
       },
       {
         "question": "Who must approve expense claims over $500?",
@@ -379,7 +408,8 @@
           "The HR department and the department manager",
           "The CEO and the Finance Director"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation": "Item 4 says claims over 500 dollars now require approval from both the department manager and the Finance Director. The option naming the Finance Director only is wrong because the memo requires two approvals, and the CEO is never mentioned in the memo."
       }
     ]
   },
@@ -396,7 +426,8 @@
           "A meal provided during the workshop",
           "A printed copy of the course textbook"
         ],
-        "answer": 3
+        "answer": 3,
+        "explanation": "The fee line says 85 dollars per participant with lunch included, so a meal comes with the registration. The option about parking and transportation to the venue is wrong because the notice names only the venue and room number and says nothing about travel arrangements."
       },
       {
         "question": "What option is available to someone who cancels after May 5?",
@@ -406,7 +437,8 @@
           "Applying the fee toward a future workshop",
           "Receiving a digital version of the workshop materials"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation": "The cancellation paragraph says cancellations after May 5 are not eligible for a refund but may transfer the registration to another participant. The option offering a partial refund of 50% of the fee is wrong because the notice allows a full refund only before May 5 and no refund at all after that date."
       }
     ]
   },
@@ -423,7 +455,8 @@
           "To discuss the content of the financial projections",
           "To inform the client of a delay in the project"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation": "Diane Cho opens the chat by saying the client moved the presentation to Thursday instead of Friday and asks whether the team can adjust, and the later messages settle the new timing. The option about informing the client of a delay in the project is wrong because the client is the one who changed the date and nothing is delayed."
       },
       {
         "question": "What does Ryan Okafor need before the presentation?",
@@ -433,7 +466,8 @@
           "The slide deck to add his financial projections",
           "A new meeting room booking for Thursday"
         ],
-        "answer": 3
+        "answer": 3,
+        "explanation": "At 10:16 Ryan Okafor says Thursday works for him but that he needs the slide deck by Wednesday afternoon to add the financial projections. The option about approval from the client on the financial data is wrong because no approval is requested anywhere in the chat."
       },
       {
         "question": "What can be inferred about Diane Cho?",
@@ -443,7 +477,8 @@
           "She plans to send her slides to Ryan before 8 P.M.",
           "She is coordinating the assembly of the final presentation"
         ],
-        "answer": 4
+        "answer": 4,
+        "explanation": "Diane asks Ryan to send his section so she can combine everything and says she will have the full deck ready by the next morning, which makes her the one assembling the presentation. The option saying she is responsible for adding the financial projections is wrong because Ryan states that he will add those himself."
       }
     ]
   },
@@ -460,7 +495,8 @@
           "The laptop screen has stopped working",
           "The laptop is running too slowly after the update"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation": "At 2:06 the customer says the battery goes from 100% to 20% in about two hours, which is the complaint being reported. The option saying the laptop will not turn on after a system update is wrong because the customer only describes fast battery drain and never says the machine fails to start."
       },
       {
         "question": "What does Alex T. tell the customer to do?",
@@ -470,7 +506,8 @@
           "Install a software patch via the settings menu",
           "Uninstall the recent operating system update"
         ],
-        "answer": 3
+        "answer": 3,
+        "explanation": "At 2:11 Alex T. tells the customer to go to Settings, System, Updates and install version 14.2.1, the patch released for the known battery issue. The option about uninstalling the recent operating system update is wrong because the agent asks for a newer version to be installed, not for the update to be removed."
       },
       {
         "question": "What can be inferred about the customer's warranty situation?",
@@ -480,7 +517,808 @@
           "The warranty does not cover software-related issues",
           "The customer will need to pay for any battery replacement"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation": "At 2:14 the agent says that if the problem persists they will arrange a battery replacement under the customer's warranty, which implies the two month old laptop is still covered. The option saying the warranty has already expired is wrong because the agent offers warranty service instead of refusing it."
+      }
+    ]
+  },
+  {
+    "id": "toeic_part7_016",
+    "passage_type": "email",
+    "passage": "From: Karen Liu <k.liu@meridian-logistics.com>\nTo: All Field Sales Staff\nDate: June 3\nSubject: Updated Expense Reporting Procedure\n\nBeginning July 1, every travel expense must be submitted through the Orbit portal rather than the paper form we have used since 2019. The change follows an internal review that found paper claims took an average of nineteen days to reimburse, compared with four days in the departments already testing Orbit.\n\nPlease photograph each receipt and upload it within five business days of your return. Claims older than thirty days will need written approval from your regional director, so do not let them pile up. Meals remain capped at 45 dollars per day, and that figure is unchanged.\n\nOne item is new. Rides booked through car-sharing applications now count as ground transport and no longer require a pre-approval memo. Hotel bookings above 200 dollars per night still do.\n\nTraining runs every Tuesday in Room 4B through the end of June. If you cannot attend, a recorded walkthrough will be posted on the intranet by June 10.",
+    "questions": [
+      {
+        "question": "What is the main purpose of the email?",
+        "options": [
+          "To announce that the daily meal allowance will increase",
+          "To explain a new procedure for submitting travel claims",
+          "To request receipts that were lost during the last quarter",
+          "To introduce a newly appointed regional director"
+        ],
+        "answer": 2,
+        "explanation": "The first paragraph states that from July 1 expenses must go through the Orbit portal instead of the paper form, which is the point of the message. The first option is wrong because the email says the 45 dollar meal cap is unchanged."
+      },
+      {
+        "question": "According to the email, what no longer requires pre-approval?",
+        "options": [
+          "Hotel stays costing more than 200 dollars a night",
+          "Meals that exceed the daily spending cap",
+          "Claims filed more than thirty days after a trip",
+          "Travel in vehicles booked through car-sharing applications"
+        ],
+        "answer": 4,
+        "explanation": "Paragraph three says car-sharing rides now count as ground transport and need no pre-approval memo. Hotel rooms above 200 dollars per night are named in the same paragraph as still requiring it, so the first option is the opposite of what the text says."
+      },
+      {
+        "question": "What is suggested about the departments that already tested the Orbit portal?",
+        "options": [
+          "They got their money back faster than other departments did",
+          "They were exempt from the daily meal cap",
+          "They designed the portal themselves",
+          "They will continue using paper forms after July 1"
+        ],
+        "answer": 1,
+        "explanation": "Paragraph one contrasts nineteen days for paper claims with four days in the testing departments, so faster reimbursement can be inferred. Nothing indicates those departments built the portal, which rules out the third option."
+      }
+    ]
+  },
+  {
+    "id": "toeic_part7_017",
+    "passage_type": "notice",
+    "passage": "NOTICE: Sorting Stations Replace Desk Bins\nPosted March 12\n\nStarting Monday, March 17, the individual bin under each desk will be removed. In its place, sorting stations will be installed beside the elevators on floors two through seven. Each station has four openings: paper, plastic and metal, food waste, and general trash.\n\nThe building management company reports that roughly forty percent of what we throw away could have been recycled. Under the old arrangement, cleaning staff emptied more than three hundred desk bins every evening and had no practical way to separate the contents.\n\nCoffee cups are the item people ask about most. Lids go in plastic, and the cup itself goes in paper, but only after the liquid is poured into the pantry sink.\n\nVolunteers from the facilities team will stand by the stations during the first week to answer questions. Anyone who wants a small desktop tray for scrap paper may request one at reception while supplies last.",
+    "questions": [
+      {
+        "question": "What will happen on March 17?",
+        "options": [
+          "The pantry on each floor will close for cleaning",
+          "Cleaning staff will start work in the morning instead of the evening",
+          "Personal bins at employee desks will be taken away",
+          "Reception will be relocated to the second floor"
+        ],
+        "answer": 3,
+        "explanation": "The opening sentence gives March 17 as the date the desk bins are removed and the shared stations appear. The second option misreads paragraph two, which mentions evening emptying only to describe the old arrangement, not a schedule change."
+      },
+      {
+        "question": "Why were the old desk bins considered a problem?",
+        "options": [
+          "They were too small for most departments",
+          "Their contents could not be divided into categories",
+          "They were expensive to replace every year",
+          "They blocked the space needed for the elevators"
+        ],
+        "answer": 2,
+        "explanation": "Paragraph two says staff had no practical way to separate what the three hundred bins held, and pairs that with the forty percent figure for recyclable waste. Cost is never mentioned anywhere in the notice, so the third option has no support."
+      },
+      {
+        "question": "The word \"practical\" in paragraph 2 is closest in meaning to",
+        "options": [
+          "profitable",
+          "physical",
+          "temporary",
+          "workable"
+        ],
+        "answer": 4,
+        "explanation": "The sentence describes a method that could not realistically be carried out with three hundred bins, so workable fits. Profitable would introduce a money meaning that the sentence about sorting waste does not carry."
+      }
+    ]
+  },
+  {
+    "id": "toeic_part7_018",
+    "passage_type": "article",
+    "passage": "Handheld Scanner Aims at Smaller Warehouses\n\nDelcort Instruments introduced the TR-9 handheld scanner at a trade fair in Hamburg last week, and the company is plainly not chasing the customers it served a decade ago. The TR-9 weighs 310 grams, about half as much as the model it replaces, and sells for 480 euros, a price the firm says is aimed at operations with fewer than fifty employees.\n\n\"Our older scanners were built for distribution centers that run three shifts,\" said product manager Ines Havel. \"A regional food supplier with one loading dock was never going to buy one.\"\n\nAnalysts at Brenmark Research note that the market for entry-level industrial scanners grew eleven percent last year, while the high-end segment was flat. Delcort will begin shipping the TR-9 in September through its existing dealer network rather than selling directly, a decision Havel described as deliberate.\n\nThe company declined to say how many units it expects to sell in the first year.",
+    "questions": [
+      {
+        "question": "What is the article mainly about?",
+        "options": [
+          "A product built for a different group of buyers",
+          "A merger between two instrument manufacturers",
+          "A trade fair that will be held in Hamburg next year",
+          "A shortage of parts in the scanner industry"
+        ],
+        "answer": 1,
+        "explanation": "The first paragraph says Delcort is not chasing its customers of a decade ago and prices the TR-9 for firms with fewer than fifty employees. No merger of any kind appears in the article, so the second option is invented."
+      },
+      {
+        "question": "How heavy is the TR-9 compared with the model it replaces?",
+        "options": [
+          "About the same weight",
+          "Roughly twice as heavy",
+          "Approximately half as heavy",
+          "Eleven percent lighter"
+        ],
+        "answer": 3,
+        "explanation": "Paragraph one states the TR-9 weighs 310 grams, about half as much as the earlier model. The eleven percent figure belongs to market growth in paragraph three and has nothing to do with weight."
+      },
+      {
+        "question": "What is suggested about how Delcort will sell the TR-9?",
+        "options": [
+          "The dealers forced the arrangement on the company",
+          "The company chose the arrangement on purpose instead of selling directly",
+          "Sales will be tested only in Germany at first",
+          "It replaces a dealer network the company closed last year"
+        ],
+        "answer": 2,
+        "explanation": "Paragraph three says shipping goes through the existing dealer network rather than direct sales, and Havel called that choice deliberate. The fourth option contradicts the text, which describes the dealer network as existing rather than closed."
+      }
+    ]
+  },
+  {
+    "id": "toeic_part7_019",
+    "passage_type": "email",
+    "passage": "From: Daniel Osei <d.osei@northgatehealth.org>\nTo: Claims Processing Team\nDate: October 8\nSubject: Changes to the Hybrid Schedule\n\nAfter eighteen months of the current arrangement, we are adjusting the hybrid schedule effective November 3. Staff will be in the office on Tuesday and Wednesday, and the third in-office day that each person previously chose is being discontinued.\n\nThe reason is straightforward. Attendance data shows that Monday and Friday attendance averaged under twelve percent, while meeting rooms on Tuesday were booked solid by nine in the morning. Putting everyone on two fixed days gives teams a reliable window for case reviews and training, and it lets us close one floor two days a week.\n\nAnyone whose home situation makes Tuesday or Wednesday difficult should speak with me before October 22. I would rather handle exceptions one at a time than pretend the policy fits everyone.\n\nDesk assignments change as well. Because we are consolidating onto floors nine and ten, everyone will be given a new seat, and the map will be circulated the week of October 27.",
+    "questions": [
+      {
+        "question": "What change takes effect on November 3?",
+        "options": [
+          "Employees may choose any three days to come to the office",
+          "The claims team will move to a different building",
+          "Meeting rooms will have to be reserved a week in advance",
+          "The in-office days become Tuesday and Wednesday for everyone"
+        ],
+        "answer": 4,
+        "explanation": "Paragraph one names November 3 and fixes the office days as Tuesday and Wednesday while ending the self-selected third day. The first option describes the old arrangement that the email is removing."
+      },
+      {
+        "question": "What does the email suggest about Mondays and Fridays?",
+        "options": [
+          "Very few employees came to the office on those days",
+          "Meeting rooms were completely booked on those days",
+          "Training sessions were usually scheduled then",
+          "They were treated as unpaid days off"
+        ],
+        "answer": 1,
+        "explanation": "Paragraph two gives attendance under twelve percent for Monday and Friday, which supports the idea that almost nobody came in. The full meeting rooms described in the same sentence were on Tuesday, so the second option attaches the fact to the wrong day."
+      },
+      {
+        "question": "The word \"solid\" in paragraph 2 is closest in meaning to",
+        "options": [
+          "dependable",
+          "costly",
+          "completely full",
+          "physically strong"
+        ],
+        "answer": 3,
+        "explanation": "Rooms booked solid by nine in the morning means no slots were left, so completely full is the sense here. Physically strong is the literal meaning of the word and makes no sense applied to a room reservation."
+      }
+    ]
+  },
+  {
+    "id": "toeic_part7_020",
+    "passage_type": "notice",
+    "passage": "Company Announcement: Agreement to Combine with Pallante Foods\nFebruary 14\n\nOur board approved an agreement this morning to combine Halvard Grocery Supply with Pallante Foods. Regulators must review the agreement, and we expect that process to run through the third quarter. Until it closes, the two companies operate separately, and nothing about your reporting line, pay, or benefits changes.\n\nPallante runs eleven distribution centers in regions where we have none, and we supply roughly nine hundred stores that they do not reach. That is the reason for the combination. It is not a cost-cutting exercise, and no site closures are planned.\n\nWe know the question on most minds. There are no layoffs attached to this announcement. If that ever changes, you will hear it from this office first and not from a news report.\n\nAn all-staff meeting is set for February 20 at 10:00 in the auditorium, with a video link for the distribution centers. Questions may be submitted in advance through the intranet page created for this announcement.",
+    "questions": [
+      {
+        "question": "What is the main purpose of the notice?",
+        "options": [
+          "To announce the closing of several distribution centers",
+          "To inform employees of an agreement with another company",
+          "To invite employees to apply for newly created positions",
+          "To explain an upcoming change to the benefits plan"
+        ],
+        "answer": 2,
+        "explanation": "The opening sentence reports that the board approved an agreement to combine the two firms, and the rest of the notice explains what that means for staff. Paragraph two states that no site closures are planned, which rules out the first option."
+      },
+      {
+        "question": "When is the regulatory review expected to be finished?",
+        "options": [
+          "Before the all-staff meeting on February 20",
+          "By the end of the current month",
+          "At some point in the third quarter",
+          "Within eleven months of the closing"
+        ],
+        "answer": 3,
+        "explanation": "Paragraph one says regulators must review the agreement and the process is expected to run through the third quarter. The number eleven in the notice refers to distribution centers, not to a span of months."
+      },
+      {
+        "question": "What is implied about the two companies' operations?",
+        "options": [
+          "They serve areas that largely do not overlap",
+          "They compete for the same nine hundred stores",
+          "They already share several distribution centers",
+          "They offer their employees identical benefit plans"
+        ],
+        "answer": 1,
+        "explanation": "Paragraph two says Pallante has centers in regions where Halvard has none and Halvard serves stores Pallante cannot reach, so the two cover different territory. That same sentence contradicts the second option, since the nine hundred stores are not reached by Pallante at all."
+      }
+    ]
+  },
+  {
+    "id": "toeic_part7_021",
+    "passage_type": "email",
+    "passage": "From: Priya Raman <benefits@corvellparts.com>\nTo: All Employees\nDate: April 22\nSubject: Your Benefits Move to One Website on May 5\n\nRight now you check dental coverage on one website, retirement contributions on another, and you telephone a service line for anything involving the health plan. On May 5 all three move to a single site called MyCorvell.\n\nSetting up your account takes about ten minutes and requires your employee number, which appears at the top of every pay statement. You will also choose two security questions. Please register before May 5, because the old sites are switched off that morning and we would rather not have four thousand people signing up at once.\n\nNothing about your coverage changes. Same plans, same providers, same contribution rates.\n\nWhat does change is timing. Claim status now updates overnight instead of weekly, and you can download a replacement insurance card yourself rather than requesting one by telephone.\n\nIf you cannot find your employee number, reply to this message and we will look it up for you.",
+    "questions": [
+      {
+        "question": "What is the main purpose of the email?",
+        "options": [
+          "To tell staff that benefits information is moving to a single website",
+          "To announce changes to the company health plan coverage",
+          "To collect security questions from employees hired this year",
+          "To explain why retirement contribution rates are rising"
+        ],
+        "answer": 1,
+        "explanation": "The first paragraph contrasts three separate places for benefits information with the single MyCorvell site opening on May 5. Paragraph three says coverage, providers, and rates all stay the same, so the second and fourth options are both contradicted."
+      },
+      {
+        "question": "What do employees need in order to create an account?",
+        "options": [
+          "A replacement insurance card",
+          "A password issued by the dental plan",
+          "The service line number printed on their card",
+          "The employee number shown on a pay statement"
+        ],
+        "answer": 4,
+        "explanation": "Paragraph two states that registration requires the employee number found at the top of every pay statement. The replacement card in the first option is something the new site lets you download, not something you need to sign up."
+      },
+      {
+        "question": "The phrase \"switched off\" in paragraph 2 is closest in meaning to",
+        "options": [
+          "redesigned",
+          "shut down",
+          "combined",
+          "reduced"
+        ],
+        "answer": 2,
+        "explanation": "The old sites stop working on the morning of May 5, which is why staff are told to register in advance, so shut down is the meaning. Redesigned would suggest the sites remain available in a new form, which is the opposite of the warning."
+      }
+    ]
+  },
+  {
+    "id": "toeic_part7_022",
+    "passage_type": "article",
+    "passage": "Survey Finds Delivery Speed Matters Less Than Expected\n\nA survey of 2,400 shoppers released Tuesday by the Retail Council suggests that online retailers may be spending money on the wrong thing. Asked to rank seven factors, respondents placed accurate delivery estimates third, while raw delivery speed finished sixth.\n\nThe factor that came first was the ease of returning an item. Sixty-eight percent of respondents said a difficult return had caused them to stop buying from a retailer entirely, a figure that rose to seventy-nine percent among shoppers over fifty.\n\n\"Retailers have spent a decade shaving hours off delivery windows,\" said council analyst Marta Ozdemir. \"Our data says a customer would rather be told four days and receive the package in four days than be promised two and wait three.\"\n\nThe survey also found that satisfaction scores dropped sharply when a return required printing a label at home. Retailers offering drop-off at a partner location scored nineteen points higher.\n\nThe full report is available to council members, and a summary will appear on the council website next month.",
+    "questions": [
+      {
+        "question": "What is the article mainly about?",
+        "options": [
+          "Shoppers are ordering fewer items online than in past years",
+          "A large retailer has shortened its delivery windows",
+          "A survey questions where online retailers put their money",
+          "Return shipping costs have risen across the industry"
+        ],
+        "answer": 3,
+        "explanation": "The opening sentence frames the survey as evidence that retailers may be spending on the wrong thing, and the rest of the article reports the rankings that support it. The article never says order volume has fallen, so the first option is not discussed."
+      },
+      {
+        "question": "Which factor did respondents rank as most important?",
+        "options": [
+          "Receiving an accurate delivery estimate",
+          "How easy it is to return an item",
+          "The speed of delivery",
+          "The price of the item"
+        ],
+        "answer": 2,
+        "explanation": "Paragraph two says the factor that came first was the ease of returning an item. Accurate delivery estimates were ranked third according to paragraph one, so the first option is a real factor placed at the wrong rank."
+      },
+      {
+        "question": "What can be inferred about retailers that make customers print return labels at home?",
+        "options": [
+          "They are especially popular with shoppers over fifty",
+          "They deliver packages faster than their competitors",
+          "They are all members of the Retail Council",
+          "They tend to receive lower satisfaction ratings"
+        ],
+        "answer": 4,
+        "explanation": "Paragraph four reports that scores dropped sharply for home-printed labels while partner drop-off scored nineteen points higher. Shoppers over fifty were the group most likely to abandon a retailer after a hard return, which makes the first option the reverse of what the data shows."
+      }
+    ]
+  },
+  {
+    "id": "toeic_part7_023",
+    "passage_type": "notice",
+    "passage": "Scheduled Power Shutdown: Building C, Saturday May 24\nPosted May 9\n\nThe electrical contractor replacing the main switchgear in Building C requires a full shutdown from 6:00 a.m. to approximately 4:00 p.m. on Saturday, May 24. No power will be available on any floor during that window, including the emergency outlets marked in red.\n\nLaboratory managers should move temperature-sensitive samples to the Building A cold room by Friday, May 23. Space has been reserved, but it must be booked through the facilities portal, not by email.\n\nServers in the second-floor equipment room will be stopped in an orderly sequence beginning at 5:00 a.m. The information technology team asks that you log off and shut down desktop machines before leaving on Friday. Anything left running will lose unsaved work.\n\nBadge readers on the exterior doors will not function that day. Staff who must enter the building on Saturday should contact the security office by May 20 to arrange access.",
+    "questions": [
+      {
+        "question": "What are laboratory managers asked to do by May 23?",
+        "options": [
+          "Move temperature-sensitive samples to another building",
+          "Send an email request to the facilities department",
+          "Shut down the servers in the second-floor equipment room",
+          "Return their door badges to the security office"
+        ],
+        "answer": 1,
+        "explanation": "Paragraph two gives May 23 as the deadline for moving samples to the Building A cold room. The same paragraph says the reservation must go through the facilities portal and not by email, so the second option is expressly ruled out."
+      },
+      {
+        "question": "Why must staff contact the security office by May 20?",
+        "options": [
+          "Because the cold room in Building A will be locked that day",
+          "Because the contractor requires a list of visitors in advance",
+          "Because the usual way of entering the building will not work",
+          "Because weekend overtime has to be approved beforehand"
+        ],
+        "answer": 3,
+        "explanation": "The last paragraph pairs the failure of the badge readers with the instruction to arrange access through security, so entry has to be handled another way. Overtime pay is never mentioned in the notice, which leaves the fourth option unsupported."
+      },
+      {
+        "question": "The word \"orderly\" in paragraph 3 is closest in meaning to",
+        "options": [
+          "rapid",
+          "carefully controlled",
+          "unexpected",
+          "temporary"
+        ],
+        "answer": 2,
+        "explanation": "The servers are stopped in a planned sequence starting an hour before the shutdown, so carefully controlled fits the sentence. Rapid would conflict with the idea of a sequence that begins early to protect the equipment."
+      }
+    ]
+  },
+  {
+    "id": "toeic_part7_024",
+    "passage_type": "email",
+    "passage": "From: Tomas Feld <t.feld@arbordistribution.com>\nTo: Warehouse 4 Supervisors\nDate: August 18\nSubject: Physical Count, September 6 and 7\n\nWe will count Warehouse 4 over the weekend of September 6 and 7. Receiving stops at noon on Friday, September 5, and no shipments leave the building until Monday morning. Please tell your carriers now rather than the day before.\n\nTeams of two will work the aisles, one person scanning and one verifying. The pairings are attached. If someone on your shift cannot work that weekend, send me a replacement name by August 29; after that date I will assign people myself.\n\nAisles 1 through 12 should take most of Saturday because of the loose bin stock. Aisles 13 through 30 hold palletized goods, so they are scheduled for Sunday morning.\n\nLast year the count ran four hours past schedule because pallets had been left standing in the cross aisles. Please clear those areas by Thursday afternoon. Lunch will be provided on both days, and the hours count as overtime.",
+    "questions": [
+      {
+        "question": "What is the main purpose of the email?",
+        "options": [
+          "To announce a permanent change in warehouse operating hours",
+          "To prepare supervisors for a scheduled inventory count",
+          "To explain a new overtime payment policy",
+          "To request a list of the carriers used last year"
+        ],
+        "answer": 2,
+        "explanation": "Every paragraph gives supervisors an instruction tied to the count on September 6 and 7, from notifying carriers to clearing the cross aisles. Overtime is mentioned only in the closing line as a detail, so the third option mistakes a minor point for the purpose."
+      },
+      {
+        "question": "What happens at noon on September 5?",
+        "options": [
+          "The counting teams begin work in aisle 1",
+          "Lunch is served to everyone taking part in the count",
+          "Replacement names are due to the writer",
+          "The warehouse stops accepting incoming goods"
+        ],
+        "answer": 4,
+        "explanation": "Paragraph one states that receiving stops at noon on Friday, September 5, the day before the count. Replacement names are due on August 29 according to paragraph two, so the third option uses the wrong deadline."
+      },
+      {
+        "question": "Why are aisles 13 through 30 scheduled for Sunday morning?",
+        "options": [
+          "The goods stored there can be counted more quickly",
+          "They were skipped during last year's inventory",
+          "They are the aisles closest to the loading dock",
+          "Only one counting team is available on Sunday"
+        ],
+        "answer": 1,
+        "explanation": "Paragraph three contrasts the loose bin stock that fills most of Saturday with the palletized goods in aisles 13 through 30, which implies faster counting in a shorter slot. Last year's delay came from pallets in the cross aisles, not from skipped aisles, so the second option misreads paragraph four."
+      }
+    ]
+  },
+  {
+    "id": "toeic_part7_025",
+    "passage_type": "article",
+    "passage": "Small Manufacturers Turn to Shared Equipment\n\nA quiet shift is under way among small manufacturers in the Midlands. Instead of buying machinery outright, a growing number are renting time on equipment they share with their own competitors.\n\nThree years ago the Bellingham Tool Cooperative had nine members. It now has forty-one. Members pay a monthly fee and book hours on five-axis machines that would cost upwards of 400,000 pounds to buy. A shop that needs such a machine twice a month has little reason to own one.\n\nThe model itself is not new. Farming cooperatives have shared harvesters for generations. What has changed is scheduling software cheap enough for a thirty-person firm to run, which removed the old argument that sharing would produce constant fights over access.\n\nNot everyone is convinced. Firms holding defense contracts often cannot let outside staff into a facility, and some owners say booked hours are useless when a customer calls on Tuesday wanting parts on Thursday.\n\nStill, two similar cooperatives opened this year in neighbouring counties, and a third has announced plans for next spring.",
+    "questions": [
+      {
+        "question": "What is the main topic of the article?",
+        "options": [
+          "Machinery prices have fallen sharply across the Midlands",
+          "A cooperative has closed after losing most of its members",
+          "More small manufacturers are sharing equipment instead of buying it",
+          "Farming businesses are moving into tool manufacturing"
+        ],
+        "answer": 3,
+        "explanation": "The first paragraph states the shift from buying machinery to renting shared time, and the rest of the article traces how far it has spread. The second option reverses paragraph two, where the cooperative grows from nine members to forty-one."
+      },
+      {
+        "question": "How has membership in the Bellingham Tool Cooperative changed?",
+        "options": [
+          "It has stayed at about the same level",
+          "It has dropped from forty-one members to nine",
+          "It has roughly doubled over three years",
+          "It has grown from nine members to forty-one"
+        ],
+        "answer": 4,
+        "explanation": "Paragraph two gives nine members three years ago and forty-one now. Going from nine to forty-one is far more than doubling, so the third option understates the figures in the text."
+      },
+      {
+        "question": "The word \"quiet\" in paragraph 1 is closest in meaning to",
+        "options": [
+          "attracting little attention",
+          "happening very slowly",
+          "carried out in secret",
+          "limited to a single company"
+        ],
+        "answer": 1,
+        "explanation": "The article goes on to describe rapid growth and several new cooperatives, so the word marks a change that few people have noticed rather than one that is small. Carried out in secret is too strong, since members and opening dates are openly reported."
+      }
+    ]
+  },
+  {
+    "id": "toeic_part7_026",
+    "passage_type": "advertisement",
+    "passage": "Northgate Equipment Rentals - Serving the Riverside Industrial Park since 2004\n\nWhy tie up capital in machines you use twelve weekends a year? Northgate keeps more than 400 units on the yard: scissor lifts, floor scrubbers, generators, compactors, and mid-size excavators. Weekly rates start at 180 dollars and include delivery within twenty kilometres of our depot.\n\nEvery unit is serviced and load-tested before it leaves the yard. If a machine stops working on site, call our dispatch line and we will have a replacement to you within four hours, or that day is free.\n\nNew this quarter: the Contractor Card. Pay a flat 500 dollars in January and receive 15 percent off every rental for the rest of the year, plus priority booking during the spring construction rush. The card pays for itself after roughly eleven rental days.\n\nReserve online at northgaterentals.example or walk into the depot at 88 Foundry Road. Weekday pickups run from 6 a.m. Saturday pickups must be booked by Friday noon.",
+    "questions": [
+      {
+        "question": "What is the main purpose of the advertisement?",
+        "options": [
+          "To announce the opening of a second depot",
+          "To promote rental services and a new discount card",
+          "To recruit mechanics for the service yard",
+          "To explain a change in delivery fees"
+        ],
+        "answer": 2,
+        "explanation": "The text lists the rental fleet and then introduces the Contractor Card discount, so the purpose is promotional. The first option is wrong because no additional location is mentioned anywhere in the advertisement."
+      },
+      {
+        "question": "What does Northgate promise if a rented machine stops working on a job site?",
+        "options": [
+          "A full refund of the weekly rate",
+          "Free servicing at the customer's own workshop",
+          "An automatic upgrade to a larger unit",
+          "A replacement within four hours, or no charge for that day"
+        ],
+        "answer": 4,
+        "explanation": "The third paragraph states that dispatch sends a replacement within four hours or the day is free. A full refund of the weekly rate is never offered, so the first option overstates what the company commits to."
+      },
+      {
+        "question": "What is suggested about the Contractor Card?",
+        "options": [
+          "It is worthwhile mainly for customers who rent frequently",
+          "It is issued free of charge to all returning customers",
+          "It may be shared among several different companies",
+          "It has to be renewed every three months"
+        ],
+        "answer": 1,
+        "explanation": "Because the card costs 500 dollars and only pays for itself after about eleven rental days, occasional renters would lose money on it. The second option contradicts the stated flat fee charged in January."
+      }
+    ]
+  },
+  {
+    "id": "toeic_part7_027",
+    "passage_type": "advertisement",
+    "passage": "Meridian Fitness - Corporate Memberships\n\nYour staff spend nine hours a day at a desk. Give them somewhere to go at lunch.\n\nMeridian operates six clubs across the metro area, all within a ten-minute walk of a subway station. Under our corporate plan, your company pays a single monthly invoice and your employees pay nothing at the door. Rates fall as your headcount grows: 42 dollars per person per month for teams of ten to forty-nine, 34 dollars for fifty to one hundred ninety-nine, and 28 dollars for two hundred or more.\n\nEvery corporate member receives full club access, two personal training sessions per quarter, and a seat in any group class that still has room thirty minutes before it begins.\n\nWe also bring the gym to you. Employers with more than sixty enrolled staff qualify for a monthly on-site session: a trainer runs a forty-minute stretching clinic in your own meeting room at no extra cost.\n\nRequest a quote at corporate@meridianfitness.example. Contracts run twelve months and may be adjusted once at the six-month mark.",
+    "questions": [
+      {
+        "question": "According to the advertisement, what determines the monthly rate charged per employee?",
+        "options": [
+          "The club location that the employee chooses",
+          "The number of classes each employee attends",
+          "The number of employees enrolled in the plan",
+          "The total length of the signed contract"
+        ],
+        "answer": 3,
+        "explanation": "The three price tiers are defined purely by headcount bands, from ten people up to two hundred or more. Location cannot be the answer because all six clubs are covered by the same published rates."
+      },
+      {
+        "question": "What is offered to employers with more than sixty enrolled staff?",
+        "options": [
+          "A monthly stretching session held at the workplace",
+          "A discount applied to the first monthly invoice",
+          "Unlimited personal training for every member",
+          "Free parking at all six club locations"
+        ],
+        "answer": 1,
+        "explanation": "The fifth paragraph ties the on-site forty-minute stretching clinic directly to that enrollment threshold. Personal training is capped at two sessions per quarter, so the unlimited option contradicts the text."
+      },
+      {
+        "question": "What is indicated about the group classes?",
+        "options": [
+          "They cost extra for corporate members",
+          "A place in them is not guaranteed",
+          "They are held only in the early morning",
+          "They require written approval from a trainer"
+        ],
+        "answer": 2,
+        "explanation": "Members get a seat only in a class that still has room shortly before it starts, which means space can run out. The first option is wrong because corporate members pay nothing at the door."
+      }
+    ]
+  },
+  {
+    "id": "toeic_part7_028",
+    "passage_type": "advertisement",
+    "passage": "Two Sparrows Kitchen - Office Delivery, Done Properly\n\nMost catering arrives as a stack of foil trays at 11:55 and is cold by noon. We built our corporate service around the opposite idea.\n\nOrder by 4 p.m. the day before and your food arrives in insulated carriers between 11:30 and 11:45, with labels facing up and allergens marked in red on every lid. Our drivers set the table, and they return at 1:15 to clear it away.\n\nMenus rotate on a four-week cycle, so a team that orders every Tuesday will not see the same dish twice in a month. Vegetarian, halal, and gluten-free portions are counted separately and are never substituted at the last minute.\n\nThe minimum order is fifteen people. Accounts spending more than 2,000 dollars a month are billed monthly instead of per delivery, which most office managers tell us is the real reason they switch.\n\nSample menus and a delivery map are at twosparrows.example/offices. New accounts have their first setup and cleanup fee waived.",
+    "questions": [
+      {
+        "question": "For whom is the advertisement most likely intended?",
+        "options": [
+          "Restaurant owners searching for ingredient suppliers",
+          "Delivery drivers looking for weekend work",
+          "Travellers booking a venue for a private event",
+          "Employees who arrange meals for their workplace"
+        ],
+        "answer": 4,
+        "explanation": "Every detail concerns office lunches, minimum headcounts, and monthly billing for company accounts. Nothing addresses drivers seeking employment, so the second option has no support in the text."
+      },
+      {
+        "question": "What happens at 1:15 according to the advertisement?",
+        "options": [
+          "The following day's order is confirmed by phone",
+          "Drivers come back to clear the table",
+          "The kitchen closes for the rest of the afternoon",
+          "Invoices are forwarded to the accounting department"
+        ],
+        "answer": 2,
+        "explanation": "The third paragraph states that drivers return at 1:15 to clear away the meal. The ordering deadline is 4 p.m. the previous day, so confirming the next order at 1:15 is not supported."
+      },
+      {
+        "question": "What does the advertisement suggest about office managers?",
+        "options": [
+          "They usually order for fewer than fifteen people",
+          "They prefer to collect the food themselves",
+          "They place a high value on simpler billing",
+          "They rarely repeat the same menu twice"
+        ],
+        "answer": 3,
+        "explanation": "Monthly invoicing is described as the real reason most office managers switch, which points to billing convenience. The first option conflicts with the stated fifteen-person minimum order."
+      }
+    ]
+  },
+  {
+    "id": "toeic_part7_029",
+    "passage_type": "chat",
+    "passage": "09:12 Priya Raghavan: The Lindwall order was supposed to ship Friday. Production just told me the line is down.\n09:14 Tomas Berg: Down how? Mechanical, or are we short on parts again?\n09:15 Priya Raghavan: Short on the aluminium housings. The supplier slipped two weeks.\n09:17 Dana Okafor: Two weeks past Friday puts us at the 26th. Lindwall has a retail launch on the 22nd.\n09:18 Tomas Berg: Here we go again.\n09:20 Dana Okafor: Can we split it? Ship the 600 units that already have housings, then send the rest when the parts land.\n09:22 Priya Raghavan: Partial shipments need the customer's written approval. I can ask, but their purchasing manager is travelling until Thursday.\n09:24 Tomas Berg: Try their operations lead instead. She signed off on a split last November.\n09:26 Dana Okafor: I will draft the notice today. Priya, can you get me the exact count of finished units by three?\n09:27 Priya Raghavan: Yes. The warehouse is counting now.",
+    "questions": [
+      {
+        "question": "At 09:18, what does Mr. Berg most likely mean when he writes, \"Here we go again\"?",
+        "options": [
+          "He has seen this kind of delay happen before",
+          "He is ready to begin a brand new project",
+          "He wants the quality test to be repeated",
+          "He thinks the discussion should start over"
+        ],
+        "answer": 1,
+        "explanation": "His earlier line asks whether the team is short on parts again, so the remark signals a recurring supply problem. Nothing in the exchange concerns starting a new project, which rules out the second option."
+      },
+      {
+        "question": "What is required before a partial shipment can be sent?",
+        "options": [
+          "A revised purchase order issued by production",
+          "An inspection of the aluminium housings",
+          "Written approval from the customer",
+          "A confirmed delivery date from the supplier"
+        ],
+        "answer": 3,
+        "explanation": "Ms. Raghavan states at 09:22 that partial shipments need the customer's written approval. The supplier's new date is mentioned only as the cause of the delay, not as a condition for splitting the order."
+      },
+      {
+        "question": "What will Ms. Raghavan provide by three o'clock?",
+        "options": [
+          "A revised contract with the parts supplier",
+          "A list of upcoming retail launch dates",
+          "Contact details for the operations lead",
+          "The number of units that are already finished"
+        ],
+        "answer": 4,
+        "explanation": "Ms. Okafor asks for the exact count of finished units by three, and Ms. Raghavan agrees because the warehouse is counting. The contact details are suggested by Mr. Berg and are not assigned to her."
+      }
+    ]
+  },
+  {
+    "id": "toeic_part7_030",
+    "passage_type": "chat",
+    "passage": "13:02 Ingrid Halvorsen: Is anyone actually using Conference Room B right now? The calendar says Marketing has it until five.\n13:04 Samuel Ortiz: I walked past twice this morning. Empty both times.\n13:05 Ingrid Halvorsen: I have nine people from the audit firm arriving at two and nowhere to put them.\n13:07 Leila Farouk: Marketing books B every Wednesday as a holding slot. They release it, but you have to ask.\n13:08 Samuel Ortiz: Ask who exactly?\n13:09 Leila Farouk: Whoever created the booking. Open the calendar entry and the organizer's name is at the top.\n13:11 Ingrid Halvorsen: It says Colin Meyers. He is out of the office until Monday.\n13:13 Leila Farouk: Then go to facilities. They can override a booking when the organizer is away and the room is sitting empty.\n13:15 Samuel Ortiz: Facilities is on the fourth floor. I can walk up now.\n13:16 Ingrid Halvorsen: Please do. If they refuse, I will move the group to the cafeteria mezzanine and apologize a great deal.",
+    "questions": [
+      {
+        "question": "What is the main topic of the online chat discussion?",
+        "options": [
+          "Rescheduling an audit that was postponed",
+          "Finding a space for a group of visitors",
+          "Hiring additional staff for the facilities team",
+          "Changing the time of a weekly marketing meeting"
+        ],
+        "answer": 2,
+        "explanation": "The entire exchange is driven by nine visitors arriving at two with no room available. The marketing booking is only an obstacle, so nobody proposes changing that team's regular meeting time."
+      },
+      {
+        "question": "At 13:07, what does Ms. Farouk most likely mean when she writes, \"but you have to ask\"?",
+        "options": [
+          "Marketing never gives up Conference Room B",
+          "The booking calendar has stopped working",
+          "Ingrid should contact the audit firm directly",
+          "The room stays reserved unless someone requests it"
+        ],
+        "answer": 4,
+        "explanation": "She says Marketing does release the holding slot, so the condition she adds is that a request must be made first. The first option reverses her meaning, since she confirms the room can be released."
+      },
+      {
+        "question": "What does Mr. Ortiz offer to do?",
+        "options": [
+          "Go up to the facilities office",
+          "Telephone Mr. Meyers at home",
+          "Set up seating on the cafeteria mezzanine",
+          "Cancel the recurring Wednesday booking"
+        ],
+        "answer": 1,
+        "explanation": "At 13:15 he notes that facilities is on the fourth floor and offers to walk up immediately. The mezzanine is Ms. Halvorsen's own fallback plan, not a task he takes on."
+      }
+    ]
+  },
+  {
+    "id": "toeic_part7_031",
+    "passage_type": "chat",
+    "passage": "15:40 Noel Achebe: Sales sent the Harkness quote to the client this morning. Did anyone in engineering sign off on the installation hours?\n15:42 Wen-Ju Tsai: Not that I know of. What number did they use?\n15:43 Noel Achebe: Forty hours, two technicians.\n15:45 Wen-Ju Tsai: That is the figure from the old warehouse layout. Harkness moved to a three-floor site in March.\n15:46 Noel Achebe: So forty hours is light.\n15:47 Wen-Ju Tsai: Sixty-four at minimum. The cable runs between floors are the whole job.\n15:49 Marisol Vega: I can reissue the quote, but the client already has the first version. That conversation is on sales, not engineering.\n15:51 Noel Achebe: Agreed. I will call their procurement contact before the end of the day and explain the scope change.\n15:53 Marisol Vega: Send me the corrected hours and I will have a revised document ready in thirty minutes.\n15:54 Wen-Ju Tsai: Sixty-four hours, two technicians, plus one day of lift rental. I will put it in writing now.",
+    "questions": [
+      {
+        "question": "Why is the original quote inaccurate?",
+        "options": [
+          "The client requested a different technician",
+          "The lift rental was billed to the wrong account",
+          "It was based on an outdated site layout",
+          "Sales applied the wrong hourly rate"
+        ],
+        "answer": 3,
+        "explanation": "Mr. Tsai explains that forty hours came from the old warehouse layout, while Harkness moved to a three-floor site in March. The hourly rate is never questioned, only the number of hours estimated."
+      },
+      {
+        "question": "At 15:49, what does Ms. Vega most likely mean when she writes, \"That conversation is on sales, not engineering\"?",
+        "options": [
+          "Sales should be the department that contacts the client",
+          "Engineering will refuse to revise the document",
+          "The two departments should meet in person",
+          "The client has already rejected the quote"
+        ],
+        "answer": 1,
+        "explanation": "She offers to reissue the document herself, so she is assigning only the client call to sales, and Mr. Achebe then agrees to make it. The second option contradicts her offer to prepare the revision."
+      },
+      {
+        "question": "What does Mr. Tsai say he will do next?",
+        "options": [
+          "Visit the new three-floor site",
+          "Approve the invoice for the lift rental",
+          "Speak with the procurement contact",
+          "Put the corrected estimate in writing"
+        ],
+        "answer": 4,
+        "explanation": "His final message lists the revised hours and equipment and states that he will put it in writing. Calling procurement is the task Mr. Achebe accepted at 15:51."
+      }
+    ]
+  },
+  {
+    "id": "toeic_part7_032",
+    "passage_type": "notice",
+    "passage": "NOTICE TO ALL STAFF - Airport Shuttle Schedule Change, Effective 1 October\n\nThe company shuttle between the Eastside campus and Halvern International Airport will move to a fixed hourly departure. Under the current system, riders book a seat and the van leaves only when it is full, which has produced waits of up to fifty minutes during afternoon peaks.\n\nFrom 1 October, the van departs from the north lobby at the top of every hour between 05:00 and 21:00, full or not. Travel time to Terminal 2 averages thirty-five minutes. Add fifteen minutes for Terminal 1.\n\nBooking is still required, but only to guarantee a seat. Log in to the travel portal at least two hours before departure. Walk-up riders may board if seats remain at the moment the van leaves.\n\nLuggage is limited to one checked bag and one carry-on per rider. Riders travelling with equipment cases must arrange a cargo van through the facilities desk at least one business day in advance.\n\nSend questions to shuttle@eastsidecampus.example rather than to the drivers.",
+    "questions": [
+      {
+        "question": "What is the purpose of the notice?",
+        "options": [
+          "To introduce a newly opened airport terminal",
+          "To announce that the shuttle will be discontinued",
+          "To ask employees to volunteer as drivers",
+          "To explain a change in departure times"
+        ],
+        "answer": 4,
+        "explanation": "The heading and the first two paragraphs describe the shift from full-van departures to fixed hourly ones. The service is expanding its schedule rather than ending, so the second option is contradicted."
+      },
+      {
+        "question": "What must riders do in order to guarantee a seat?",
+        "options": [
+          "Arrive at the north lobby thirty minutes early",
+          "Book through the travel portal two hours ahead",
+          "Notify one of the drivers by email",
+          "Pay a fee at the facilities desk"
+        ],
+        "answer": 2,
+        "explanation": "The fourth paragraph states that booking remains necessary to guarantee a seat and sets a two-hour portal deadline. The notice also asks staff not to send questions to drivers, so emailing them is wrong."
+      },
+      {
+        "question": "What is implied about the current booking system?",
+        "options": [
+          "It is used mainly by outside visitors",
+          "It charges riders a fee for each trip",
+          "It has caused long waits for some riders",
+          "It will remain in place until December"
+        ],
+        "answer": 3,
+        "explanation": "Waits of up to fifty minutes during afternoon peaks are given as the reason for replacing the current system. The change takes effect on 1 October, which rules out the option about December."
+      }
+    ]
+  },
+  {
+    "id": "toeic_part7_033",
+    "passage_type": "notice",
+    "passage": "Hartwell Research Library - Group Study Room Rules\n\nRooms 2 through 7 are available to any cardholder. Please read the following before your session.\n\nReserve online. Same-day reservations open at 07:00 and close fifteen minutes before the start of each slot. Slots run two hours. A group may hold one slot per day, and a second slot may be added at the service desk only after 16:00, when demand falls.\n\nRooms are held for ten minutes. If nobody from your group has arrived by then, staff will release the room to the waiting list posted at the front desk.\n\nFood is not permitted. Lidded drinks are fine. Whiteboards are cleaned nightly, so please do not leave notes you still need. Staff cannot photograph them for you.\n\nRooms 6 and 7 have video conferencing equipment. Use headphones for any call. Sound carries into the reading room through the upper vents, and this is the single most common complaint we receive.\n\nReport faults to the second-floor desk rather than moving furniture between rooms.",
+    "questions": [
+      {
+        "question": "When may a group reserve a second study slot?",
+        "options": [
+          "After 16:00, in person at the service desk",
+          "At 07:00 on the day of the session",
+          "On weekends only",
+          "Ten minutes before the first slot ends"
+        ],
+        "answer": 1,
+        "explanation": "The third paragraph permits a second slot at the service desk only after 16:00, when demand drops. The 07:00 time refers to when same-day online reservations open, not to extra slots."
+      },
+      {
+        "question": "What happens if a group arrives late for a reservation?",
+        "options": [
+          "The group is charged a late fee",
+          "The reservation is moved to the following day",
+          "The room is given to someone on the waiting list",
+          "Staff telephone the cardholder who booked it"
+        ],
+        "answer": 3,
+        "explanation": "Rooms are held for only ten minutes before staff release them to the posted waiting list. No fee of any kind is mentioned in the notice, so the first option is invented."
+      },
+      {
+        "question": "What does the notice suggest about rooms 6 and 7?",
+        "options": [
+          "They are reserved for library staff members",
+          "Noise from them disturbs other library users",
+          "They are larger than the other study rooms",
+          "They must be booked one week in advance"
+        ],
+        "answer": 2,
+        "explanation": "Headphones are required because sound from those rooms carries into the reading room and generates the most complaints. Room size is never discussed, so the third option has no basis."
+      }
+    ]
+  },
+  {
+    "id": "toeic_part7_034",
+    "passage_type": "article",
+    "passage": "Warehouses Are Getting Quieter, and That Is the Point\n\nWalk into a regional distribution centre built in the last three years and the first thing you notice is what you do not hear: no shouted aisle numbers, no forklift horns every forty seconds. Goods-to-person systems now bring shelving units to a fixed picking station, so the worker stays in place while the inventory moves.\n\nOperators report picking rates roughly three times higher than in manual aisles, but the more interesting number is turnover. At one grocery distributor in the midlands, annual staff turnover at the picking stations fell from 61 percent to 24 percent after the retrofit. Managers attribute the drop to the walking. A manual picker covered about sixteen kilometres per shift. The same worker now walks under two.\n\nThe equipment is not cheap. A mid-size retrofit runs between four and seven million dollars, and most operators need four to six years to recover it. Smaller firms are instead renting robot fleets by the month, an arrangement that barely existed before 2023.",
+    "questions": [
+      {
+        "question": "What is the article mainly about?",
+        "options": [
+          "A shortage of trained forklift operators",
+          "How automation is changing warehouse work",
+          "A grocery distributor opening in the midlands",
+          "The rising cost of industrial property"
+        ],
+        "answer": 2,
+        "explanation": "The article moves from quieter facilities to picking rates, turnover, and equipment costs, all consequences of goods-to-person automation. The grocery distributor appears only as a single example, not as the subject."
+      },
+      {
+        "question": "According to the article, what do managers credit for the lower turnover?",
+        "options": [
+          "Higher hourly wages at the picking stations",
+          "Shorter shifts for warehouse staff",
+          "An improved training program",
+          "A large reduction in walking during a shift"
+        ],
+        "answer": 4,
+        "explanation": "Managers attribute the fall from 61 percent to 24 percent to walking distance dropping from sixteen kilometres per shift to under two. Wages and shift length are never mentioned as factors."
+      },
+      {
+        "question": "What is suggested about smaller firms?",
+        "options": [
+          "They avoid large upfront costs by renting equipment",
+          "They recover their investment faster than large operators",
+          "They have stopped using goods-to-person systems",
+          "They report the highest picking rates in the industry"
+        ],
+        "answer": 1,
+        "explanation": "Rather than paying four to seven million dollars for a retrofit, smaller firms rent robot fleets monthly. That is the opposite of abandoning the technology, so the third option misreads the final paragraph."
+      }
+    ]
+  },
+  {
+    "id": "toeic_part7_035",
+    "passage_type": "article",
+    "passage": "The Spreadsheet Years Are Ending for Smaller Firms\n\nFor two decades, the typical thirty-person manufacturer ran on a shared spreadsheet, a filing cabinet, and one person who knew where everything was. That arrangement is breaking down, and not because the software finally got better.\n\nThree pressures are doing the work. Large customers now require electronic order confirmations, which a spreadsheet cannot produce. Insurers ask for traceability records that take days to assemble by hand. And the person who knew where everything was is retiring.\n\nWhat firms are buying is smaller than it was a decade ago. Rather than one system covering every department, most start with a single process, usually quoting or inventory, and connect it to whatever else they run. A survey of 400 small manufacturers put the median first-year spend at 31,000 dollars, well below the six-figure projects that dominated earlier coverage.\n\nThe failures share a pattern. Firms that handed the project to whoever had spare time reported abandonment rates near half. Those that named a single owner with authority to change how work is done reported under fifteen percent.",
+    "questions": [
+      {
+        "question": "What is the main point of the article?",
+        "options": [
+          "Spreadsheets are being prohibited by regulators",
+          "Large systems now cost less than small ones",
+          "Small manufacturers are replacing manual methods for practical reasons",
+          "Most small firms have already finished modernizing"
+        ],
+        "answer": 3,
+        "explanation": "The article explains why small manufacturers are leaving spreadsheets behind, naming customer demands, insurer requirements, and retirements. No regulator is mentioned, so the first option invents a cause."
+      },
+      {
+        "question": "According to the article, what do insurers ask small manufacturers to provide?",
+        "options": [
+          "Traceability records",
+          "Electronic order confirmations",
+          "Annual spending reports",
+          "The name of a project owner"
+        ],
+        "answer": 1,
+        "explanation": "The second paragraph assigns traceability records to insurers and electronic order confirmations to large customers. Mixing those two up produces the second option, which is the most tempting wrong answer."
+      },
+      {
+        "question": "What does the article suggest about projects that succeed?",
+        "options": [
+          "They cost more than 100,000 dollars in the first year",
+          "They cover every department at the same time",
+          "They are led by consultants hired from outside",
+          "They have one person clearly in charge"
+        ],
+        "answer": 4,
+        "explanation": "Abandonment falls below fifteen percent when a single owner with real authority runs the project. The median first-year spend of 31,000 dollars contradicts the option about six-figure budgets."
       }
     ]
   }

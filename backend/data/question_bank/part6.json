@@ -9,29 +9,29 @@
         "options": [
           "confirm",
           "confirmation",
-          "confirmed",
-          "confirming"
+          "confirming",
+          "confirmed"
         ],
         "answer": "confirmed",
-        "explanation": "The verb must be a past participle after \"has been\" (present perfect passive)."
+        "explanation": "The verb must be a past participle after \"has been\" (present perfect passive). \"Confirming\" would make the order the thing doing the confirming rather than the thing confirmed, \"confirmation\" is a noun, and \"confirm\" is a base form that cannot follow \"has been\"."
       },
       {
         "blank_number": 2,
         "options": [
           "include",
           "included",
-          "including",
-          "inclusive"
+          "inclusive",
+          "including"
         ],
         "answer": "including",
-        "explanation": "A present participle used as a preposition to introduce a list; \"including\" is not preceded by a comma that would require a finite verb."
+        "explanation": "A present participle used as a preposition to introduce the list of items in the package. \"Include\" and \"included\" are wrong because the main clause already has its finite verb \"will contain\", and \"inclusive\" is an adjective that would need \"of\" before the list."
       },
       {
         "blank_number": 3,
         "options": [
           "enclosed",
-          "enclose",
           "are enclosed",
+          "enclose",
           "enclosing"
         ],
         "answer": "are enclosed",
@@ -40,13 +40,13 @@
       {
         "blank_number": 4,
         "options": [
+          "processing",
           "process",
           "processed",
-          "processing",
           "to process"
         ],
         "answer": "processing",
-        "explanation": "After \"while we are,\" a present participle is required to form the present continuous tense."
+        "explanation": "After \"while we are,\" a present participle is required to form the present continuous tense. \"Processed\" would give the passive \"we are processed\", which reverses who acts on the order, and \"to process\" cannot follow \"are\" in this clause."
       }
     ]
   },
@@ -60,8 +60,8 @@
         "options": [
           "avoidable",
           "unavoidably",
-          "unavoidable",
-          "unavoidance"
+          "unavoidance",
+          "unavoidable"
         ],
         "answer": "unavoidable",
         "explanation": "An adjective is needed to modify the noun \"scheduling conflict\"; \"unavoidably\" is an adverb, and \"unavoidance\" is not a standard word."
@@ -70,8 +70,8 @@
         "blank_number": 2,
         "options": [
           "on",
-          "in",
           "at",
+          "in",
           "by"
         ],
         "answer": "at",
@@ -80,9 +80,9 @@
       {
         "blank_number": 3,
         "options": [
+          "will be sent",
           "send",
           "sent",
-          "will be sent",
           "has sent"
         ],
         "answer": "will be sent",
@@ -110,9 +110,9 @@
         "blank_number": 1,
         "options": [
           "delight",
+          "delighted",
           "delightful",
-          "delightedly",
-          "delighted"
+          "delightedly"
         ],
         "answer": "delighted",
         "explanation": "After a linking verb (\"are\"), a predicate adjective is required; \"delighted\" describes the subject's emotional state. \"Delightful\" would mean the subject is charming to others, which is the wrong meaning here."
@@ -120,9 +120,9 @@
       {
         "blank_number": 2,
         "options": [
+          "commencing",
           "commence",
           "commenced",
-          "commencing",
           "commencement"
         ],
         "answer": "commencing",
@@ -137,14 +137,14 @@
           "competitive"
         ],
         "answer": "competitive",
-        "explanation": "An adjective is needed to modify the noun \"salary package\"; the other options are a verb, verb form, and noun."
+        "explanation": "An adjective is needed to modify the noun \"salary package\". \"Competition\" is a noun and \"competing\" is a participle, so neither can describe the kind of package offered, and \"compete\" is the base verb."
       },
       {
         "blank_number": 4,
         "options": [
           "accept",
-          "acceptable",
           "acceptance",
+          "acceptable",
           "acceptably"
         ],
         "answer": "acceptance",
@@ -160,8 +160,8 @@
       {
         "blank_number": 1,
         "options": [
-          "in schedule",
           "on schedule",
+          "in schedule",
           "by schedule",
           "at schedule"
         ],
@@ -173,8 +173,8 @@
         "options": [
           "revise",
           "revised",
-          "has been revised",
-          "have been revised"
+          "have been revised",
+          "has been revised"
         ],
         "answer": "has been revised",
         "explanation": "The subject \"timeline\" is singular, so \"have been revised\" is wrong. The present perfect passive \"has been revised\" indicates the revision happened recently with a current result."
@@ -182,9 +182,9 @@
       {
         "blank_number": 3,
         "options": [
-          "prior to",
           "prior than",
           "previously",
+          "prior to",
           "before of"
         ],
         "answer": "prior to",
@@ -201,8 +201,8 @@
         "blank_number": 1,
         "options": [
           "regard",
-          "regards",
           "regarding",
+          "regards",
           "regarded"
         ],
         "answer": "regarding",
@@ -212,8 +212,8 @@
         "blank_number": 2,
         "options": [
           "thorough",
-          "thoroughness",
           "thoroughly",
+          "thoroughness",
           "more thoroughly"
         ],
         "answer": "thoroughly",
@@ -222,10 +222,10 @@
       {
         "blank_number": 3,
         "options": [
+          "replacement",
           "replace",
           "replacing",
-          "replaced",
-          "replacement"
+          "replaced"
         ],
         "answer": "replacement",
         "explanation": "A noun is needed after the article \"a\"; \"replace\" is a verb, \"replacing\" is a gerund/participle."
@@ -233,10 +233,10 @@
       {
         "blank_number": 4,
         "options": [
-          "resolve",
           "resolved",
           "resolving",
-          "resolution"
+          "resolution",
+          "resolve"
         ],
         "answer": "resolve",
         "explanation": "After a modal verb (\"to\"), the base form of the verb is required. \"Resolved\" is past tense, \"resolving\" is a participle, and \"resolution\" is a noun."
@@ -253,8 +253,8 @@
         "options": [
           "effect",
           "effectively",
-          "effectiveness",
-          "effective"
+          "effective",
+          "effectiveness"
         ],
         "answer": "effective",
         "explanation": "A predicate adjective following \"will be\" is needed; \"effective beginning [date]\" is a fixed business expression meaning the policy takes effect on that date."
@@ -263,8 +263,8 @@
         "blank_number": 2,
         "options": [
           "regardless",
-          "regardless of",
           "despite of",
+          "regardless of",
           "in spite"
         ],
         "answer": "regardless of",
@@ -274,8 +274,8 @@
         "blank_number": 3,
         "options": [
           "require",
-          "required",
           "are required",
+          "required",
           "requiring"
         ],
         "answer": "are required",
@@ -286,8 +286,8 @@
         "options": [
           "strict",
           "stricter",
-          "strictness",
-          "strictly"
+          "strictly",
+          "strictness"
         ],
         "answer": "strictly",
         "explanation": "An adverb is needed to modify the past participle \"enforced\"; \"strict\" is an adjective, \"stricter\" is a comparative adjective."
@@ -303,8 +303,8 @@
         "blank_number": 1,
         "options": [
           "permanence",
-          "permanently",
           "permanent",
+          "permanently",
           "permitting"
         ],
         "answer": "permanent",
@@ -315,19 +315,19 @@
         "options": [
           "relocate",
           "relocated",
-          "will be relocated",
-          "have relocated"
+          "have relocated",
+          "will be relocated"
         ],
         "answer": "will be relocated",
-        "explanation": "The future passive is correct; the subject \"belongings, files, and equipment\" will be acted upon (moved) by the movers, not acting themselves. Future tense is appropriate because the move has not happened yet."
+        "explanation": "The future passive is correct; the subject \"belongings, files, and equipment\" will be acted upon (moved) by the movers, not acting themselves. Future tense is appropriate because the move has not happened yet. \"Have relocated\" is wrong because the present perfect active would make the belongings move themselves and would place the move in the past, while the memo sets it on the weekend of March 8 and 9."
       },
       {
         "blank_number": 3,
         "options": [
           "disrupt",
           "disrupting",
-          "disruptive",
-          "disruption"
+          "disruption",
+          "disruptive"
         ],
         "answer": "disruption",
         "explanation": "A noun is needed after the article \"a\" and the adjective \"temporary\"; \"disrupt\" is a verb, \"disrupting\" is a participle, \"disruptive\" is an adjective."
@@ -342,9 +342,9 @@
       {
         "blank_number": 1,
         "options": [
+          "joining",
           "join",
           "joined",
-          "joining",
           "to joined"
         ],
         "answer": "joining",
@@ -364,8 +364,8 @@
       {
         "blank_number": 3,
         "options": [
-          "report to",
           "report for",
+          "report to",
           "reports to",
           "reporting for"
         ],
@@ -394,9 +394,9 @@
         "blank_number": 1,
         "options": [
           "temporary",
+          "temporarily",
           "temporariness",
-          "temporizing",
-          "temporarily"
+          "temporizing"
         ],
         "answer": "temporarily",
         "explanation": "An adverb is needed to modify the adjective \"out of service\"; \"temporary\" is an adjective that would need a noun to modify."
@@ -405,8 +405,8 @@
         "blank_number": 2,
         "options": [
           "during",
-          "duration",
           "durable",
+          "duration",
           "durably"
         ],
         "answer": "duration",
@@ -434,8 +434,8 @@
         "blank_number": 1,
         "options": [
           "modify",
-          "modification",
           "modified",
+          "modification",
           "modifying"
         ],
         "answer": "modified",
@@ -445,11 +445,11 @@
         "blank_number": 2,
         "options": [
           "For",
-          "During",
           "While",
-          "Throughout of"
+          "Throughout of",
+          "During"
         ],
-        "answer": "during",
+        "answer": "During",
         "explanation": "\"During\" is the correct preposition to introduce a noun phrase time period (\"this period\"). \"While\" introduces a clause with a subject and verb. \"Throughout of\" is non-standard; the correct form is \"throughout\" alone."
       },
       {
@@ -466,12 +466,12 @@
       {
         "blank_number": 4,
         "options": [
+          "Otherwise",
           "However",
           "Moreover",
-          "Otherwise",
           "Therefore"
         ],
-        "answer": "otherwise",
+        "answer": "Otherwise",
         "explanation": "\"Otherwise\" signals a contrasting condition (if you do not call for urgent matters, then normal hours resume). \"However\" introduces a contrasting fact. \"Moreover\" adds information. \"Therefore\" shows a result."
       }
     ]
@@ -497,8 +497,8 @@
         "options": [
           "designate",
           "designation",
-          "designating",
-          "designated"
+          "designated",
+          "designating"
         ],
         "answer": "designated",
         "explanation": "A past participle used as an adjective is needed to modify \"visitor spaces\"; \"designate\" is a base verb, \"designation\" is a noun, \"designating\" is an active participle."
@@ -506,12 +506,12 @@
       {
         "blank_number": 3,
         "options": [
-          "Failure to",
           "Failing",
           "To fail",
-          "Failed"
+          "Failed",
+          "Failure to"
         ],
-        "answer": "failure to",
+        "answer": "Failure to",
         "explanation": "The noun phrase \"Failure to + base verb\" is a common formal pattern for stating consequences; it functions as the subject of the sentence. \"Failing\" would also work grammatically but \"Failure to comply\" is the standard formal register used in notices."
       }
     ]
@@ -526,19 +526,19 @@
         "options": [
           "high",
           "higher",
-          "highest",
-          "highly"
+          "highly",
+          "highest"
         ],
         "answer": "highest",
-        "explanation": "The superlative is needed because the comparison is within a defined group (all professionals the writer has worked with). The article \"the\" before the blank is another signal of a superlative."
+        "explanation": "The superlative is needed because the comparison is within a defined group (all professionals the writer has worked with). The article \"the\" before the blank is another signal of a superlative. \"Higher\" is wrong because a comparative needs a second party to compare against, and \"highly\" is an adverb that cannot modify the noun phrase \"caliber professionals\"."
       },
       {
         "blank_number": 2,
         "options": [
           "consistent",
           "consistency",
-          "consistently",
-          "more consistently"
+          "more consistently",
+          "consistently"
         ],
         "answer": "consistently",
         "explanation": "An adverb is needed to modify the verb \"exceeded\"; \"consistent\" is an adjective, \"consistency\" is a noun."
@@ -546,9 +546,9 @@
       {
         "blank_number": 3,
         "options": [
+          "would make",
           "make",
           "makes",
-          "would make",
           "has made"
         ],
         "answer": "would make",
@@ -557,13 +557,13 @@
       {
         "blank_number": 4,
         "options": [
-          "hesitate",
           "hesitated",
           "hesitating",
+          "hesitate",
           "hesitation"
         ],
         "answer": "hesitate",
-        "explanation": "After \"do not,\" the base form of the verb is required. \"Please do not hesitate to contact me\" is a fixed formal closing phrase."
+        "explanation": "After \"do not,\" the base form of the verb is required. \"Please do not hesitate to contact me\" is a fixed formal closing phrase. \"Hesitated\" and \"hesitating\" are wrong because \"do not\" already carries the tense, and \"hesitation\" is a noun that cannot follow the auxiliary."
       }
     ]
   },
@@ -586,9 +586,9 @@
       {
         "blank_number": 2,
         "options": [
+          "renewed",
           "renew",
           "renewal",
-          "renewed",
           "renewing"
         ],
         "answer": "renewed",
@@ -597,9 +597,9 @@
       {
         "blank_number": 3,
         "options": [
-          "in accordance with",
           "according",
           "in accordance to",
+          "in accordance with",
           "accorded with"
         ],
         "answer": "in accordance with",
@@ -609,9 +609,9 @@
         "blank_number": 4,
         "options": [
           "mutual",
-          "mutually",
           "mutuality",
-          "mutualize"
+          "mutualize",
+          "mutually"
         ],
         "answer": "mutually",
         "explanation": "An adverb is needed to modify the adjective \"beneficial\"; \"mutual\" is an adjective that would modify a noun, \"mutuality\" is a noun."
@@ -628,8 +628,8 @@
         "options": [
           "seek",
           "sought",
-          "seeks",
-          "seeking"
+          "seeking",
+          "seeks"
         ],
         "answer": "seeking",
         "explanation": "After \"is currently,\" a present participle is needed to form the present continuous tense (is seeking). The company is the subject actively doing the seeking."
@@ -642,16 +642,16 @@
           "Proficiently",
           "Proficiencies"
         ],
-        "answer": "proficiency",
+        "answer": "Proficiency",
         "explanation": "A noun is needed to serve as the subject of the sentence; \"Proficient\" is an adjective, \"Proficiently\" is an adverb. Note that \"proficiency in\" is the standard collocation."
       },
       {
         "blank_number": 3,
         "options": [
           "compete",
+          "competitive",
           "competing",
-          "competition",
-          "competitive"
+          "competition"
         ],
         "answer": "competitive",
         "explanation": "An adjective is needed to modify \"salary\"; \"compete\" is a verb, \"competing\" is a participle, \"competition\" is a noun."
@@ -677,10 +677,10 @@
       {
         "blank_number": 1,
         "options": [
+          "innovative",
           "innovate",
           "innovation",
-          "innovatively",
-          "innovative"
+          "innovatively"
         ],
         "answer": "innovative",
         "explanation": "A superlative adjective phrase (\"most innovative\") is needed to modify \"water purification system\"; \"innovate\" is a verb, \"innovation\" is a noun, \"innovatively\" is an adverb."
@@ -688,8 +688,8 @@
       {
         "blank_number": 2,
         "options": [
-          "feature",
           "features",
+          "feature",
           "featured",
           "featuring"
         ],
@@ -717,6 +717,1026 @@
         ],
         "answer": "limited",
         "explanation": "\"For a limited time only\" is a fixed marketing expression; \"limited\" is a past participle used as an adjective. \"Limiting\" would mean the time is restricting something, which reverses the meaning."
+      }
+    ]
+  },
+  {
+    "id": "toeic_part6_016",
+    "passage_type": "email",
+    "passage": "Dear Mr. Huang,\n\nOur facilities team _(1)_ the annual inspection of the service elevator in Building C next Tuesday, 14 October. The work should begin at 8:00 A.M. and finish by early afternoon.\n\nDuring that period the elevator will be _(2)_ out of service. Staff who use it to move equipment between floors should plan deliveries for Monday or Wednesday instead. The passenger elevators in the main lobby will run as usual, _(3)_ the stairwell on the east side stays open.\n\nWe are sorry for the inconvenience. If your department has an urgent shipment that cannot be _(4)_, please call the facilities desk at extension 2140 before Friday so that we can arrange another route.\n\nBest regards,\n\nFacilities Management",
+    "questions": [
+      {
+        "blank_number": 1,
+        "options": [
+          "will carry out",
+          "carries out",
+          "carried out",
+          "carrying out"
+        ],
+        "answer": "will carry out",
+        "explanation": "The inspection happens next Tuesday, so the future form 'will carry out' is needed. 'Carried out' puts the work in the past, which contradicts the date, and 'carrying out' is not a finite verb and cannot serve as the main verb of the sentence."
+      },
+      {
+        "blank_number": 2,
+        "options": [
+          "gratefully",
+          "narrowly",
+          "densely",
+          "temporarily"
+        ],
+        "answer": "temporarily",
+        "explanation": "The elevator is out of service for one morning only, so 'temporarily' fits. 'Gratefully' describes a feeling and makes no sense with equipment, and 'narrowly' refers to a small margin, not to a period of time."
+      },
+      {
+        "blank_number": 3,
+        "options": [
+          "unless",
+          "despite",
+          "whether",
+          "and"
+        ],
+        "answer": "and",
+        "explanation": "Two independent clauses state two facts that are both true, so the coordinator 'and' works. 'Unless' would turn the open stairwell into a condition, which is illogical, and 'despite' is a preposition that cannot introduce a clause with a subject and verb."
+      },
+      {
+        "blank_number": 4,
+        "options": [
+          "postpone",
+          "postponing",
+          "postponement",
+          "postponed"
+        ],
+        "answer": "postponed",
+        "explanation": "After 'cannot be' a past participle is required, so 'postponed' completes the passive. The base form 'postpone' cannot follow 'be' in a passive structure, and the noun 'postponement' leaves the verb phrase without a participle."
+      }
+    ]
+  },
+  {
+    "id": "toeic_part6_017",
+    "passage_type": "email",
+    "passage": "Dear Colleagues,\n\nAs announced last month, the Marketing and Sales departments will move to the ninth floor of the Kenwood Building on 3 November. Packing materials _(1)_ to each desk this Thursday.\n\nPlease label every box with your name and your new room number. Boxes that are not marked _(2)_ may sit at the loading dock for several days.\n\nThe moving company will work over the weekend, _(3)_ nobody needs to take a day off. The IT team will reconnect computers on Sunday evening, and desk phones should be _(4)_ before Monday morning.\n\nIf you have questions about storage for large files, write to the relocation desk instead of calling the movers.\n\nBest regards,\n\nDiane Foster, Office Services",
+    "questions": [
+      {
+        "blank_number": 1,
+        "options": [
+          "will be delivered",
+          "will deliver",
+          "have delivered",
+          "delivering"
+        ],
+        "answer": "will be delivered",
+        "explanation": "Packing materials receive the action, so the passive 'will be delivered' is correct. Active 'will deliver' would mean the materials deliver something themselves, and 'have delivered' is a present perfect active form that also points to the past rather than to Thursday."
+      },
+      {
+        "blank_number": 2,
+        "options": [
+          "clear",
+          "clearly",
+          "clarity",
+          "clearing"
+        ],
+        "answer": "clearly",
+        "explanation": "The blank modifies the participle 'marked', so the adverb 'clearly' is needed. The adjective 'clear' cannot modify a verb form here, and the noun 'clarity' would leave two nouns side by side with no grammatical link."
+      },
+      {
+        "blank_number": 3,
+        "options": [
+          "so",
+          "because",
+          "although",
+          "in case"
+        ],
+        "answer": "so",
+        "explanation": "Weekend work by the movers is the reason and the free Monday is the result, so 'so' links them correctly. 'Because' reverses the logic, and 'although' signals a contrast that does not exist between the two clauses."
+      },
+      {
+        "blank_number": 4,
+        "options": [
+          "optional",
+          "functional",
+          "temporary",
+          "familiar"
+        ],
+        "answer": "functional",
+        "explanation": "Phones reconnected over the weekend should work on Monday, so 'functional' fits. 'Optional' would suggest staff may choose to have a phone, and 'temporary' contradicts the plan to restore normal service."
+      }
+    ]
+  },
+  {
+    "id": "toeic_part6_018",
+    "passage_type": "email",
+    "passage": "Dear Team Leaders,\n\nRegistration for the autumn training programme is now open. Six courses are available this year, _(1)_ data protection, contract writing, and basic project scheduling.\n\nEach course runs over two half days. Seats are limited, so we ask each department to _(2)_ no more than four people. The registration form is attached and must reach Human Resources by 10 October.\n\nEmployees who _(3)_ the spring session do not have to repeat the introductory module. Their records were updated in the learning system in June.\n\nManagers will receive a confirmed list of _(4)_ one week before the first class. Tell us early if someone has to send a substitute, since an empty seat cannot be refunded.\n\nBest regards,\n\nTraining Office",
+    "questions": [
+      {
+        "blank_number": 1,
+        "options": [
+          "besides",
+          "except",
+          "instead of",
+          "including"
+        ],
+        "answer": "including",
+        "explanation": "The three subjects are examples taken from the six courses, so 'including' is correct. 'Besides' would add them on top of the six, and 'except' would remove them from the list, which contradicts the rest of the message."
+      },
+      {
+        "blank_number": 2,
+        "options": [
+          "nominate",
+          "postpone",
+          "resemble",
+          "decline"
+        ],
+        "answer": "nominate",
+        "explanation": "Departments put forward names for limited seats, so 'nominate' fits. 'Postpone' takes an event rather than people as its object, and 'decline' would mean refusing the staff, which makes no sense with a cap of four."
+      },
+      {
+        "blank_number": 3,
+        "options": [
+          "completed",
+          "complete",
+          "will complete",
+          "are completing"
+        ],
+        "answer": "completed",
+        "explanation": "The spring session is finished and the records were updated in June, so the past 'completed' is required. 'Will complete' places the session in the future, and 'are completing' describes something still in progress."
+      },
+      {
+        "blank_number": 4,
+        "options": [
+          "participate",
+          "participants",
+          "participated",
+          "participating"
+        ],
+        "answer": "participants",
+        "explanation": "After 'a list of' a noun is needed, so the plural noun 'participants' is correct. 'Participate' is a verb and cannot follow the preposition 'of', and 'participated' is a past form that leaves the phrase incomplete."
+      }
+    ]
+  },
+  {
+    "id": "toeic_part6_019",
+    "passage_type": "email",
+    "passage": "Dear Purchasing Staff,\n\nFrom 1 December, office stationery will come from Harrow Trading _(1)_ Belmont Paper. The change follows a review of delivery times and unit prices that finished last quarter.\n\nHarrow Trading keeps most of our regular items in its Taoyuan warehouse. Orders placed before 4:00 P.M. _(2)_ on the next business day. Prices for the twenty products we buy most often are about eight percent lower than our current rates.\n\nPlease use the new order codes on the attached sheet. Codes from the old catalogue stop working on 30 November, and any order that still carries one will be _(3)_ by the system.\n\nQuestions about unpaid invoices go to Accounts Payable, not to the _(4)_.\n\nBest regards,\n\nIvan Petrov, Procurement Manager",
+    "questions": [
+      {
+        "blank_number": 1,
+        "options": [
+          "as well as",
+          "instead of",
+          "apart from",
+          "in spite of"
+        ],
+        "answer": "instead of",
+        "explanation": "One supplier replaces the other, so 'instead of' expresses the substitution. 'As well as' would mean both firms continue to supply the office, and 'in spite of' expresses concession, which does not fit two company names."
+      },
+      {
+        "blank_number": 2,
+        "options": [
+          "will be shipped",
+          "will ship",
+          "have been shipped",
+          "shipping"
+        ],
+        "answer": "will be shipped",
+        "explanation": "Orders are shipped by the supplier, so the passive 'will be shipped' is right. Active 'will ship' makes the orders do the shipping, and 'have been shipped' refers to completed action rather than to future orders."
+      },
+      {
+        "blank_number": 3,
+        "options": [
+          "discounted",
+          "repeated",
+          "delivered",
+          "rejected"
+        ],
+        "answer": "rejected",
+        "explanation": "Old codes stop working, so an order carrying one is 'rejected'. 'Discounted' suggests a price cut rather than a failure, and 'delivered' contradicts the warning about codes that no longer function."
+      },
+      {
+        "blank_number": 4,
+        "options": [
+          "supply",
+          "supplied",
+          "supplier",
+          "supplying"
+        ],
+        "answer": "supplier",
+        "explanation": "The article 'the' needs a noun for a person or company, so 'supplier' is correct. 'Supply' names a thing rather than the party being contacted, and 'supplied' is a past participle that cannot stand after 'the' on its own."
+      }
+    ]
+  },
+  {
+    "id": "toeic_part6_020",
+    "passage_type": "memo",
+    "passage": "MEMO\n\nTo: All Staff\nFrom: Information Systems\nSubject: Expense system upgrade, Saturday 18 October\n\nThe expense reporting system _(1)_ on Saturday, 18 October, from 7:00 A.M. until about 6:00 P.M. Nobody will be able to open it during those hours.\n\nThe new version works on a phone and lets you attach photographs of receipts _(2)_ scanning them first. Approval routes do not change, so managers will find requests in the usual queue.\n\nReports saved as drafts before Friday evening will be _(3)_ to the new system automatically. Drafts started during the shutdown cannot be recovered, so please submit open items by 5:00 P.M. on Friday.\n\nA short guide to the _(4)_ screens will appear on the intranet next week. The help desk answers questions at extension 3300.",
+    "questions": [
+      {
+        "blank_number": 1,
+        "options": [
+          "will be taken offline",
+          "takes offline",
+          "was taken offline",
+          "taking offline"
+        ],
+        "answer": "will be taken offline",
+        "explanation": "The upgrade is still ahead and the system receives the action, so the future passive 'will be taken offline' fits. 'Was taken offline' points to the past, and 'takes offline' is active and would need an object after it."
+      },
+      {
+        "blank_number": 2,
+        "options": [
+          "despite",
+          "except",
+          "unlike",
+          "without"
+        ],
+        "answer": "without",
+        "explanation": "Photographs replace scanning, so 'without scanning them first' states what is no longer needed. 'Despite' would concede a difficulty that is not mentioned, and 'unlike' compares two things rather than removing a step."
+      },
+      {
+        "blank_number": 3,
+        "options": [
+          "transferred",
+          "reminded",
+          "apologized",
+          "estimated"
+        ],
+        "answer": "transferred",
+        "explanation": "Drafts move from the old system to the new one, so 'transferred' is correct. 'Reminded' takes a person as its object, and 'apologized' is intransitive and cannot be used in this passive pattern at all."
+      },
+      {
+        "blank_number": 4,
+        "options": [
+          "revised",
+          "revise",
+          "revision",
+          "revises"
+        ],
+        "answer": "revised",
+        "explanation": "The blank modifies the noun 'screens', so the participial adjective 'revised' is needed. The verb 'revise' cannot sit between 'the' and a noun, and the noun 'revision' would create two nouns with no connection."
+      }
+    ]
+  },
+  {
+    "id": "toeic_part6_021",
+    "passage_type": "memo",
+    "passage": "MEMO\n\nTo: Department Managers\nFrom: Finance\nSubject: Annual audit, 5 to 9 November\n\nAuditors from Larkin and Cole will visit the Taipei office during the week of 5 November. Their _(1)_ this year covers purchasing records, travel claims, and fixed asset labels.\n\nPlease collect the documents on the attached checklist and keep them in one folder on the shared drive. Files that sit only on personal laptops are hard to produce quickly, _(2)_ they often hold up the whole review.\n\nTwo auditors _(3)_ a meeting room on the third floor for the entire week. When they ask for an explanation, answer with facts and do not guess. Any figure you are unsure about should be _(4)_ to Finance before you mention it.\n\nThank you for your help.",
+    "questions": [
+      {
+        "blank_number": 1,
+        "options": [
+          "examine",
+          "examination",
+          "examined",
+          "examining"
+        ],
+        "answer": "examination",
+        "explanation": "The possessive 'Their' needs a noun as the subject of 'covers', so 'examination' is correct. The verb 'examine' leaves the sentence with two main verbs, and 'examined' is a past form that cannot follow a possessive adjective."
+      },
+      {
+        "blank_number": 2,
+        "options": [
+          "or",
+          "so",
+          "nor",
+          "as though"
+        ],
+        "answer": "so",
+        "explanation": "Slow retrieval is the cause and a delayed review is the result, so 'so' joins them correctly. 'Or' offers an alternative that is not intended, and 'nor' requires a negative clause and inverted word order."
+      },
+      {
+        "blank_number": 3,
+        "options": [
+          "occupy",
+          "occupied",
+          "had occupied",
+          "will occupy"
+        ],
+        "answer": "will occupy",
+        "explanation": "The visit takes place in November, so the future 'will occupy' matches the timeline. 'Occupied' and 'had occupied' both place the room booking in the past, which conflicts with the announced dates."
+      },
+      {
+        "blank_number": 4,
+        "options": [
+          "repeated",
+          "removed",
+          "reported",
+          "rewarded"
+        ],
+        "answer": "reported",
+        "explanation": "An uncertain figure should be raised with Finance, so 'reported' fits. 'Repeated' would mean saying the number again without checking it, and 'removed' suggests deleting data during an audit, which the memo never advises."
+      }
+    ]
+  },
+  {
+    "id": "toeic_part6_022",
+    "passage_type": "memo",
+    "passage": "MEMO\n\nTo: All Employees\nFrom: Human Resources\nSubject: Annual health checks, 20 to 24 October\n\nChenghe Medical Centre will run this year's health checks in meeting rooms B and C. Each appointment _(1)_ about forty minutes, and the booking page opens on Monday.\n\nStaff who joined the company before June may take the full package, _(2)_ includes a blood test and a hearing test. Colleagues who joined later can still book the basic package at no cost.\n\nPlease eat nothing for eight hours before your appointment. Water is fine. Bring your employee card, because results _(3)_ to anyone who cannot show one.\n\nReports go to your home address in a sealed envelope. Human Resources never receives a copy, so your results stay _(4)_.",
+    "questions": [
+      {
+        "blank_number": 1,
+        "options": [
+          "spends",
+          "lasts",
+          "passes",
+          "delays"
+        ],
+        "answer": "lasts",
+        "explanation": "An event that continues for forty minutes 'lasts' that long. 'Spends' needs a person as its subject, since time is spent by people and not by an appointment, and 'delays' would mean the appointment holds something up."
+      },
+      {
+        "blank_number": 2,
+        "options": [
+          "which",
+          "what",
+          "whose",
+          "where"
+        ],
+        "answer": "which",
+        "explanation": "The clause adds information about 'the full package', so the relative pronoun 'which' is correct. 'What' cannot introduce a clause that refers back to a stated noun, and 'whose' would need a noun after it to show possession."
+      },
+      {
+        "blank_number": 3,
+        "options": [
+          "will not give",
+          "are not giving",
+          "will not be given",
+          "have not given"
+        ],
+        "answer": "will not be given",
+        "explanation": "Results are handed over by the clinic, so the passive 'will not be given' is needed. Active 'will not give' would make the results the giver, and 'have not given' describes past action rather than the rule for next week."
+      },
+      {
+        "blank_number": 4,
+        "options": [
+          "confidence",
+          "confident",
+          "confidential",
+          "confidentially"
+        ],
+        "answer": "confidential",
+        "explanation": "The linking verb 'stay' takes an adjective, so 'confidential' is correct. The noun 'confidence' does not describe the results, and the adverb 'confidentially' cannot follow a linking verb in this pattern."
+      }
+    ]
+  },
+  {
+    "id": "toeic_part6_023",
+    "passage_type": "notice",
+    "passage": "NOTICE TO ALL DRIVERS\n\nThe staff car park will be repainted from 6 to 8 October. Rows A to D _(1)_ during those three days, and the gate on Minsheng Road will stay shut.\n\nDrivers who normally park in those rows may use the visitor area behind the cafeteria. Keep your permit on the dashboard, because a car left there without one may be _(2)_ at the owner's expense.\n\nFresh paint needs roughly twelve hours to dry, _(3)_ please keep off the marked lanes even after the contractors go home for the day.\n\nWe expect normal _(4)_ to resume on Monday, 11 October. Anyone who needs space for a delivery van this week should speak to the guard at the north gate.",
+    "questions": [
+      {
+        "blank_number": 1,
+        "options": [
+          "close off",
+          "closed off",
+          "will be closed off",
+          "have closed off"
+        ],
+        "answer": "will be closed off",
+        "explanation": "The rows receive the action and the work starts in October, so the future passive 'will be closed off' fits. Active 'have closed off' would make the parking rows perform the action, and 'closed off' alone leaves the clause without a finite verb."
+      },
+      {
+        "blank_number": 2,
+        "options": [
+          "removed",
+          "reminded",
+          "refunded",
+          "replaced"
+        ],
+        "answer": "removed",
+        "explanation": "A car without a permit is towed away at the owner's cost, so 'removed' is correct. 'Reminded' applies to people rather than vehicles, and 'refunded' concerns money paid back, which has nothing to do with parking enforcement."
+      },
+      {
+        "blank_number": 3,
+        "options": [
+          "unless",
+          "so",
+          "although",
+          "whether"
+        ],
+        "answer": "so",
+        "explanation": "The long drying time is the reason for the request, so 'so' introduces the result. 'Unless' would state a condition that contradicts the warning, and 'although' would signal a contrast that the two clauses do not contain."
+      },
+      {
+        "blank_number": 4,
+        "options": [
+          "operate",
+          "operations",
+          "operating",
+          "operational"
+        ],
+        "answer": "operations",
+        "explanation": "The adjective 'normal' needs a noun after it, so 'operations' is correct. The verb 'operate' cannot serve as the subject of 'to resume', and the adjective 'operational' would leave the phrase with no noun at all."
+      }
+    ]
+  },
+  {
+    "id": "toeic_part6_024",
+    "passage_type": "notice",
+    "passage": "NOTICE: TYPHOON PREPARATION\n\nThe weather bureau has issued a sea warning, and a land warning may follow on Thursday. This notice explains what to do if the city announces a work suspension.\n\nCall the company line at 0800-123-456 after 6:00 A.M. If the city suspends work, the office _(1)_ closed and nobody should travel to the building. Night shift staff may go home _(2)_ their replacements arrive.\n\n_(3)_ Please copy them to the shared drive before you leave on Wednesday, because the server room on our floor may lose power.\n\nWindows on the south side of the eleventh floor must be shut and taped. Maintenance covers the public areas, but a private office is the _(4)_ of the person who uses it.",
+    "questions": [
+      {
+        "blank_number": 1,
+        "options": [
+          "will remain",
+          "remained",
+          "has remained",
+          "remaining"
+        ],
+        "answer": "will remain",
+        "explanation": "The closure depends on an announcement that has not happened yet, so the future 'will remain' is needed. 'Remained' places the closure in the past, and 'remaining' is not a finite verb and cannot follow the subject 'the office'."
+      },
+      {
+        "blank_number": 2,
+        "options": [
+          "in case of",
+          "due to",
+          "as soon as",
+          "as well as"
+        ],
+        "answer": "as soon as",
+        "explanation": "The blank joins a clause with a subject and verb, so the conjunction 'as soon as' works. 'In case of' and 'due to' are prepositions that must be followed by a noun phrase, not by 'their replacements arrive'."
+      },
+      {
+        "blank_number": 3,
+        "options": [
+          "The cafeteria will serve a shorter menu during the storm.",
+          "Many teams keep working files on the hard drive of a desktop computer.",
+          "Parking permits must be renewed at the end of the month.",
+          "Last year's training schedule is still posted on the intranet."
+        ],
+        "answer": "Many teams keep working files on the hard drive of a desktop computer.",
+        "explanation": "The next sentence says to copy 'them' to the shared drive, so the blank must introduce the files stored locally. The cafeteria menu gives no plural noun for 'them' to refer to, and the parking sentence changes the subject away from data and power loss."
+      },
+      {
+        "blank_number": 4,
+        "options": [
+          "responsible",
+          "responsibility",
+          "responsibly",
+          "respond"
+        ],
+        "answer": "responsibility",
+        "explanation": "After 'is the' a noun is required, so 'responsibility' completes the phrase. The adjective 'responsible' cannot follow the article 'the', and the adverb 'responsibly' cannot act as a complement of 'is' here."
+      }
+    ]
+  },
+  {
+    "id": "toeic_part6_025",
+    "passage_type": "notice",
+    "passage": "SECURITY REMINDER\n\nOur mail filter stopped more than three hundred messages last month that tried to collect staff passwords. A few of them still reach inboxes, so please read this notice _(1)_.\n\nInformation Systems will never ask for your password. If a message warns that your account will be locked _(2)_ you confirm your details, treat it as fraud and forward it to the security mailbox.\n\nCheck the full sender address, not only the display name. Attackers often buy domains that differ from ours by one letter. Every attachment from an outside sender _(3)_ by our scanner, but no scanner can stop a link you click yourself.\n\nAnyone who has already typed a password into a fake page should change it now and call the help desk. Fast reporting keeps a small mistake from becoming a serious _(4)_.",
+    "questions": [
+      {
+        "blank_number": 1,
+        "options": [
+          "care",
+          "careful",
+          "caring",
+          "carefully"
+        ],
+        "answer": "carefully",
+        "explanation": "The blank modifies the verb 'read', so the adverb 'carefully' is correct. The noun 'care' would need a preposition such as 'with' in front of it, and the adjective 'careful' cannot describe an action on its own."
+      },
+      {
+        "blank_number": 2,
+        "options": [
+          "unless",
+          "so that",
+          "whereas",
+          "in order to"
+        ],
+        "answer": "unless",
+        "explanation": "The fake message threatens a lock if the reader does not comply, so 'unless' states that negative condition. 'So that' would give the lock as a purpose, and 'in order to' must be followed by a base verb rather than by a full clause."
+      },
+      {
+        "blank_number": 3,
+        "options": [
+          "checks",
+          "is checked",
+          "checking",
+          "to check"
+        ],
+        "answer": "is checked",
+        "explanation": "The attachment receives the action from the scanner, so the passive 'is checked' is needed. Active 'checks' would make the attachment do the checking, and 'checking' leaves the clause without a finite verb."
+      },
+      {
+        "blank_number": 4,
+        "options": [
+          "breach",
+          "bargain",
+          "brochure",
+          "budget"
+        ],
+        "answer": "breach",
+        "explanation": "A stolen password leads to a security 'breach'. 'Bargain' refers to a good price and has no security meaning, and 'brochure' is a printed document, which does not follow from reporting a mistake quickly."
+      }
+    ]
+  },
+  {
+    "id": "toeic_part6_026",
+    "passage_type": "letter",
+    "passage": "Dear Ms. Alvarado,\n\nYour lease for Suite 402 at Harbour Point Plaza _(1)_ on 31 March. We would like to offer you a renewal for a further two years at the current monthly rate, with no increase in the service charge.\n\nOver the past three years you have been an excellent tenant, and the building management team _(2)_ your prompt payments. _(3)_ you decide to renew, we will repaint the reception area and replace the carpet in the meeting room at our own expense.\n\nPlease return the signed renewal form by 15 February. Our leasing office will then send you a written _(4)_ within five business days. Should we not hear from you by that date, the suite will be offered to other applicants.\n\nBest regards,\n\nDaniel Choi, Property Manager",
+    "questions": [
+      {
+        "blank_number": 1,
+        "options": [
+          "expired",
+          "has expired",
+          "expiring",
+          "expires"
+        ],
+        "answer": "expires",
+        "explanation": "A scheduled future event takes the simple present, so 'expires on 31 March' is correct. 'Expired' and 'has expired' both place the end of the lease in the past, which contradicts the renewal offer that follows, and 'expiring' is a participle that cannot stand alone as the main verb of the sentence."
+      },
+      {
+        "blank_number": 2,
+        "options": [
+          "advertises",
+          "postpones",
+          "duplicates",
+          "appreciates"
+        ],
+        "answer": "appreciates",
+        "explanation": "The sentence praises a good tenant, so 'appreciates your prompt payments' fits the positive meaning. 'Advertises' would mean the team publicises the payments, which makes no sense here, and 'postpones' says the opposite of prompt payment. 'Duplicates' would suggest the payments are being copied."
+      },
+      {
+        "blank_number": 3,
+        "options": [
+          "Despite",
+          "If",
+          "In order to",
+          "Whether"
+        ],
+        "answer": "If",
+        "explanation": "A conditional clause with a subject and verb is needed before the main clause, so 'If you decide to renew' is correct. 'Despite' is a preposition and must be followed by a noun phrase, not a full clause, and 'In order to' requires a bare infinitive. 'Whether' introduces alternatives rather than a condition for the promised repairs."
+      },
+      {
+        "blank_number": 4,
+        "options": [
+          "confirm",
+          "confirmation",
+          "confirmed",
+          "confirming"
+        ],
+        "answer": "confirmation",
+        "explanation": "The article 'a' and the adjective 'written' require a noun, so 'a written confirmation' is correct. 'Confirm' is a base verb and 'confirmed' is a past form, and neither can follow an adjective in this position. 'Confirming' would need a noun after it to work as a modifier."
+      }
+    ]
+  },
+  {
+    "id": "toeic_part6_027",
+    "passage_type": "letter",
+    "passage": "Dear Mr. Fontaine,\n\nThank you for writing to us about the damaged blender you received last Tuesday. I am sorry that our packaging did not protect the item during shipping.\n\nA replacement unit _(1)_ from our Rotterdam warehouse this morning and should reach you within three working days. You do not need to send the damaged blender back; please recycle it locally.\n\nWe have also reviewed the way fragile goods are packed here. _(2)_ next month, every small appliance will travel in a double-walled carton with moulded inserts. Your report moved that change forward.\n\nAs a gesture of _(3)_, I have added a twenty-percent discount code to your account. It is _(4)_ on any order placed before 30 June.\n\nBest regards,\n\nPriya Nair, Customer Care",
+    "questions": [
+      {
+        "blank_number": 1,
+        "options": [
+          "was dispatched",
+          "dispatched",
+          "will dispatch",
+          "is dispatching"
+        ],
+        "answer": "was dispatched",
+        "explanation": "The subject 'a replacement unit' receives the action, so the passive 'was dispatched' is required, and 'this morning' fixes the time in the past. The active forms 'dispatched' and 'will dispatch' wrongly make the unit send itself, and 'will dispatch' also clashes with the past time reference."
+      },
+      {
+        "blank_number": 2,
+        "options": [
+          "By way of",
+          "Instead of",
+          "As of",
+          "In case of"
+        ],
+        "answer": "As of",
+        "explanation": "'As of next month' marks the date a new practice takes effect, which matches the new carton described in the sentence. 'Instead of' would set the month against something else rather than start a policy, and 'In case of' introduces a contingency. 'By way of' means as a form of something and does not fit a time expression."
+      },
+      {
+        "blank_number": 3,
+        "options": [
+          "apology",
+          "inventory",
+          "attendance",
+          "renovation"
+        ],
+        "answer": "apology",
+        "explanation": "The writer is compensating a customer for a damaged product, so 'as a gesture of apology' fits the situation. 'Inventory' refers to stock records and has nothing to do with a discount code, and 'attendance' concerns presence at an event. 'Renovation' refers to repairing a building, not to customer compensation."
+      },
+      {
+        "blank_number": 4,
+        "options": [
+          "validity",
+          "valid",
+          "validate",
+          "validly"
+        ],
+        "answer": "valid",
+        "explanation": "The linking verb 'is' needs an adjective complement, so 'It is valid on any order' is correct. 'Validity' is a noun and would need an article, while 'validate' is a base verb that cannot follow 'is' in this pattern. 'Validly' is an adverb and cannot describe the code itself."
+      }
+    ]
+  },
+  {
+    "id": "toeic_part6_028",
+    "passage_type": "letter",
+    "passage": "Dear Subscriber,\n\nFrom 1 October, Lumen Analytics will replace its three current plans with two _(1)_ ones. The Standard plan keeps every feature you use today and holds your monthly price until your contract ends.\n\nThe new Team plan adds shared dashboards and unlimited export, both of which many of you asked for _(2)_ last year's user survey. It costs eight dollars more per seat.\n\nYour account will move to the Standard plan automatically, so no action _(3)_ on your part. If you would rather upgrade, open Billing in your workspace settings and choose Team before 25 September.\n\nFull details of both plans are on our pricing page. Our support team will answer any _(4)_ question at help@lumenanalytics.com.\n\nBest regards,\n\nThe Lumen Analytics Team",
+    "questions": [
+      {
+        "blank_number": 1,
+        "options": [
+          "simpler",
+          "simply",
+          "simplify",
+          "simplicity"
+        ],
+        "answer": "simpler",
+        "explanation": "The blank modifies the pronoun 'ones', so a comparative adjective is needed and 'two simpler ones' is correct. 'Simply' is an adverb and cannot describe a noun, and 'simplify' is a verb that leaves the phrase without a modifier. 'Simplicity' is an abstract noun and cannot sit between a number and 'ones'."
+      },
+      {
+        "blank_number": 2,
+        "options": [
+          "into",
+          "among",
+          "toward",
+          "in"
+        ],
+        "answer": "in",
+        "explanation": "Requests are recorded inside a document, so 'in last year's user survey' is the standard collocation. 'Into' expresses movement to the inside of something and does not suit a static location in a text, and 'toward' expresses direction. 'Among' would require a plural group rather than a single survey."
+      },
+      {
+        "blank_number": 3,
+        "options": [
+          "requires",
+          "has required",
+          "requiring",
+          "is required"
+        ],
+        "answer": "is required",
+        "explanation": "'No action' is the thing being required, so the passive 'is required' is correct. The active 'requires' and 'has required' would mean the action demands something from the reader, which reverses the intended meaning. 'Requiring' is a participle and cannot serve as the main verb of the clause."
+      },
+      {
+        "blank_number": 4,
+        "options": [
+          "audible",
+          "vacant",
+          "grateful",
+          "remaining"
+        ],
+        "answer": "remaining",
+        "explanation": "The letter has just given full details, so 'any remaining question' refers to whatever is still unanswered. 'Audible' describes sound that can be heard and says nothing about unanswered points, and 'vacant' describes an empty seat or post. 'Grateful' describes a person's feeling, not a question."
+      }
+    ]
+  },
+  {
+    "id": "toeic_part6_029",
+    "passage_type": "advertisement",
+    "passage": "NIGHT SHIFT TEAM LEADER, KESTREL FOODS (LEEDS)\n\nKestrel Foods is hiring a team leader for its chilled-goods line. You will supervise eight operators, record output figures, and make sure that hygiene standards _(1)_ at every changeover.\n\nWe want someone with at least two years of food-production experience and a calm approach to problems. Formal qualifications matter less to us than _(2)_; if you can keep a line running on a difficult night, we would like to talk to you.\n\n_(3)_ the hours are demanding, most of our team leaders stay with us for years. The job pays 34,000 pounds a year plus a fifteen-percent shift allowance, and holiday starts at twenty-eight days.\n\nEmail a short _(4)_ of your experience to jobs@kestrelfoods.co.uk.",
+    "questions": [
+      {
+        "blank_number": 1,
+        "options": [
+          "meet",
+          "are met",
+          "are meeting",
+          "have met"
+        ],
+        "answer": "are met",
+        "explanation": "Standards are something people satisfy, so the passive 'are met' is required. The active 'meet' and 'are meeting' would make the standards perform the action, which reverses the roles, and 'have met' also keeps the standards as the agent while adding a completed sense that clashes with the repeated event 'at every changeover'."
+      },
+      {
+        "blank_number": 2,
+        "options": [
+          "furniture",
+          "postage",
+          "scenery",
+          "reliability"
+        ],
+        "answer": "reliability",
+        "explanation": "The blank is contrasted with formal qualifications and explained by the example of keeping a line running, so 'reliability' fits as a personal quality. 'Furniture' and 'postage' are physical items that cannot be compared with qualifications, and 'scenery' refers to landscape or stage sets, which has no bearing on a production job."
+      },
+      {
+        "blank_number": 3,
+        "options": [
+          "Although",
+          "Despite",
+          "However",
+          "Because"
+        ],
+        "answer": "Although",
+        "explanation": "Two contrasting clauses are joined, so the subordinating conjunction 'Although' is correct. 'Despite' is a preposition and needs a noun phrase rather than the clause 'the hours are demanding', and 'However' is an adverb that would need a semicolon or full stop. 'Because' gives a cause and reverses the logic of the contrast."
+      },
+      {
+        "blank_number": 4,
+        "options": [
+          "describe",
+          "descriptive",
+          "description",
+          "described"
+        ],
+        "answer": "description",
+        "explanation": "The article 'a' and the adjective 'short' call for a noun, so 'a short description of your experience' is correct. 'Describe' is a base verb and cannot follow an adjective, and 'descriptive' is itself an adjective, leaving the phrase with no head noun. 'Described' is a past participle and does not work as the object of 'email'."
+      }
+    ]
+  },
+  {
+    "id": "toeic_part6_030",
+    "passage_type": "advertisement",
+    "passage": "CLEAR THE FLOOR: OFFICE FURNITURE SALE AT DELMAR INTERIORS\n\nOur Croydon showroom is being refitted, so every item on display _(1)_ by 20 August. Height-adjustable desks start at 180 pounds, mesh task chairs at 95 pounds, and steel filing cabinets at 40 pounds. These pieces stood in a showroom rather than an office, so wear is minimal.\n\nDelivery inside the M25 costs 35 pounds per van load, _(2)_ orders above 1,500 pounds travel free. We can collect your old furniture for recycling on the same visit.\n\nStock changes daily and we cannot hold items without a deposit. For a current _(3)_, call 020 7946 0112 or come to the showroom between 9 a.m. and 6 p.m. Our sales staff will gladly help you _(4)_ a layout that suits your floor space.",
+    "questions": [
+      {
+        "blank_number": 1,
+        "options": [
+          "must sell",
+          "must be sold",
+          "must be selling",
+          "must have sold"
+        ],
+        "answer": "must be sold",
+        "explanation": "The subject 'every item on display' is the goods being sold, so the passive 'must be sold' is correct. 'Must sell' would make the furniture the seller, and 'must be selling' expresses a guess about something happening now rather than an obligation with a deadline. 'Must have sold' points to the past and clashes with the future date."
+      },
+      {
+        "blank_number": 2,
+        "options": [
+          "so",
+          "for",
+          "but",
+          "or"
+        ],
+        "answer": "but",
+        "explanation": "A delivery charge is set against free delivery for large orders, so the contrast conjunction 'but' is correct. 'So' would present free delivery as a result of the charge, which is illogical, and 'for' would give a reason. 'Or' would treat the two statements as alternatives when both are true at the same time."
+      },
+      {
+        "blank_number": 3,
+        "options": [
+          "portrait",
+          "curriculum",
+          "apology",
+          "inventory"
+        ],
+        "answer": "inventory",
+        "explanation": "Stock changes daily, so readers are told to call for a current 'inventory', meaning an up-to-date list of what is available. 'Portrait' is a painting or photograph of a person and has nothing to do with stock, and 'curriculum' refers to a course of study. 'Apology' would make no sense as something a caller requests from a furniture shop."
+      },
+      {
+        "blank_number": 4,
+        "options": [
+          "plan",
+          "plans",
+          "planner",
+          "planning"
+        ],
+        "answer": "plan",
+        "explanation": "The pattern 'help someone do something' takes a bare infinitive, so 'help you plan a layout' is correct. 'Plans' is a finite form that cannot follow the object of 'help', and 'planning' would need 'with' before it to work. 'Planner' is a noun and leaves 'a layout' without a verb to govern it."
+      }
+    ]
+  },
+  {
+    "id": "toeic_part6_031",
+    "passage_type": "advertisement",
+    "passage": "SEVEN OAKS CATERING: LUNCH THAT ARRIVES ON TIME\n\nWe have been feeding Bristol offices since 2009. Whether you need thirty sandwich boxes for a training day _(1)_ a hot buffet for eighty guests, we cook it the same morning and deliver it in insulated trolleys.\n\nOur standard office menu costs 9.50 pounds a head and _(2)_ a main dish, two salads, fresh fruit, and still water. Vegan, halal, and gluten-free choices carry no extra charge, and every box is labelled with its full ingredient list.\n\nOrders placed before 4 p.m. can arrive the following day. Larger events need three days' _(3)_.\n\nTastings _(4)_ every Thursday morning at our Redfield kitchen, and they cost nothing. Book one at 0117 496 2280.",
+    "questions": [
+      {
+        "blank_number": 1,
+        "options": [
+          "and",
+          "nor",
+          "but",
+          "or"
+        ],
+        "answer": "or",
+        "explanation": "'Whether' introduces two alternatives and is paired with 'or', so 'whether you need boxes or a buffet' is correct. 'And' would state that the customer needs both at once, which defeats the point of the pair, and 'but' sets up a contrast that 'whether' cannot support. 'Nor' requires a preceding negative."
+      },
+      {
+        "blank_number": 2,
+        "options": [
+          "include",
+          "including",
+          "inclusion",
+          "includes"
+        ],
+        "answer": "includes",
+        "explanation": "The blank is a second verb for the singular subject 'our standard office menu', so 'includes' matches 'costs' in form and agreement. 'Include' fails subject-verb agreement, and 'including' is a participle that cannot be joined to a finite verb by 'and'. 'Inclusion' is a noun and leaves the clause without a verb."
+      },
+      {
+        "blank_number": 3,
+        "options": [
+          "traffic",
+          "notice",
+          "harvest",
+          "luggage"
+        ],
+        "answer": "notice",
+        "explanation": "The sentence contrasts next-day orders with bigger events, so 'three days' notice' means advance warning. 'Traffic' refers to vehicles on the road and cannot be measured in days of warning, and 'harvest' concerns gathering crops. 'Luggage' means bags carried by travellers and has no connection to booking lead time."
+      },
+      {
+        "blank_number": 4,
+        "options": [
+          "hold",
+          "are holding",
+          "have held",
+          "are held"
+        ],
+        "answer": "are held",
+        "explanation": "Tastings are events that the company organises, so the passive 'are held' is correct. The active 'hold' and 'are holding' would make the tastings the organiser, which reverses the roles, and 'have held' likewise keeps them as the agent while suggesting a completed action rather than a weekly routine."
+      }
+    ]
+  },
+  {
+    "id": "toeic_part6_032",
+    "passage_type": "advertisement",
+    "passage": "MERIDIAN STORAGE AND FULFILMENT\n\nGrowing online shops often run out of space long before they run out of orders. Meridian rents warehouse bays from twenty square metres upward, _(1)_ a three-month minimum term, at our site beside the Tilbury container port.\n\nEvery bay comes with racking, pallet trucks, and dock access from 6 a.m. to 10 p.m. Our staff can also pick, pack, and ship your orders for you. Last quarter the fulfilment team _(2)_ more than 140,000 parcels without a single wrong address.\n\nRates begin at 310 pounds a month and cover electricity, insurance, and daily _(3)_ of the loading area.\n\nCall 01375 220 480 to arrange a tour. We can usually _(4)_ a new client within ten working days.",
+    "questions": [
+      {
+        "blank_number": 1,
+        "options": [
+          "despite",
+          "among",
+          "with",
+          "onto"
+        ],
+        "answer": "with",
+        "explanation": "The minimum term is a condition attached to the rental, so 'with a three-month minimum term' is correct. 'Despite' would present the term as an obstacle the offer overcomes, which does not match a straightforward rental condition, and 'among' needs a group of several things. 'Onto' expresses movement to a surface."
+      },
+      {
+        "blank_number": 2,
+        "options": [
+          "ships",
+          "shipped",
+          "has shipped",
+          "will ship"
+        ],
+        "answer": "shipped",
+        "explanation": "'Last quarter' is a finished past period, so the simple past 'shipped' is correct. 'Ships' describes a present habit and does not match the fixed past time, and 'will ship' points to the future. 'Has shipped' is a present perfect, which cannot be used with a specific finished time expression."
+      },
+      {
+        "blank_number": 3,
+        "options": [
+          "maintain",
+          "maintenance",
+          "maintained",
+          "maintaining"
+        ],
+        "answer": "maintenance",
+        "explanation": "The blank follows the adjective 'daily' and joins two other nouns in the list, so the noun 'maintenance' is correct. 'Maintain' is a base verb and cannot be an item in a noun list, and 'maintained' is a past participle. 'Maintaining' would need an object directly after it rather than the preposition phrase 'of the loading area'."
+      },
+      {
+        "blank_number": 4,
+        "options": [
+          "illustrate",
+          "postpone",
+          "accommodate",
+          "translate"
+        ],
+        "answer": "accommodate",
+        "explanation": "The sentence tells prospective customers how fast they can be taken on, so 'accommodate a new client' fits a storage business. 'Illustrate' means to explain with pictures or examples and cannot take a client as its object here, and 'postpone' would say the opposite of a quick start. 'Translate' concerns converting language."
+      }
+    ]
+  },
+  {
+    "id": "toeic_part6_033",
+    "passage_type": "notice",
+    "passage": "NOTICE TO LOCAL BUSINESSES: DESKS AVAILABLE AT THE GRANARY\n\nFrom 1 November, The Granary _(1)_ four private offices and eleven fixed desks. The building is a converted grain store two minutes from Wakefield Kirkgate station, and the top floor has just been rewired and insulated.\n\nA fixed desk costs 190 pounds a month and a private office for four people costs 720 pounds. All prices are quoted _(2)_ VAT, and there is no joining fee.\n\n_(3)_ Anyone who signs a twelve-month agreement before 15 October will receive their first two weeks free.\n\nMembership includes 24-hour _(4)_ to the building, secure bike storage, and a mail service. Viewings run every Wednesday at 5 p.m.; simply ask for Marcus at the front desk.",
+    "questions": [
+      {
+        "blank_number": 1,
+        "options": [
+          "will offer",
+          "offered",
+          "had offered",
+          "was offering"
+        ],
+        "answer": "will offer",
+        "explanation": "'From 1 November' points to a date that has not yet arrived, so the future 'will offer' is correct. 'Offered' and 'was offering' place the space in the past, which contradicts a notice inviting future enquiries, and 'had offered' describes something completed before another past event that the notice never mentions."
+      },
+      {
+        "blank_number": 2,
+        "options": [
+          "except",
+          "besides",
+          "excluding",
+          "apart"
+        ],
+        "answer": "excluding",
+        "explanation": "Prices quoted without tax are described as 'excluding VAT', the standard phrase. 'Except' normally follows a statement about a whole group and cannot introduce what a price leaves out in this pattern, and 'besides' means in addition to, which reverses the meaning. 'Apart' is incomplete without 'from'."
+      },
+      {
+        "blank_number": 3,
+        "options": [
+          "Parking permits are issued by the city council.",
+          "The lift will be out of service all weekend.",
+          "We are also running an offer for early bookings.",
+          "Applications for the training grant closed in June."
+        ],
+        "answer": "We are also running an offer for early bookings.",
+        "explanation": "The sentence after the blank describes two free weeks for anyone who signs before a deadline, so a line introducing an early-booking offer leads into it. The parking permit sentence introduces a topic the notice never returns to, and the lift sentence reports a temporary fault rather than a discount. The training grant sentence refers to a closed application with no link to desk rental."
+      },
+      {
+        "blank_number": 4,
+        "options": [
+          "accessible",
+          "accessibly",
+          "access",
+          "accessing"
+        ],
+        "answer": "access",
+        "explanation": "The blank is a noun in a list of benefits and takes 'to the building', so '24-hour access' is correct. 'Accessible' is an adjective and cannot be the object of 'includes', and 'accessibly' is an adverb. 'Accessing' would need a direct object rather than the preposition 'to'."
+      }
+    ]
+  },
+  {
+    "id": "toeic_part6_034",
+    "passage_type": "notice",
+    "passage": "NOTICE TO EXHIBITORS: STANDS STILL AVAILABLE\n\nThe Northern Packaging Show returns to Manchester Central on 4 and 5 March. Thirty-one of the forty-eight stands _(1)_ already, but a few remain in Hall B, close to the main entrance.\n\nA shell-scheme stand of nine square metres costs 2,400 pounds and covers carpet, lighting, a fascia board, and two exhibitor passes. Larger spaces can be built to your own _(2)_ at additional cost.\n\nLast year the show drew 3,900 visitors, and 62 percent of them named packaging as their main purchasing _(3)_ for the coming year.\n\nTo reserve a stand, write to stands@northernpackaging.co.uk. Space is allocated in the order that requests arrive, _(4)_ early booking is advised.",
+    "questions": [
+      {
+        "blank_number": 1,
+        "options": [
+          "have been booked",
+          "have booked",
+          "are booking",
+          "book"
+        ],
+        "answer": "have been booked",
+        "explanation": "Stands are reserved by exhibitors, so the passive 'have been booked' is correct, and 'already' suits the present perfect. 'Have booked' and 'are booking' make the stands the ones doing the booking, which reverses the roles, and 'book' is a simple present that also leaves the stands as the agent."
+      },
+      {
+        "blank_number": 2,
+        "options": [
+          "acceptance",
+          "hesitation",
+          "specification",
+          "circulation"
+        ],
+        "answer": "specification",
+        "explanation": "A custom-built stand is made to the exhibitor's own 'specification', meaning a detailed set of requirements. 'Acceptance' refers to agreeing to something and cannot be what a stand is built to, and 'hesitation' describes a pause before acting. 'Circulation' refers to movement or to the number of copies a publication sells."
+      },
+      {
+        "blank_number": 3,
+        "options": [
+          "prioritize",
+          "prioritized",
+          "prior",
+          "priority"
+        ],
+        "answer": "priority",
+        "explanation": "The blank follows 'their main purchasing' and completes the object of 'named', so the noun 'priority' is correct. 'Prioritize' is a base verb and cannot be modified by 'main', and 'prioritized' is a past participle. 'Prior' is an adjective meaning earlier and leaves the phrase without a head noun."
+      },
+      {
+        "blank_number": 4,
+        "options": [
+          "although",
+          "unless",
+          "so",
+          "whereas"
+        ],
+        "answer": "so",
+        "explanation": "First-come allocation is the reason for booking early, so the result conjunction 'so' is correct. 'Although' and 'whereas' both set up a contrast, which would wrongly suggest the advice conflicts with the allocation rule. 'Unless' introduces an exception and would mean early booking applies only when requests do not arrive in order."
+      }
+    ]
+  },
+  {
+    "id": "toeic_part6_035",
+    "passage_type": "notice",
+    "passage": "NOTICE: FREE EVENING COURSE IN SPREADSHEET SKILLS\n\nThe Riverton Business Library will run a six-week online course in spreadsheet skills, starting 8 October. Sessions take place on Tuesdays from 7 p.m. to 8.30 p.m. and _(1)_ live by a qualified accountant.\n\nThe course covers pivot tables, lookup formulas, charts, and basic automation. It is aimed at people who already use spreadsheets at work _(2)_ have never been trained _(3)_. No software is supplied; participants need their own copy of Excel or a free Google account.\n\nRecordings stay online for three months, so missing one session is not a _(4)_.\n\nPlaces are limited to forty. Complete the short form on our website by 1 October; the joining link will be emailed two days before the first session.",
+    "questions": [
+      {
+        "blank_number": 1,
+        "options": [
+          "teach",
+          "are teaching",
+          "are taught",
+          "have taught"
+        ],
+        "answer": "are taught",
+        "explanation": "The phrase 'by a qualified accountant' names the agent, so the passive 'are taught' is required. The active 'teach' and 'are teaching' would make the sessions teach the accountant, which reverses the roles, and 'have taught' keeps the same reversed logic while describing a completed action rather than a weekly schedule."
+      },
+      {
+        "blank_number": 2,
+        "options": [
+          "so",
+          "because",
+          "but",
+          "therefore"
+        ],
+        "answer": "but",
+        "explanation": "Having practical experience is set against having no formal training, so the contrast conjunction 'but' is correct. 'So' and 'because' both express cause and result, which does not match two facts that pull in opposite directions. 'Therefore' is an adverb and cannot join two verb phrases without punctuation."
+      },
+      {
+        "blank_number": 3,
+        "options": [
+          "formal",
+          "formality",
+          "formation",
+          "formally"
+        ],
+        "answer": "formally",
+        "explanation": "The blank modifies the verb phrase 'have never been trained', so the adverb 'formally' is correct. 'Formal' is an adjective and cannot describe a verb, and 'formality' is a noun that would leave the passive verb with an unexplained object. 'Formation' refers to the way something is arranged or created."
+      },
+      {
+        "blank_number": 4,
+        "options": [
+          "problem",
+          "distance",
+          "receipt",
+          "sculpture"
+        ],
+        "answer": "problem",
+        "explanation": "Because recordings remain available, missing a session causes no difficulty, so 'not a problem' fits. 'Distance' refers to physical separation and cannot describe the effect of missing a class, and 'receipt' is proof of payment. 'Sculpture' is a work of art and is unrelated to an online course."
       }
     ]
   }
