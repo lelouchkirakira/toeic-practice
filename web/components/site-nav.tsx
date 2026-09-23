@@ -10,7 +10,7 @@ const LINKS = [
   { href: "/", label: "練習" },
   { href: "/mock-test", label: "模擬考" },
   { href: "/vocabulary", label: "背單字" },
-  { href: "/bookmarks", label: "書籤" },
+  { href: "/bookmarks", label: "我的單字" },
   { href: "/listening", label: "聽力" },
   { href: "/stats", label: "統計" },
 ] as const;

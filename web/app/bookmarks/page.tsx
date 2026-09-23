@@ -8,28 +8,54 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ErrorNotice, LoadingBlock } from "@/components/status";
-import { errorMessage, fetchBookmarks, saveBookmark } from "@/lib/api";
-import { REVIEW_FLAG, setStudyWord } from "@/lib/review-handoff";
+import {
+  errorMessage,
+  fetchBookmarks,
+  fetchProgressWords,
+  saveBookmark,
+  type ProgressLevel,
+} from "@/lib/api";
+import {
+  REVIEW_FLAG,
+  setReviewFilter,
+  setStudyWord,
+} from "@/lib/review-handoff";
 import type { Word } from "@/lib/types";
 
 const LIST_LIMIT = 200;
 
-export default function BookmarksPage() {
+/* 「我的單字」把四份清單放在同一個地方：書籤是自己標的，其餘三份是評分的結果。
+ * 每一份都能整批去背，也能點單一個字去背。 */
+const TABS = [
+  { key: "bookmark", label: "書籤", empty: "還沒有標記。背單字時在卡片右上角點書籤就會收進來。" },
+  { key: "due", label: "該複習", empty: "目前沒有到期的字。評過之後會依熟練度排時間，到期才會出現在這裡。" },
+  { key: "unknown", label: "不會", empty: "還沒有按過不會的字。" },
+  { key: "fuzzy", label: "模糊", empty: "還沒有按過模糊的字。" },
+  { key: "known", label: "會了", empty: "還沒有按過會了的字。" },
+] as const;
+
+type TabKey = (typeof TABS)[number]["key"];
+
+export default function MyWordsPage() {
   const router = useRouter();
+  const [tab, setTab] = useState<TabKey>("bookmark");
   const [words, setWords] = useState<Word[]>([]);
   const [total, setTotal] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
 
-  const load = useCallback(async () => {
+  const load = useCallback(async (key: TabKey) => {
     setIsLoading(true);
     setError("");
     try {
-      const data = await fetchBookmarks(LIST_LIMIT);
+      const data =
+        key === "bookmark"
+          ? await fetchBookmarks(LIST_LIMIT)
+          : await fetchProgressWords(key as ProgressLevel, LIST_LIMIT);
       setWords(data.words);
       setTotal(data.total);
     } catch (e) {
-      setError(errorMessage(e, "載入書籤失敗"));
+      setError(errorMessage(e, "載入失敗"));
     } finally {
       setIsLoading(false);
     }
@@ -37,11 +63,11 @@ export default function BookmarksPage() {
 
   // React 19 的 react-hooks/set-state-in-effect：包 microtask 避免 cascading render
   useEffect(() => {
-    queueMicrotask(() => void load());
-  }, [load]);
+    queueMicrotask(() => void load(tab));
+  }, [load, tab]);
 
-  // 先從畫面上移掉再送請求，失敗就放回原位。
-  async function remove(word: Word, position: number) {
+  // 書籤是自己標的，移除就真的移除；其餘三份是評分結果，只能靠再評一次改變。
+  async function removeBookmark(word: Word, position: number) {
     setWords((list) => list.filter((item) => item.id !== word.id));
     setTotal((value) => Math.max(0, value - 1));
     setError("");
@@ -58,42 +84,60 @@ export default function BookmarksPage() {
     }
   }
 
-  // 背單字頁讀到這個旗標就直接以只抽書籤的條件載入，讀完自己清掉。
-  function startReview() {
-    try {
-      window.sessionStorage.setItem(REVIEW_FLAG, "1");
-    } catch {
-      // 存不了就只是沒有自動打開開關，頁面照常能用
+  function studyAll() {
+    if (tab === "bookmark") {
+      try {
+        window.sessionStorage.setItem(REVIEW_FLAG, "1");
+      } catch {
+        // 存不了就只是沒有自動打開開關
+      }
+    } else {
+      setReviewFilter(tab);
     }
     router.push("/vocabulary");
   }
 
+  const current = TABS.find((t) => t.key === tab)!;
+
   return (
     <div className="space-y-5">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <h1 className="text-xl font-semibold">書籤</h1>
+        <h1 className="text-xl font-semibold">我的單字</h1>
         {words.length > 0 ? (
-          <Button
-            className="h-9"
-            data-testid="start-review"
-            onClick={startReview}
-          >
+          <Button className="h-9" data-testid="study-all" onClick={studyAll}>
             <GraduationCap data-icon="inline-start" />
-            用書籤複習
+            整批去背
           </Button>
         ) : null}
       </div>
 
-      {error ? <ErrorNotice title="出了狀況" message={error} /> : null}
+      <div className="flex flex-wrap gap-1" role="tablist" aria-label="單字分類">
+        {TABS.map((item) => (
+          <button
+            key={item.key}
+            type="button"
+            role="tab"
+            aria-selected={tab === item.key}
+            data-testid={`tab-${item.key}`}
+            onClick={() => setTab(item.key)}
+            className={
+              tab === item.key
+                ? "border-b-2 border-primary px-3 py-1.5 text-sm font-medium text-foreground"
+                : "border-b-2 border-transparent px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground"
+            }
+          >
+            {item.label}
+          </button>
+        ))}
+      </div>
 
-      {isLoading ? <LoadingBlock label="正在載入書籤" /> : null}
+      {error ? <ErrorNotice title="出了狀況" message={error} /> : null}
+      {isLoading ? <LoadingBlock label="正在載入" /> : null}
 
       {!isLoading && words.length === 0 ? (
         <Card>
           <CardContent className="space-y-3 py-10 text-center">
-            <p className="text-muted-foreground">
-              還沒有標記任何單字。到背單字頁，在卡片右上角點書籤就會收進來。
-            </p>
+            <p className="text-muted-foreground">{current.empty}</p>
             <Link
               href="/vocabulary"
               className="inline-block text-sm font-medium text-primary underline underline-offset-4"
@@ -106,10 +150,10 @@ export default function BookmarksPage() {
 
       {!isLoading && words.length > 0 ? (
         <>
-          <p className="text-sm text-muted-foreground" data-testid="bookmark-total">
+          <p className="text-sm text-muted-foreground" data-testid="word-total">
             共 {total} 個
           </p>
-          <ul className="space-y-2" data-testid="bookmark-list">
+          <ul className="space-y-2" data-testid="word-list">
             {words.map((word, position) => (
               <li key={word.id}>
                 <Card>
@@ -146,18 +190,25 @@ export default function BookmarksPage() {
                           "這個字還沒有釋義資料"}
                       </p>
                     </div>
-                    <Button
-                      type="button"
-                      variant="ghost"
-                      size="icon"
-                      className="shrink-0 text-primary"
-                      aria-label={`移除 ${word.word} 的書籤`}
-                      title="移除書籤"
-                      data-testid={`remove-bookmark-${word.id}`}
-                      onClick={() => void remove(word, position)}
-                    >
-                      <Bookmark className="size-5 fill-current" aria-hidden />
-                    </Button>
+                    {tab === "bookmark" ? (
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        size="icon"
+                        className="shrink-0 text-primary"
+                        aria-label={`移除 ${word.word} 的書籤`}
+                        title="移除書籤"
+                        data-testid={`remove-bookmark-${word.id}`}
+                        onClick={() => void removeBookmark(word, position)}
+                      >
+                        <Bookmark className="size-5 fill-current" aria-hidden />
+                      </Button>
+                    ) : word.bookmarked ? (
+                      <Bookmark
+                        className="size-5 shrink-0 fill-current text-primary"
+                        aria-label="已加入書籤"
+                      />
+                    ) : null}
                   </CardContent>
                 </Card>
               </li>

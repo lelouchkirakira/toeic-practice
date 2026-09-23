@@ -37,3 +37,24 @@ export function takeStudyWord<T>(): T | null {
     return null;
   }
 }
+
+const FILTER_KEY = "toeic:review-filter";
+
+/** 從「我的單字」指定背單字頁這一輪要抽哪一類。讀完即清。 */
+export function setReviewFilter(level: string): void {
+  try {
+    window.sessionStorage.setItem(FILTER_KEY, level);
+  } catch {
+    // 存不了就當作沒指定，背單字頁照常抽卡
+  }
+}
+
+export function takeReviewFilter(): string {
+  try {
+    const value = window.sessionStorage.getItem(FILTER_KEY);
+    if (value) window.sessionStorage.removeItem(FILTER_KEY);
+    return value ?? "";
+  } catch {
+    return "";
+  }
+}

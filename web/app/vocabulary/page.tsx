@@ -30,7 +30,11 @@ import {
   saveBookmark,
   saveWordProgress,
 } from "@/lib/api";
-import { takeReviewFlag, takeStudyWord } from "@/lib/review-handoff";
+import {
+  takeReviewFilter,
+  takeReviewFlag,
+  takeStudyWord,
+} from "@/lib/review-handoff";
 import type { Activity, Word, WordLevel } from "@/lib/types";
 
 // Select 不接受空字串當值，「全部」用哨兵值表示，送出前轉回空字串
@@ -50,8 +54,9 @@ const LEVEL_OPTIONS = [
   { value: ALL, label: "全部" },
   { value: "due", label: "該複習的" },
   { value: "new", label: "未學" },
-  { value: "learning", label: "學習中" },
-  { value: "known", label: "已熟" },
+  { value: "unknown", label: "不會" },
+  { value: "fuzzy", label: "模糊" },
+  { value: "known", label: "會了" },
 ];
 
 const COUNT_OPTIONS = [20, 40, 60];
@@ -132,7 +137,7 @@ export default function VocabularyPage() {
   const filterRef = useRef({ list, bandMin, bandMax, level, count, bookmarkOnly });
   filterRef.current = { list, bandMin, bandMax, level, count, bookmarkOnly };
 
-  const load = useCallback(async (override?: { bookmarkOnly?: boolean }, lead?: Word) => {
+  const load = useCallback(async (override?: { bookmarkOnly?: boolean; level?: string }, lead?: Word) => {
     const filter = { ...filterRef.current, ...override };
     const min = Math.min(filter.bandMin, filter.bandMax);
     const max = Math.max(filter.bandMin, filter.bandMax);
@@ -167,6 +172,12 @@ export default function VocabularyPage() {
     const lead = takeStudyWord<Word>();
     if (lead) {
       void load(undefined, lead);
+      return;
+    }
+    const filter = takeReviewFilter();
+    if (filter) {
+      queueMicrotask(() => setLevel(filter));
+      void load({ level: filter });
       return;
     }
     if (takeReviewFlag()) {

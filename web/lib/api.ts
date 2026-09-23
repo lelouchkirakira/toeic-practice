@@ -148,6 +148,18 @@ export async function lookupTokens(tokens: string[]): Promise<LookupEntries> {
   return data.entries ?? {};
 }
 
+export type ProgressLevel = "unknown" | "fuzzy" | "known" | "due";
+
+/** 依熟練度列出字，順序穩定（最近評過的在前），給「我的單字」那頁用。 */
+export function fetchProgressWords(
+  level: ProgressLevel,
+  limit = 200,
+): Promise<BookmarkList> {
+  return request<BookmarkList>(
+    `/vocabulary/progress/words?level=${level}&limit=${limit}`,
+  );
+}
+
 export function fetchActivity(days = 30): Promise<Activity> {
   return request<Activity>(`/vocabulary/activity?days=${days}`);
 }
