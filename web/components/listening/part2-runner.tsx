@@ -14,9 +14,15 @@ import {
   submitAnswers,
 } from "@/lib/api";
 import type { ListeningQuestion, ListeningReview } from "@/lib/types";
+import {
+  originalLabel,
+  playPart2,
+  shuffledOrder,
+  type SequenceHandle,
+} from "@/lib/part2-sequence";
 
-const AUDIO_BASE = process.env.NEXT_PUBLIC_BLOB_BASE ?? "";
 const QUESTION_COUNT = 10;
+const LETTERS_KEY = "toeic:part2-letters";
 
 // A、B、C 對應的是聽到的三個回答的順序，畫面上要講明白，
 // 不然只看到三顆字母會不知道在選什麼。
@@ -26,7 +32,10 @@ type Phase = "loading" | "ready" | "playing" | "answering" | "done" | "finished"
 
 interface Answer {
   questionId: string;
+  /** 換算回原題目的選項字母，拿來對答案 */
   picked: string;
+  /** 畫面上按的是第幾個位置（0 起算），檢討時照播放順序顯示 */
+  slot: number;
 }
 
 export function Part2Runner() {
@@ -37,7 +46,11 @@ export function Part2Runner() {
   const [reviews, setReviews] = useState<ListeningReview[]>([]);
   const [error, setError] = useState("");
   const [audioIssue, setAudioIssue] = useState<"" | "load" | "blocked">("");
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const sequenceRef = useRef<SequenceHandle | null>(null);
+  // 每題的回答播放順序，出題時決定，檢討時照同一個順序顯示。
+  const [orders, setOrders] = useState<Record<string, number[]>>({});
+  // 練習時唸出 A B C，關掉就只播回答本身。記在這台裝置上。
+  const [withLetters, setWithLetters] = useState(true);
 
   const current = questions[index];
   const isLast = index === questions.length - 1;
@@ -55,6 +68,7 @@ export function Part2Runner() {
         return;
       }
       setQuestions(data.questions);
+      setOrders(Object.fromEntries(data.questions.map((q) => [q.id, shuffledOrder()])));
       setPhase("ready");
     } catch (e) {
       setError(errorMessage(e, "載入題目失敗"));
@@ -64,54 +78,63 @@ export function Part2Runner() {
   useEffect(() => {
     void load();
     return () => {
-      audioRef.current?.pause();
-      audioRef.current = null;
+      sequenceRef.current?.stop();
+      sequenceRef.current = null;
     };
   }, [load]);
 
+  useEffect(() => {
+    try {
+      const saved = window.localStorage.getItem(LETTERS_KEY);
+      // React 19 的 react-hooks/set-state-in-effect：包 microtask 避免 cascading render
+      if (saved !== null) queueMicrotask(() => setWithLetters(saved === "1"));
+    } catch {
+      // 讀不到就維持預設的唸字母
+    }
+  }, []);
+
+  const toggleLetters = useCallback(() => {
+    setWithLetters((value) => {
+      const next = !value;
+      try {
+        window.localStorage.setItem(LETTERS_KEY, next ? "1" : "0");
+      } catch {
+        // 存不了就只在這次有效
+      }
+      return next;
+    });
+  }, []);
+
   // 一題只播一次，跟實際考試一樣，播完就要作答。
   const play = useCallback(() => {
-    if (!current || !AUDIO_BASE) {
-      setAudioIssue("load");
-      return;
-    }
+    if (!current) return;
+    const order = orders[current.id] ?? [1, 2, 3];
     setAudioIssue("");
     setPhase("playing");
 
-    // 換新音檔前先停掉上一個，不然舊的 play() 會被打斷、丟出看起來像故障的錯誤。
-    audioRef.current?.pause();
-    const audio = new Audio(`${AUDIO_BASE}/${current.audio}`);
-    audioRef.current = audio;
-    audio.onended = () => setPhase("answering");
-    // 載不到就退回可重播的狀態。網路斷一下就把這題判死、逼人盲猜是不對的。
-    audio.onerror = () => {
-      setAudioIssue("load");
-      setPhase("ready");
-    };
-
-    const started = audio.play();
-    if (started) {
-      started.catch((e: unknown) => {
-        // 瀏覽器擋下播放時這題還沒播過，退回可重播的狀態，不要算作聽過了。
-        const name = e instanceof DOMException ? e.name : "";
-        // AbortError 是自己的 pause 打斷了播放，不是音檔壞掉，不要報故障。
-        if (name === "AbortError") {
-          setPhase("ready");
-          return;
-        }
-        setAudioIssue(name === "NotAllowedError" ? "blocked" : "load");
+    // 換下一段之前先停掉上一段，不然舊的播放會被打斷、丟出看起來像故障的錯誤。
+    sequenceRef.current?.stop();
+    sequenceRef.current = playPart2(current.id, order, withLetters, {
+      onEnd: () => setPhase("answering"),
+      // 載不到就退回可重播的狀態。網路斷一下就把這題判死、逼人盲猜是不對的。
+      onError: (reason) => {
+        setAudioIssue(reason);
         setPhase("ready");
-      });
-    }
-  }, [current]);
+      },
+    });
+  }, [current, orders, withLetters]);
 
   const pick = useCallback(
-    (label: string) => {
+    (slot: number) => {
       if (!current) return;
-      setAnswers((prev) => [...prev, { questionId: current.id, picked: label }]);
+      const order = orders[current.id] ?? [1, 2, 3];
+      setAnswers((prev) => [
+        ...prev,
+        { questionId: current.id, picked: originalLabel(order, slot), slot },
+      ]);
       setPhase("done");
     },
-    [current],
+    [current, orders],
   );
 
   const next = useCallback(async () => {
@@ -194,35 +217,47 @@ export function Part2Runner() {
                   <Badge variant={right ? "secondary" : "destructive"}>
                     第 {i + 1} 題 {right ? "答對" : "答錯"}
                   </Badge>
-                  {AUDIO_BASE ? (
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={() => void new Audio(`${AUDIO_BASE}/${review.audio}`).play()}
-                    >
-                      <Play data-icon="inline-start" />
-                      重聽
-                    </Button>
-                  ) : null}
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => {
+                      sequenceRef.current?.stop();
+                      sequenceRef.current = playPart2(
+                        review.id,
+                        orders[review.id] ?? [1, 2, 3],
+                        withLetters,
+                        { onEnd: () => undefined, onError: () => undefined },
+                      );
+                    }}
+                  >
+                    <Play data-icon="inline-start" />
+                    重聽
+                  </Button>
                 </div>
                 <p className="font-medium">{review.prompt}</p>
                 <ul className="space-y-1 text-sm">
-                  {review.options.map((option) => (
-                    <li
-                      key={option.label}
-                      className={
-                        option.label === review.answer
-                          ? "font-semibold text-foreground"
-                          : option.label === picked
-                            ? "text-destructive"
-                            : "text-muted-foreground"
-                      }
-                    >
-                      {option.label}. {option.text}
-                      {option.label === review.answer ? "（正解）" : null}
-                      {option.label === picked && !right ? "（你選的）" : null}
-                    </li>
-                  ))}
+                  {(orders[review.id] ?? [1, 2, 3]).map((response, slot) => {
+                    // 照這一輪實際播出的順序列，字母也是當時唸的那個。
+                    const option = review.options[response - 1];
+                    if (!option) return null;
+                    const shown = "ABC"[slot];
+                    return (
+                      <li
+                        key={option.label}
+                        className={
+                          option.label === review.answer
+                            ? "font-semibold text-foreground"
+                            : option.label === picked
+                              ? "text-destructive"
+                              : "text-muted-foreground"
+                        }
+                      >
+                        {shown}. {option.text}
+                        {option.label === review.answer ? "（正解）" : null}
+                        {option.label === picked && !right ? "（你選的）" : null}
+                      </li>
+                    );
+                  })}
                 </ul>
                 <p className="text-sm text-muted-foreground">{review.explanation}</p>
               </CardContent>
@@ -245,8 +280,21 @@ export function Part2Runner() {
 
       <p className="text-sm text-muted-foreground">
         應答問題：你會聽到一個問句，接著是三個回答。題目與選項都不會顯示在畫面上，
-        聽完後選出最適合的那個回答。每題只播一次。
+        聽完後選出最適合的那個回答。每題只播一次，三個回答的順序每次都會打亂。
       </p>
+
+      <label className="flex items-center gap-2 text-sm text-muted-foreground">
+        <input
+          type="checkbox"
+          checked={withLetters}
+          onChange={toggleLetters}
+          disabled={phase === "playing"}
+          data-testid="toggle-letters"
+          className="size-4 accent-primary"
+        />
+        回答前唸出 A B C
+        <span className="text-xs">（正式考試不唸，想模擬真實情境就關掉）</span>
+      </label>
 
       <Card>
         <CardContent className="space-y-6">
@@ -321,20 +369,20 @@ export function Part2Runner() {
           </div>
 
           <div className="grid grid-cols-3 gap-2" data-testid="listening-options">
-            {(current?.option_labels ?? ["A", "B", "C"]).map((label, i) => (
+            {["A", "B", "C"].map((label, i) => (
               <Button
                 key={label}
                 variant="outline"
                 size="lg"
-                aria-pressed={answers[index]?.picked === label}
+                aria-pressed={answers[index]?.slot === i}
                 className={`flex h-auto w-full flex-col gap-0.5 py-2.5 ${
-                  answers[index]?.picked === label
+                  answers[index]?.slot === i
                     ? "border-2 border-primary bg-primary/10"
                     : ""
                 }`}
                 disabled={phase !== "answering"}
                 data-testid={`listening-option-${label}`}
-                onClick={() => pick(label)}
+                onClick={() => pick(i)}
               >
                 <span className="text-base font-semibold">{label}</span>
                 <span className="text-xs font-normal opacity-70">
