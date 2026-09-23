@@ -73,28 +73,34 @@ export function Part2Runner() {
   const play = useCallback(() => {
     if (!current || !AUDIO_BASE) {
       setAudioIssue("load");
-      setPhase("answering");
       return;
     }
     setAudioIssue("");
     setPhase("playing");
 
+    // 換新音檔前先停掉上一個，不然舊的 play() 會被打斷、丟出看起來像故障的錯誤。
+    audioRef.current?.pause();
     const audio = new Audio(`${AUDIO_BASE}/${current.audio}`);
     audioRef.current = audio;
     audio.onended = () => setPhase("answering");
-    // 音檔本身載不到就直接放行，讓人跳過這題而不是卡在這裡。
+    // 載不到就退回可重播的狀態。網路斷一下就把這題判死、逼人盲猜是不對的。
     audio.onerror = () => {
       setAudioIssue("load");
-      setPhase("answering");
+      setPhase("ready");
     };
 
     const started = audio.play();
     if (started) {
       started.catch((e: unknown) => {
         // 瀏覽器擋下播放時這題還沒播過，退回可重播的狀態，不要算作聽過了。
-        const blocked = e instanceof DOMException && e.name === "NotAllowedError";
-        setAudioIssue(blocked ? "blocked" : "load");
-        setPhase(blocked ? "ready" : "answering");
+        const name = e instanceof DOMException ? e.name : "";
+        // AbortError 是自己的 pause 打斷了播放，不是音檔壞掉，不要報故障。
+        if (name === "AbortError") {
+          setPhase("ready");
+          return;
+        }
+        setAudioIssue(name === "NotAllowedError" ? "blocked" : "load");
+        setPhase("ready");
       });
     }
   }, [current]);
@@ -282,20 +288,32 @@ export function Part2Runner() {
               <>
                 <Button size="lg" onClick={play} data-testid="listening-play">
                   <Play data-icon="inline-start" />
-                  開始播放
+                  {audioIssue === "load" ? "重新播放" : "開始播放"}
                 </Button>
                 <span className="text-sm text-muted-foreground">
                   {audioIssue === "blocked"
                     ? "瀏覽器擋下了播放，再點一次"
-                    : "只播一次，聽完再作答"}
+                    : audioIssue === "load"
+                      ? "音檔載入失敗，再點一次重試"
+                      : "只播一次，聽完再作答"}
                 </span>
+                {audioIssue === "load" ? (
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    data-testid="listening-skip-audio"
+                    onClick={() => setPhase("answering")}
+                  >
+                    不聽了，直接作答
+                  </Button>
+                ) : null}
               </>
             ) : (
               <>
                 <Headphones className="size-8 text-muted-foreground" aria-hidden />
                 <span className="text-sm text-muted-foreground" data-testid="listening-state">
                   {audioIssue === "load"
-                    ? "音檔載入失敗，可以跳過這題"
+                    ? "沒有聽到音檔，直接選一個"
                     : "播放結束，選一個最適合的回答"}
                 </span>
               </>
