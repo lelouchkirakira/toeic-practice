@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { Volume2, X } from "lucide-react";
+import { GraduationCap, Volume2, X } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import type { Word } from "@/lib/types";
@@ -23,6 +23,7 @@ export function WordPopover({
   hoverCapable,
   canSpeak,
   onSpeak,
+  onJump,
   onClose,
   onPointerEnter,
   onPointerLeave,
@@ -32,6 +33,7 @@ export function WordPopover({
   hoverCapable: boolean;
   canSpeak: boolean;
   onSpeak: () => void;
+  onJump?: () => void;
   onClose: () => void;
   onPointerEnter?: () => void;
   onPointerLeave?: () => void;
@@ -120,6 +122,19 @@ export function WordPopover({
         <p className="text-xs text-muted-foreground break-words">
           詞形變化：{inflections.join("、")}
         </p>
+      ) : null}
+      {onJump ? (
+        <Button
+          type="button"
+          variant="outline"
+          size="sm"
+          className="w-full"
+          data-testid="popover-jump"
+          onClick={onJump}
+        >
+          <GraduationCap data-icon="inline-start" />
+          去背這個字
+        </Button>
       ) : null}
     </>
   );

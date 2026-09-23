@@ -63,6 +63,7 @@ export function WordCard({
   onRate,
   onToggleBookmark,
   onLookup,
+  onJump,
 }: {
   word: Word;
   index: number;
@@ -76,6 +77,7 @@ export function WordCard({
   onRate: (level: WordLevel) => void;
   onToggleBookmark: () => void;
   onLookup?: (word: Word) => void;
+  onJump?: (word: Word) => void;
 }) {
   const [flipped, setFlipped] = useState(false);
   // 單字與例句共用一個播放器，記住這次唸的是誰，播放中的顏色才不會亮在別顆按鈕上。
@@ -334,6 +336,16 @@ export function WordCard({
               clearTimers();
               setPicked(null);
             }}
+            onJump={
+              onJump
+                ? () => {
+                    const target = picked.word;
+                    clearTimers();
+                    setPicked(null);
+                    onJump(target);
+                  }
+                : undefined
+            }
             onPointerEnter={clearTimers}
             onPointerLeave={scheduleClose}
           />

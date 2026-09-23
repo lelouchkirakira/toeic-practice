@@ -219,6 +219,21 @@ export default function VocabularyPage() {
     void loadBookmarks();
   }, [loadBookmarks]);
 
+  // 從例句跳過來的字插在目前這個位置，原本那張往後挪一格，評完就回到它。
+  // 本來就在這一輪裡的話是搬過來，不是再放一張。
+  const jumpTo = useCallback(
+    (word: Word) => {
+      setWords((list) => {
+        const at = list.findIndex((item) => item.id === word.id);
+        if (at === index) return list;
+        const rest = at === -1 ? list : list.filter((item) => item.id !== word.id);
+        const cut = at !== -1 && at < index ? index - 1 : index;
+        return [...rest.slice(0, cut), word, ...rest.slice(cut)];
+      });
+    },
+    [index],
+  );
+
   const remember = useCallback((word: Word) => {
     setLooked((list) =>
       list.some((item) => item.id === word.id)
@@ -414,6 +429,7 @@ export default function VocabularyPage() {
           onRate={(wordLevel) => void rate(currentWord.id, wordLevel)}
           onToggleBookmark={() => void toggleBookmark(currentWord)}
           onLookup={remember}
+          onJump={jumpTo}
         />
       ) : null}
       </div>
