@@ -1,5 +1,6 @@
 import type {
   BookmarkList,
+  LookupEntries,
   DialogueQuestion,
   DialogueReview,
   ListeningQuestion,
@@ -135,6 +136,15 @@ export function saveWordProgress(
     word_id: wordId,
     level,
   });
+}
+
+// 例句裡的字查釋義。查的是公共字庫，不帶個人資料。
+export async function lookupTokens(tokens: string[]): Promise<LookupEntries> {
+  if (tokens.length === 0) return {};
+  const data = await post<{ entries: LookupEntries }>("/vocabulary/lookup", {
+    tokens,
+  });
+  return data.entries ?? {};
 }
 
 // 書籤頁要的是穩定排序的完整清單，不能用隨機抽樣的 /vocabulary/words。

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Bookmark, Volume2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -15,7 +15,10 @@ import {
   useSpeech,
 } from "@/hooks/use-speech";
 import type { AccentId, GenderId } from "@/hooks/use-speech";
-import type { Word, WordLevel } from "@/lib/types";
+import { lookupTokens } from "@/lib/api";
+import { ExampleSentence, collectTokens } from "./example-sentence";
+import { WordPopover, type PopoverAnchor } from "./word-popover";
+import type { LookupEntries, Word, WordLevel } from "@/lib/types";
 
 const RATINGS: {
   level: WordLevel;
@@ -46,19 +49,6 @@ const RATINGS: {
   },
 ];
 
-
-/** 把例句裡的 **目標單字** 轉成粗體。 */
-function renderExample(sentence: string) {
-  return sentence.split(/(\*\*[^*]+\*\*)/g).map((part, index) =>
-    part.startsWith("**") && part.endsWith("**") ? (
-      <strong key={index} className="font-semibold text-foreground">
-        {part.slice(2, -2)}
-      </strong>
-    ) : (
-      <span key={index}>{part}</span>
-    ),
-  );
-}
 
 export function WordCard({
   word,
@@ -104,6 +94,64 @@ export function WordCard({
   }, [word.id, word.word, audioUrl, autoSpeak, supported, speak]);
 
   const bookmarked = word.bookmarked ?? false;
+  // 例句點字：查得到的字才做成按鈕。翻面看到例句時查一次，同一張卡翻來翻去不重查。
+  const [entries, setEntries] = useState<LookupEntries>({});
+  const [picked, setPicked] = useState<{ word: Word; anchor: PopoverAnchor | null } | null>(null);
+  const [hoverCapable, setHoverCapable] = useState(false);
+  const lookedUpRef = useRef("");
+  const openTimer = useRef<number | null>(null);
+  const closeTimer = useRef<number | null>(null);
+
+  useEffect(() => {
+    const query = window.matchMedia("(hover: hover) and (pointer: fine)");
+    queueMicrotask(() => setHoverCapable(query.matches));
+  }, []);
+
+  useEffect(() => {
+    if (!flipped || lookedUpRef.current === word.id) return;
+    const tokens = collectTokens((word.examples ?? []).map((e) => e.en));
+    if (tokens.length === 0) return;
+    lookedUpRef.current = word.id;
+    lookupTokens(tokens)
+      .then(setEntries)
+      // 查不到就讓例句維持純文字，不要把整塊例句弄不見
+      .catch(() => setEntries({}));
+  }, [flipped, word.id, word.examples]);
+
+  useEffect(() => {
+    return () => {
+      if (openTimer.current) window.clearTimeout(openTimer.current);
+      if (closeTimer.current) window.clearTimeout(closeTimer.current);
+    };
+  }, []);
+
+  const clearTimers = useCallback(() => {
+    if (openTimer.current) window.clearTimeout(openTimer.current);
+    if (closeTimer.current) window.clearTimeout(closeTimer.current);
+    openTimer.current = null;
+    closeTimer.current = null;
+  }, []);
+
+  // 滑鼠掃過整句時不要一路開好幾張，停留 150 毫秒才開。點擊則立刻開。
+  const pick = useCallback(
+    (target: Word, anchor: PopoverAnchor | null, hover: boolean) => {
+      clearTimers();
+      if (!hover) {
+        setPicked({ word: target, anchor });
+        return;
+      }
+      openTimer.current = window.setTimeout(() => {
+        setPicked({ word: target, anchor });
+      }, 150);
+    },
+    [clearTimers],
+  );
+
+  const scheduleClose = useCallback(() => {
+    clearTimers();
+    closeTimer.current = window.setTimeout(() => setPicked(null), 120);
+  }, [clearTimers]);
+
   const listNames = Object.keys(word.lists ?? {});
   const inflections = word.inflections ?? [];
   const examples = word.examples ?? [];
@@ -242,7 +290,12 @@ export function WordCard({
                     </Button>
                   ) : null}
                   <div className="space-y-0.5 text-left">
-                    <p className="text-sm leading-relaxed">{renderExample(example.en)}</p>
+                    <ExampleSentence
+                      sentence={example.en}
+                      entries={entries}
+                      onPick={pick}
+                      onLeave={scheduleClose}
+                    />
                     <p className="text-sm leading-relaxed text-muted-foreground">
                       {example.zh}
                     </p>
@@ -251,6 +304,25 @@ export function WordCard({
               );
             })}
           </div>
+        ) : null}
+
+        {picked ? (
+          <WordPopover
+            word={picked.word}
+            anchor={picked.anchor}
+            hoverCapable={hoverCapable}
+            canSpeak={supported}
+            onSpeak={() => {
+              setSource("word");
+              speak(picked.word.word, audioUrlFor(picked.word.id, accent, gender));
+            }}
+            onClose={() => {
+              clearTimers();
+              setPicked(null);
+            }}
+            onPointerEnter={clearTimers}
+            onPointerLeave={scheduleClose}
+          />
         ) : null}
 
         {supported && ACCENTS.length > 1 ? (

@@ -70,6 +70,9 @@ export interface SessionResult {
   estimated_toeic_score?: string;
 }
 
+/** 例句點字查詢的結果，key 是送出去的原 token。 */
+export type LookupEntries = Record<string, Word>;
+
 export interface BookmarkList {
   words: Word[];
   total: number;
