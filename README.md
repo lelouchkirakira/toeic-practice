@@ -51,7 +51,9 @@ The browser never calls the backend directly: `dashai-go` runs with origin lock 
 
 ### Previous stack
 
-`frontend/` (Vue 3 + PrimeVue) and `backend/` (FastAPI + SQLite) are the original implementation. Both are kept as a reference and are no longer deployed. Vue and PrimeVue are frozen under the project's stack rules, which is why the front end was rewritten.
+`backend/` (FastAPI + SQLite) is the original implementation, kept as a reference and no longer deployed. Its `data/` folder still holds the word list and question bank the scripts read, along with the CC BY-SA 4.0 licence.
+
+The original Vue 3 + PrimeVue front end was removed on 2026-09-23: Vue and PrimeVue are frozen under the project's stack rules, so it was never going to be picked up again, and its lockfile was the only thing generating vulnerability alerts.
 
 ## Tech stack
 
