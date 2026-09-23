@@ -139,6 +139,40 @@ def check_passage_item(item: dict, seen_ids: set[str]) -> list[str]:
     return problems
 
 
+def check_photo_item(item: dict, seen_ids: set[str]) -> list[str]:
+    """Part 1：一張照片四句描述，一句正解。"""
+    problems: list[str] = []
+    qid = item.get("id", "")
+    if not ID_FORMAT.match(qid):
+        problems.append(f"id 格式不對：{qid!r}")
+    if qid in seen_ids:
+        problems.append(f"id 重複：{qid}")
+    seen_ids.add(qid)
+
+    if not str(item.get("photo", "")).startswith("photos/part1/"):
+        problems.append(f"照片路徑不對：{item.get('photo')!r}")
+    credit = item.get("credit") or {}
+    if credit.get("license") != "CC0":
+        problems.append(f"照片授權不是 CC0：{credit.get('license')!r}")
+
+    statements = item.get("statements", [])
+    labels = [s.get("label") for s in statements]
+    if labels != ["A", "B", "C", "D"]:
+        problems.append(f"描述要四句且依序標 A 到 D，實際是 {labels}")
+    texts = [s.get("text", "") for s in statements]
+    if len(set(texts)) != len(texts):
+        problems.append("描述有重複")
+    for label, text in zip(labels, texts):
+        if not SENTENCE_MIN_WORDS - 3 <= len(text.split()) <= 20:
+            problems.append(f"{label} 長度 {len(text.split())} 字不合理")
+    answer = item.get("answer")
+    if answer not in labels:
+        problems.append(f"正解 {answer!r} 不在 A 到 D")
+    elif not check_options(texts, texts[labels.index(answer)], item.get("explanation", ""), "解析") == []:
+        problems.extend(check_options(texts, texts[labels.index(answer)], item.get("explanation", ""), "解析"))
+    return problems
+
+
 def check_item(item: dict, seen_ids: set[str], seen_sentences: dict[str, str]) -> list[str]:
     problems: list[str] = []
     qid = item.get("id", "")
@@ -214,20 +248,24 @@ def main() -> int:
 
     items = json.loads(args.target.read_text(encoding="utf-8"))
     passage_mode = bool(items) and "questions" in items[0]
+    photo_mode = bool(items) and "statements" in items[0]
     failures = 0
     for item in items:
-        problems = (
-            check_passage_item(item, seen_ids)
-            if passage_mode
-            else check_item(item, seen_ids, seen_sentences)
-        )
+        if photo_mode:
+            problems = check_photo_item(item, seen_ids)
+        elif passage_mode:
+            problems = check_passage_item(item, seen_ids)
+        else:
+            problems = check_item(item, seen_ids, seen_sentences)
         if problems:
             failures += 1
             print(f"\n{item.get('id', '(無 id)')}")
             for problem in problems:
                 print(f"  - {problem}")
 
-    if passage_mode:
+    if photo_mode:
+        positions = Counter("ABCD".index(item["answer"]) for item in items if item.get("answer") in "ABCD")
+    elif passage_mode:
         positions = Counter()
         for item in items:
             for q in item.get("questions", []):
@@ -254,7 +292,9 @@ def main() -> int:
             if share > POSITION_HIGH or share < POSITION_LOW:
                 print(f"  警告：正解落在 {'ABCD'[i]} 的比例 {share:.0%} 偏離平均，改題時往其他位置調")
 
-    if passage_mode:
+    if photo_mode:
+        print("照片：" + str(sum(1 for item in items if item.get("photo"))) + " 張，授權全為 CC0")
+    elif passage_mode:
         types = Counter(item.get("passage_type", "") for item in items)
         counts = Counter(len(item.get("questions", [])) for item in items)
         print("文章型態：" + "  ".join(f"{k}={v}" for k, v in types.most_common()))

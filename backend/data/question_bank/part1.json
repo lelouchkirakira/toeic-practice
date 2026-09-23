@@ -1,0 +1,392 @@
+[
+  {
+    "id": "toeic_part1_001",
+    "photo": "photos/part1/toeic_part1_001.jpg",
+    "statements": [
+      {
+        "label": "A",
+        "text": "Computer monitors have been set up along a long desk."
+      },
+      {
+        "label": "B",
+        "text": "A technician is repairing one of the keyboards."
+      },
+      {
+        "label": "C",
+        "text": "Some chairs are stacked in a corner of the room."
+      },
+      {
+        "label": "D",
+        "text": "The window blinds are being lowered."
+      }
+    ],
+    "answer": "A",
+    "explanation": "The monitors and keyboards are lined up on the desk, so A describes the photo. Nobody is in the room, so no technician is repairing anything, the chairs are pushed in at the desks rather than stacked, and 'are being lowered' needs someone moving the blinds.",
+    "credit": {
+      "creator": "unknown",
+      "source": "rawpixel",
+      "url": "https://www.rawpixel.com/image/5926101/photo-image-background-public-domain-technology",
+      "license": "CC0"
+    }
+  },
+  {
+    "id": "toeic_part1_002",
+    "photo": "photos/part1/toeic_part1_002.jpg",
+    "statements": [
+      {
+        "label": "A",
+        "text": "A mug is being filled with coffee."
+      },
+      {
+        "label": "B",
+        "text": "A pair of glasses is lying on a wooden surface."
+      },
+      {
+        "label": "C",
+        "text": "Some books are piled next to a laptop."
+      },
+      {
+        "label": "D",
+        "text": "A plant is being watered."
+      }
+    ],
+    "answer": "B",
+    "explanation": "The glasses rest on the wooden desk, which matches B. The mug is already full and nobody is pouring, there are no books in the picture, and 'is being watered' describes an action no one is performing.",
+    "credit": {
+      "creator": "Lia Leslie",
+      "source": "stocksnap",
+      "url": "https://stocksnap.io/photo/macbook-laptop-DWLWL9USBG",
+      "license": "CC0"
+    }
+  },
+  {
+    "id": "toeic_part1_003",
+    "photo": "photos/part1/toeic_part1_003.jpg",
+    "statements": [
+      {
+        "label": "A",
+        "text": "A presentation is being shown on the screen."
+      },
+      {
+        "label": "B",
+        "text": "Some people have gathered for a meeting."
+      },
+      {
+        "label": "C",
+        "text": "Chairs have been placed around a long table."
+      },
+      {
+        "label": "D",
+        "text": "The windows are covered by curtains."
+      }
+    ],
+    "answer": "C",
+    "explanation": "Chairs surround the long table, so C is correct. The wall screen is switched off, the room is empty, and the large windows have no curtains at all.",
+    "credit": {
+      "creator": "unknown",
+      "source": "rawpixel",
+      "url": "https://www.rawpixel.com/image/3282671/free-photo-image-office-meeting-space",
+      "license": "CC0"
+    }
+  },
+  {
+    "id": "toeic_part1_004",
+    "photo": "photos/part1/toeic_part1_004.jpg",
+    "statements": [
+      {
+        "label": "A",
+        "text": "A speaker is standing at the podium."
+      },
+      {
+        "label": "B",
+        "text": "The chairs on the stage have been folded up."
+      },
+      {
+        "label": "C",
+        "text": "Lights are being installed on the ceiling."
+      },
+      {
+        "label": "D",
+        "text": "Rows of seats are facing a projection screen."
+      }
+    ],
+    "answer": "D",
+    "explanation": "The auditorium seats all face the screen at the front, which is D. The podium is empty, the armchairs on the stage are set out rather than folded, and no one is working on the ceiling.",
+    "credit": {
+      "creator": "Nilo Velez",
+      "source": "wordpress",
+      "url": "https://wordpress.org/photos/photo/5176786995/",
+      "license": "CC0"
+    }
+  },
+  {
+    "id": "toeic_part1_005",
+    "photo": "photos/part1/toeic_part1_005.jpg",
+    "statements": [
+      {
+        "label": "A",
+        "text": "Boxes have been arranged on metal shelves."
+      },
+      {
+        "label": "B",
+        "text": "A worker is climbing a ladder."
+      },
+      {
+        "label": "C",
+        "text": "The shelves are being assembled."
+      },
+      {
+        "label": "D",
+        "text": "Some files are scattered on the floor."
+      }
+    ],
+    "answer": "A",
+    "explanation": "Labelled boxes fill the metal shelving on both sides of the aisle, so A fits. There is no worker or ladder, the shelves are already built, and the floor of the aisle is clear.",
+    "credit": {
+      "creator": "unknown",
+      "source": "rawpixel",
+      "url": "https://www.rawpixel.com/image/3298148/free-photo-image-warehouse-aisle-book",
+      "license": "CC0"
+    }
+  },
+  {
+    "id": "toeic_part1_006",
+    "photo": "photos/part1/toeic_part1_006.jpg",
+    "statements": [
+      {
+        "label": "A",
+        "text": "Passengers are boarding an airplane."
+      },
+      {
+        "label": "B",
+        "text": "Luggage has been left on the chairs."
+      },
+      {
+        "label": "C",
+        "text": "Rows of seats are lined up near large windows."
+      },
+      {
+        "label": "D",
+        "text": "A cleaner is mopping the floor."
+      }
+    ],
+    "answer": "C",
+    "explanation": "The waiting area shows rows of seats in front of tall windows, which is C. The planes outside are parked with no one boarding, the chairs are empty of bags, and nobody is cleaning.",
+    "credit": {
+      "creator": "Matt Moloney",
+      "source": "stocksnap",
+      "url": "https://stocksnap.io/photo/airport-terminal-CTIWBOSEN7",
+      "license": "CC0"
+    }
+  },
+  {
+    "id": "toeic_part1_007",
+    "photo": "photos/part1/toeic_part1_007.jpg",
+    "statements": [
+      {
+        "label": "A",
+        "text": "Some people are sitting in a waiting area."
+      },
+      {
+        "label": "B",
+        "text": "A traveler is pulling a rolling suitcase."
+      },
+      {
+        "label": "C",
+        "text": "A plane is taking off from the runway."
+      },
+      {
+        "label": "D",
+        "text": "The windows are being washed."
+      }
+    ],
+    "answer": "B",
+    "explanation": "One of the silhouetted travelers is pulling a suitcase, so B is correct. Everyone in the picture is walking rather than sitting, the planes outside are parked, and no one is cleaning the windows.",
+    "credit": {
+      "creator": "unknown",
+      "source": "rawpixel",
+      "url": "https://www.rawpixel.com/image/5912589/image-light-public-domain-shadow",
+      "license": "CC0"
+    }
+  },
+  {
+    "id": "toeic_part1_008",
+    "photo": "photos/part1/toeic_part1_008.jpg",
+    "statements": [
+      {
+        "label": "A",
+        "text": "Passengers are boarding a crowded train."
+      },
+      {
+        "label": "B",
+        "text": "Workers are repairing the railway tracks."
+      },
+      {
+        "label": "C",
+        "text": "Some benches have been placed between the rails."
+      },
+      {
+        "label": "D",
+        "text": "A long roof extends over the platform beside the tracks."
+      }
+    ],
+    "answer": "D",
+    "explanation": "A canopy runs along the platform next to the tracks, which is D. The platform is almost empty, nobody is working on the rails, and the only thing between the rails is gravel.",
+    "credit": {
+      "creator": "Faisal Ahammad",
+      "source": "wordpress",
+      "url": "https://wordpress.org/photos/photo/185684275c/",
+      "license": "CC0"
+    }
+  },
+  {
+    "id": "toeic_part1_009",
+    "photo": "photos/part1/toeic_part1_009.jpg",
+    "statements": [
+      {
+        "label": "A",
+        "text": "Some folding chairs have been placed beside a small table."
+      },
+      {
+        "label": "B",
+        "text": "A waiter is setting plates on the table."
+      },
+      {
+        "label": "C",
+        "text": "The chairs are being painted orange."
+      },
+      {
+        "label": "D",
+        "text": "Umbrellas have been opened over the seating area."
+      }
+    ],
+    "answer": "A",
+    "explanation": "Orange and white folding chairs stand next to a small outdoor table, so A matches. The table holds only flowers and a salt shaker, the chairs are already painted, and there are no umbrellas.",
+    "credit": {
+      "creator": "Alisa Anton",
+      "source": "stocksnap",
+      "url": "https://stocksnap.io/photo/tables-chairs-WUM7VBAPS8",
+      "license": "CC0"
+    }
+  },
+  {
+    "id": "toeic_part1_010",
+    "photo": "photos/part1/toeic_part1_010.jpg",
+    "statements": [
+      {
+        "label": "A",
+        "text": "Workers are climbing the crane."
+      },
+      {
+        "label": "B",
+        "text": "A crane is towering over the construction site."
+      },
+      {
+        "label": "C",
+        "text": "A building is being demolished."
+      },
+      {
+        "label": "D",
+        "text": "Some trees are being planted near the fence."
+      }
+    ],
+    "answer": "B",
+    "explanation": "The tall crane rises above the site against the sky, which is B. No workers are visible on it, nothing is being torn down, and there are no trees in the picture.",
+    "credit": {
+      "creator": "unknown",
+      "source": "rawpixel",
+      "url": "https://www.rawpixel.com/image/5969704/construction-site-crane",
+      "license": "CC0"
+    }
+  },
+  {
+    "id": "toeic_part1_011",
+    "photo": "photos/part1/toeic_part1_011.jpg",
+    "statements": [
+      {
+        "label": "A",
+        "text": "A vendor is weighing some apples."
+      },
+      {
+        "label": "B",
+        "text": "The market stall has been closed for the day."
+      },
+      {
+        "label": "C",
+        "text": "Baskets of fruit are displayed on wooden crates."
+      },
+      {
+        "label": "D",
+        "text": "Fruit is being loaded onto a truck."
+      }
+    ],
+    "answer": "C",
+    "explanation": "Punnets and baskets of berries and fruit are set out on wooden crates, so C is correct. No vendor is weighing anything, the stall is clearly open with price signs out, and there is no truck.",
+    "credit": {
+      "creator": "Daria Shevtsova",
+      "source": "stocksnap",
+      "url": "https://stocksnap.io/photo/fruit-market-E4J3BP6ZNJ",
+      "license": "CC0"
+    }
+  },
+  {
+    "id": "toeic_part1_012",
+    "photo": "photos/part1/toeic_part1_012.jpg",
+    "statements": [
+      {
+        "label": "A",
+        "text": "A chef is chopping vegetables on a cutting board."
+      },
+      {
+        "label": "B",
+        "text": "Plates are being washed in a sink."
+      },
+      {
+        "label": "C",
+        "text": "The cook is taking off his apron."
+      },
+      {
+        "label": "D",
+        "text": "Several lamps are hanging over the counter."
+      }
+    ],
+    "answer": "D",
+    "explanation": "Four pendant lamps hang above the kitchen counter, which is D. The cook in front is standing at the counter, not chopping, the plates are stacked rather than washed, and he is still wearing his apron.",
+    "credit": {
+      "creator": "Michael Browning",
+      "source": "stocksnap",
+      "url": "https://stocksnap.io/photo/restaurant-kitchen-0HCMIT272C",
+      "license": "CC0"
+    }
+  },
+  {
+    "id": "toeic_part1_013",
+    "photo": "photos/part1/toeic_part1_013.jpg",
+    "statements": [
+      {
+        "label": "A",
+        "text": "Passengers are getting off the boat."
+      },
+      {
+        "label": "B",
+        "text": "A boat is docked in the harbor."
+      },
+      {
+        "label": "C",
+        "text": "Some boats are sailing in a race."
+      },
+      {
+        "label": "D",
+        "text": "The pier is being repaired."
+      }
+    ],
+    "answer": "B",
+    "explanation": "A single boat is moored in the calm harbor, so B is correct. No passengers are getting off it, no boats are sailing in a race, and nobody is working on the pier, so it is not being repaired.",
+    "credit": {
+      "creator": "Nick Karvounis",
+      "source": "stocksnap",
+      "url": "https://stocksnap.io/photo/boats-ships-Q0HFATEZMQ",
+      "license": "CC0"
+    }
+  }
+]

@@ -1,4 +1,6 @@
 import type {
+  PhotoQuestion,
+  PhotoReview,
   Activity,
   BookmarkList,
   LookupEntries,
@@ -215,6 +217,18 @@ export function fetchDialogueQuestions(
 export function fetchDialogueReview(
   ids: string[],
 ): Promise<{ questions: DialogueReview[]; total: number }> {
+  return post("/listening/review", { ids });
+}
+
+export function fetchPhotoQuestions(
+  count: number,
+): Promise<{ questions: PhotoQuestion[]; total: number }> {
+  return request(`/listening/questions?part=1&count=${count}`);
+}
+
+export function fetchPhotoReview(
+  ids: string[],
+): Promise<{ questions: PhotoReview[]; total: number }> {
   return post("/listening/review", { ids });
 }
 

@@ -73,6 +73,32 @@ export interface SessionResult {
 /** 例句點字查詢的結果，key 是送出去的原 token。 */
 export type LookupEntries = Record<string, Word>;
 
+export interface PhotoCredit {
+  creator: string;
+  source: string;
+  url: string;
+  license: string;
+}
+
+/** 作答中的 Part 1：只有照片，描述用聽的。 */
+export interface PhotoQuestion {
+  id: string;
+  part: string;
+  photo: string;
+  credit: PhotoCredit;
+  option_labels: string[];
+}
+
+export interface PhotoReview {
+  id: string;
+  part: string;
+  photo: string;
+  statements: { label: string; text: string }[];
+  answer: string;
+  explanation: string;
+  credit: PhotoCredit;
+}
+
 export interface ActivityDay {
   date: string;
   count: number;

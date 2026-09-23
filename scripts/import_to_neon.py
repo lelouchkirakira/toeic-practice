@@ -33,7 +33,7 @@ logger = logging.getLogger(__name__)
 REPO_ROOT = Path(__file__).resolve().parent.parent
 WORDS_PATH = REPO_ROOT / 'backend/data/vocabulary/words.json'
 QUESTION_BANK_DIR = REPO_ROOT / 'backend/data/question_bank'
-PARTS = ('part5', 'part6', 'part7')
+PARTS = ('part1', 'part5', 'part6', 'part7')
 BATCH = 500
 
 
