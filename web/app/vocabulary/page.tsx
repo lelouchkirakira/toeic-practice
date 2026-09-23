@@ -20,9 +20,11 @@ import {
   type GenderId,
 } from "@/hooks/use-speech";
 import { WordCard } from "@/components/vocabulary/word-card";
+import { StudyPanel } from "@/components/vocabulary/study-panel";
 import { ErrorNotice, InfoNotice, LoadingBlock } from "@/components/status";
 import {
   errorMessage,
+  fetchBookmarks,
   fetchWords,
   saveBookmark,
   saveWordProgress,
@@ -61,6 +63,9 @@ export default function VocabularyPage() {
   const [bookmarkOnly, setBookmarkOnly] = useState(false);
   // 空狀態的說明要對應這一輪實際抽卡用的條件，不是使用者後來又改到一半的開關。
   const [loadedBookmarkOnly, setLoadedBookmarkOnly] = useState(false);
+  const [bookmarks, setBookmarks] = useState<Word[]>([]);
+  const [bookmarkTotal, setBookmarkTotal] = useState(0);
+  const [looked, setLooked] = useState<Word[]>([]);
 
   const [words, setWords] = useState<Word[]>([]);
   const [index, setIndex] = useState(0);
@@ -189,6 +194,7 @@ export default function VocabularyPage() {
     setError("");
     try {
       await saveBookmark(word.id, next);
+      void loadBookmarks();
     } catch (e) {
       apply(!next);
       setError(errorMessage(e, "書籤寫入失敗"));
@@ -198,8 +204,32 @@ export default function VocabularyPage() {
   const currentWord = words[index];
   const isFinished = words.length > 0 && index >= words.length;
 
+  // 右側欄的書籤清單。標記或移除之後重抓，數字才不會停在舊的。
+  const loadBookmarks = useCallback(async () => {
+    try {
+      const data = await fetchBookmarks(3);
+      setBookmarks(data.words);
+      setBookmarkTotal(data.total);
+    } catch {
+      // 側欄拿不到資料不影響背單字本身，靜靜留白就好
+    }
+  }, []);
+
+  useEffect(() => {
+    void loadBookmarks();
+  }, [loadBookmarks]);
+
+  const remember = useCallback((word: Word) => {
+    setLooked((list) =>
+      list.some((item) => item.id === word.id)
+        ? list
+        : [word, ...list].slice(0, 6),
+    );
+  }, []);
+
   return (
-    <div className="space-y-5">
+    <div data-wide className="flex gap-6">
+      <div className="min-w-0 flex-1 space-y-5">
       <h1 className="text-xl font-semibold">背單字</h1>
 
       <Card>
@@ -383,8 +413,18 @@ export default function VocabularyPage() {
           onGenderChange={changeGender}
           onRate={(wordLevel) => void rate(currentWord.id, wordLevel)}
           onToggleBookmark={() => void toggleBookmark(currentWord)}
+          onLookup={remember}
         />
       ) : null}
+      </div>
+
+      <StudyPanel
+        index={index}
+        total={words.length}
+        bookmarks={bookmarks}
+        bookmarkTotal={bookmarkTotal}
+        looked={looked}
+      />
     </div>
   );
 }

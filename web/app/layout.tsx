@@ -20,7 +20,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="flex min-h-full flex-col bg-background text-foreground">
         <SiteNav />
-        <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-6">
+        <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-6">
           {children}
         </main>
       </body>

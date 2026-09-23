@@ -145,6 +145,19 @@
   }
 }
 
+
+/* 外框寬度：頁面內容預設限在 48rem 的閱讀寬度並置中，背單字頁要放右側欄，
+   在自己的最外層掛 data-wide 就吃滿外層的 max-w-5xl。 */
+main > * {
+  width: 100%;
+  max-width: 48rem;
+  margin-inline: auto;
+}
+
+main > [data-wide] {
+  max-width: none;
+}
+
 /* 聽力播放時的波形。純裝飾，用 aria-hidden 讓讀螢幕軟體略過。 */
 @keyframes listening-bar {
   0%,

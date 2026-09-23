@@ -62,6 +62,7 @@ export function WordCard({
   onGenderChange,
   onRate,
   onToggleBookmark,
+  onLookup,
 }: {
   word: Word;
   index: number;
@@ -74,6 +75,7 @@ export function WordCard({
   onGenderChange: (gender: GenderId) => void;
   onRate: (level: WordLevel) => void;
   onToggleBookmark: () => void;
+  onLookup?: (word: Word) => void;
 }) {
   const [flipped, setFlipped] = useState(false);
   // 單字與例句共用一個播放器，記住這次唸的是誰，播放中的顏色才不會亮在別顆按鈕上。
@@ -136,6 +138,7 @@ export function WordCard({
   const pick = useCallback(
     (target: Word, anchor: PopoverAnchor | null, hover: boolean) => {
       clearTimers();
+      onLookup?.(target);
       if (!hover) {
         setPicked({ word: target, anchor });
         return;
@@ -144,7 +147,7 @@ export function WordCard({
         setPicked({ word: target, anchor });
       }, 150);
     },
-    [clearTimers],
+    [clearTimers, onLookup],
   );
 
   const scheduleClose = useCallback(() => {
@@ -245,7 +248,9 @@ export function WordCard({
             </>
           ) : (
             <>
-              <span className="text-3xl font-bold break-words">{word.word}</span>
+              <span className="text-[2.375rem] leading-tight font-bold break-words">
+                {word.word}
+              </span>
               {word.phonetic ? (
                 <span className="text-lg text-muted-foreground break-words">
                   [{word.phonetic}]
