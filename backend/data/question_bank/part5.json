@@ -87,7 +87,7 @@
       "were"
     ],
     "answer": "has",
-    "explanation": "The subject is 'the number,' which is singular and takes a singular verb 'has.' A common error is treating 'complaints' (the noun after 'of') as the subject. The rule is: 'the number of + plural noun' takes a singular verb, while 'a number of + plural noun' takes a plural verb.",
+    "explanation": "The subject is 'the number,' which is singular and takes 'has.' 'Have' and 'are' agree with the plural 'complaints,' which is the object of 'of' and not the subject, and 'were' is both plural and past tense, which clashes with 'since the new protocol was introduced.' The rule is: 'the number of + plural noun' takes a singular verb, while 'a number of + plural noun' takes a plural verb.",
     "grammar_category": "word form"
   },
   {
@@ -388,5 +388,655 @@
     "answer": "for",
     "explanation": "The fixed phrase is 'praise someone for something.' The preposition 'for' indicates the reason or cause of the praise. 'Praise someone about' and 'praise someone on' are not standard collocations in this context. 'At' indicates location or a point in time, not the reason for an action.",
     "grammar_category": "preposition"
+  },
+  {
+    "id": "toeic_part5_031",
+    "sentence": "The project review will be postponed _______ the regional director cannot join the call on Thursday.",
+    "options": [
+      "because",
+      "despite",
+      "therefore",
+      "whether"
+    ],
+    "answer": "because",
+    "explanation": "'Because' introduces a clause giving the reason for the postponement. 'Despite' is a preposition and cannot lead a clause with a subject and verb. 'Therefore' is an adverb that states a result, not a cause. 'Whether' introduces an alternative or an indirect question, which does not fit here.",
+    "grammar_category": "conjunction"
+  },
+  {
+    "id": "toeic_part5_032",
+    "sentence": "Department heads must confirm _______ availability before the scheduling team locks the agenda.",
+    "options": [
+      "theirs",
+      "their",
+      "them",
+      "themselves"
+    ],
+    "answer": "their",
+    "explanation": "A possessive adjective is needed before the noun 'availability,' so 'their' is correct. 'Theirs' is a possessive pronoun that stands alone and cannot modify a noun. 'Them' is an object pronoun. 'Themselves' is reflexive and cannot function as a modifier.",
+    "grammar_category": "pronoun"
+  },
+  {
+    "id": "toeic_part5_033",
+    "sentence": "_______ of the conference rooms on the third floor is available for the Monday planning session.",
+    "options": [
+      "Few",
+      "Several",
+      "Neither",
+      "Both"
+    ],
+    "answer": "Neither",
+    "explanation": "'Neither' refers to two items and takes the singular verb 'is,' which matches the sentence. 'Few' and 'Several' refer to three or more and require the plural verb 'are.' 'Both' also takes a plural verb and would contradict the singular form used here.",
+    "grammar_category": "quantifier"
+  },
+  {
+    "id": "toeic_part5_034",
+    "sentence": "The assistant _______ prepared the minutes has already circulated them to all attendees.",
+    "options": [
+      "which",
+      "whose",
+      "whom",
+      "who"
+    ],
+    "answer": "who",
+    "explanation": "'Who' is the subject relative pronoun for a person and supplies the subject of 'prepared.' 'Which' refers to things, not people. 'Whom' is the object form and cannot act as the subject of the clause. 'Whose' shows possession and must be followed by a noun.",
+    "grammar_category": "relative clause"
+  },
+  {
+    "id": "toeic_part5_035",
+    "sentence": "The revised agenda is far _______ than the version the committee reviewed last week.",
+    "options": [
+      "shorter",
+      "short",
+      "shortest",
+      "shortly"
+    ],
+    "answer": "shorter",
+    "explanation": "The word 'than' signals a comparison between two items, so the comparative 'shorter' is required. 'Shortest' is the superlative and is used for three or more items without 'than.' 'Short' is the base adjective and cannot pair with 'than.' 'Shortly' is an adverb meaning soon.",
+    "grammar_category": "comparison"
+  },
+  {
+    "id": "toeic_part5_036",
+    "sentence": "Please arrange a shuttle _______ the airport to the hotel for the delegates arriving on Sunday.",
+    "options": [
+      "among",
+      "from",
+      "into",
+      "onto"
+    ],
+    "answer": "from",
+    "explanation": "'From' marks the starting point of the trip and pairs naturally with the following 'to the hotel.' 'Among' describes position within a group of three or more. 'Into' and 'onto' express movement toward the inside of or the surface of something, so neither can mark an origin.",
+    "grammar_category": "preposition"
+  },
+  {
+    "id": "toeic_part5_037",
+    "sentence": "The hotel had _______ rooms left, so two of our engineers stayed at a nearby branch.",
+    "options": [
+      "little",
+      "much",
+      "a little",
+      "few"
+    ],
+    "answer": "few",
+    "explanation": "'Rooms' is a countable plural noun, and 'few' expresses a small, insufficient number. 'Little' and 'a little' modify uncountable nouns such as space or time. 'Much' is also limited to uncountable nouns and cannot describe a count of rooms.",
+    "grammar_category": "quantifier"
+  },
+  {
+    "id": "toeic_part5_038",
+    "sentence": "Travelers may upgrade their seats _______ they submit the request at least 48 hours before departure.",
+    "options": [
+      "despite",
+      "in spite of",
+      "provided that",
+      "regardless"
+    ],
+    "answer": "provided that",
+    "explanation": "'Provided that' is a conjunction stating the condition under which the upgrade is allowed. 'Despite' and 'in spite of' are prepositions that take a noun phrase, not a full clause, and they express contrast rather than condition. 'Regardless' needs 'of' plus a noun and reverses the intended meaning.",
+    "grammar_category": "conjunction"
+  },
+  {
+    "id": "toeic_part5_039",
+    "sentence": "The hotel _______ our team stayed last spring has renovated its entire conference wing.",
+    "options": [
+      "where",
+      "which",
+      "that",
+      "when"
+    ],
+    "answer": "where",
+    "explanation": "'Where' introduces a relative clause describing a place and replaces 'at which.' The clause 'our team stayed' is already complete, so 'which' and 'that' would leave an object with no role to fill. 'When' refers to a point in time rather than a location.",
+    "grammar_category": "relative clause"
+  },
+  {
+    "id": "toeic_part5_040",
+    "sentence": "The copier on the fourth floor has been out of service _______ Tuesday morning.",
+    "options": [
+      "for",
+      "during",
+      "since",
+      "by"
+    ],
+    "answer": "since",
+    "explanation": "'Since' pairs with the present perfect to mark the point when the outage began. 'For' must be followed by a length of time such as three days, not a specific morning. 'During' requires a period of activity, and 'by' indicates a deadline rather than a starting point.",
+    "grammar_category": "preposition"
+  },
+  {
+    "id": "toeic_part5_041",
+    "sentence": "The maintenance crew repaired the shredder _______ after the morning inspection.",
+    "options": [
+      "they",
+      "their",
+      "them",
+      "themselves"
+    ],
+    "answer": "themselves",
+    "explanation": "The emphatic reflexive 'themselves' stresses that the crew did the repair without outside help. 'They' is a subject pronoun and cannot sit after the object. 'Their' is possessive and needs a noun to modify. 'Them' would point to people other than the subject, which contradicts the meaning.",
+    "grammar_category": "pronoun"
+  },
+  {
+    "id": "toeic_part5_042",
+    "sentence": "The new laminator runs _______ than the unit it replaced last quarter.",
+    "options": [
+      "most quietly",
+      "more quietly",
+      "quietly",
+      "as quietly"
+    ],
+    "answer": "more quietly",
+    "explanation": "Two machines are compared with 'than,' so the comparative adverb 'more quietly' is required. 'Most quietly' is the superlative and cannot take 'than.' 'Quietly' is the base adverb with no comparative marker, and 'as quietly' would need a second 'as' instead of 'than.'",
+    "grammar_category": "comparison"
+  },
+  {
+    "id": "toeic_part5_043",
+    "sentence": "All repair requests should be submitted _______ the facilities portal rather than by phone.",
+    "options": [
+      "through",
+      "across",
+      "along",
+      "beside"
+    ],
+    "answer": "through",
+    "explanation": "'Through' indicates the channel or system used to send the request. 'Across' describes movement from one side to the other of a surface or area. 'Along' follows the length of something such as a road, and 'beside' states a position next to an object, so none of them can mark a means of submission.",
+    "grammar_category": "preposition"
+  },
+  {
+    "id": "toeic_part5_044",
+    "sentence": "By the time the purchasing team reviewed the quotation, the supplier _______ its unit price twice.",
+    "options": [
+      "raises",
+      "is raising",
+      "had already raised",
+      "raise"
+    ],
+    "answer": "had already raised",
+    "explanation": "The price change finished before the past review, so the past perfect 'had already raised' is correct. 'Raises' and 'raise' are present forms that clash with the past time frame, and 'is raising' describes an action in progress now rather than one completed earlier.",
+    "grammar_category": "verb tense"
+  },
+  {
+    "id": "toeic_part5_045",
+    "sentence": "Three competing quotations _______ to the procurement committee before any purchase order is issued.",
+    "options": [
+      "must be submitted",
+      "must submit",
+      "must be submitting",
+      "must submitting"
+    ],
+    "answer": "must be submitted",
+    "explanation": "The quotations receive the action, so the passive 'must be submitted' is required. 'Must submit' would make the quotations the ones doing the submitting, 'must be submitting' is an active progressive form with the wrong meaning, and 'must submitting' is not a grammatical verb phrase.",
+    "grammar_category": "passive voice"
+  },
+  {
+    "id": "toeic_part5_046",
+    "sentence": "The vendor agreed _______ the delivery charge if we place a second order within thirty days.",
+    "options": [
+      "waiving",
+      "to waive",
+      "waive",
+      "waived"
+    ],
+    "answer": "to waive",
+    "explanation": "The verb 'agree' is followed by an infinitive, so 'to waive' is correct. 'Waiving' is a gerund that 'agree' does not take, 'waive' is a bare base form with no infinitive marker, and 'waived' is a past form that cannot follow another conjugated verb here.",
+    "grammar_category": "gerund/infinitive"
+  },
+  {
+    "id": "toeic_part5_047",
+    "sentence": "The sales representative gave a _______ detailed breakdown of the tooling costs in her revised quotation.",
+    "options": [
+      "remarkable",
+      "remark",
+      "remarkableness",
+      "remarkably"
+    ],
+    "answer": "remarkably",
+    "explanation": "An adverb is needed to modify the adjective 'detailed', so 'remarkably' is correct. 'Remarkable' is an adjective and cannot modify another adjective, while 'remark' and 'remarkableness' are nouns that leave the phrase without any modifier for 'detailed'.",
+    "grammar_category": "word form"
+  },
+  {
+    "id": "toeic_part5_048",
+    "sentence": "The finance director insisted that the contract _______ signed until the payment terms were clarified.",
+    "options": [
+      "is not",
+      "was not",
+      "not be",
+      "will not be"
+    ],
+    "answer": "not be",
+    "explanation": "After 'insist that', the subjunctive keeps the base form and places the negative before it, so 'not be' is correct. 'Is not' and 'was not' are indicative forms that the subjunctive clause does not allow, and 'will not be' adds a future marker that the subjunctive never uses.",
+    "grammar_category": "subjunctive"
+  },
+  {
+    "id": "toeic_part5_049",
+    "sentence": "All export documents _______ to the freight forwarder the day before the vessel departs.",
+    "options": [
+      "are sending",
+      "are sent",
+      "send",
+      "sending"
+    ],
+    "answer": "are sent",
+    "explanation": "The documents receive the action, so the passive 'are sent' is required. 'Are sending' and 'send' are active forms that would make the documents the sender, and 'sending' is a participle that cannot serve as the main verb of the sentence.",
+    "grammar_category": "passive voice"
+  },
+  {
+    "id": "toeic_part5_050",
+    "sentence": "The courier _______ three attempts to deliver the parcel before returning it to our distribution center.",
+    "options": [
+      "make",
+      "making",
+      "is made",
+      "made"
+    ],
+    "answer": "made",
+    "explanation": "The sentence reports a completed sequence of past events, so the past tense 'made' fits. 'Make' does not agree with the singular subject and points to the present, 'making' cannot stand alone as the main verb, and 'is made' is passive, which contradicts the courier acting as the agent.",
+    "grammar_category": "verb tense"
+  },
+  {
+    "id": "toeic_part5_051",
+    "sentence": "The warehouse supervisor recommended _______ the fragile cartons on the top layer of each pallet.",
+    "options": [
+      "placing",
+      "to place",
+      "place",
+      "placed"
+    ],
+    "answer": "placing",
+    "explanation": "'Recommend' takes a gerund as its object, so 'placing' is correct. 'To place' is an infinitive that this verb does not accept directly, 'place' is a bare base form with nothing to license it, and 'placed' would be read as a past verb that leaves the sentence with two conflicting predicates.",
+    "grammar_category": "gerund/infinitive"
+  },
+  {
+    "id": "toeic_part5_052",
+    "sentence": "Customs officers inspected the container _______ because the packing list did not match the invoice.",
+    "options": [
+      "thorough",
+      "thoroughness",
+      "thoroughly",
+      "thoroughest"
+    ],
+    "answer": "thoroughly",
+    "explanation": "The blank modifies the verb 'inspected', so the adverb 'thoroughly' is correct. 'Thorough' is an adjective and has no noun to describe here, 'thoroughness' is a noun that cannot modify a verb, and 'thoroughest' is not a standard comparative or superlative form.",
+    "grammar_category": "word form"
+  },
+  {
+    "id": "toeic_part5_053",
+    "sentence": "Since the cycle counting program began in April, stock discrepancies _______ by more than half.",
+    "options": [
+      "have fallen",
+      "fall",
+      "are falling",
+      "will fall"
+    ],
+    "answer": "have fallen",
+    "explanation": "'Since' plus a past starting point calls for the present perfect, so 'have fallen' is correct. 'Fall' states a general habit rather than a change measured from April, 'are falling' describes only what is happening at this moment, and 'will fall' points to the future instead of the period already completed.",
+    "grammar_category": "verb tense"
+  },
+  {
+    "id": "toeic_part5_054",
+    "sentence": "Slow-moving items _______ to a secondary storage area whenever floor space runs short.",
+    "options": [
+      "relocate",
+      "are relocating",
+      "relocating",
+      "are relocated"
+    ],
+    "answer": "are relocated",
+    "explanation": "The items are moved by staff rather than moving themselves, so the passive 'are relocated' is required. 'Relocate' and 'are relocating' are active forms that would make the items the agent, and 'relocating' is a participle that cannot function as the main verb.",
+    "grammar_category": "passive voice"
+  },
+  {
+    "id": "toeic_part5_055",
+    "sentence": "Our team avoided _______ excess safety stock by sharing weekly demand forecasts with the plant.",
+    "options": [
+      "to hold",
+      "holding",
+      "hold",
+      "held"
+    ],
+    "answer": "holding",
+    "explanation": "'Avoid' is followed by a gerund, so 'holding' is correct. 'To hold' is an infinitive that this verb never takes, 'hold' is a bare base form with no auxiliary to support it, and 'held' is a past form that cannot follow the already conjugated verb 'avoided'.",
+    "grammar_category": "gerund/infinitive"
+  },
+  {
+    "id": "toeic_part5_056",
+    "sentence": "The auditor recommended that every warehouse _______ a physical count at the close of each quarter.",
+    "options": [
+      "conducts",
+      "conducted",
+      "conduct",
+      "is conducting"
+    ],
+    "answer": "conduct",
+    "explanation": "After 'recommend that', the subjunctive uses the base form, so 'conduct' is correct even with a singular subject. 'Conducts' adds the ordinary present agreement ending, 'conducted' shifts the clause into the past, and 'is conducting' supplies a progressive form that the subjunctive does not allow.",
+    "grammar_category": "subjunctive"
+  },
+  {
+    "id": "toeic_part5_057",
+    "sentence": "Applicants _______ resumes arrive after the posted deadline will not be considered for the summer intake.",
+    "options": [
+      "whose",
+      "who",
+      "which",
+      "who's"
+    ],
+    "answer": "whose",
+    "explanation": "'Whose' shows possession and links the applicants to the resumes they submitted. 'Who' would have to be the subject of the clause, but 'resumes' already fills that slot. 'Which' refers to things rather than people. 'Who's' is the contraction of 'who is' and leaves the clause without a workable verb.",
+    "grammar_category": "relative clause"
+  },
+  {
+    "id": "toeic_part5_058",
+    "sentence": "The personnel office will announce the _______ of the new regional manager at Monday's staff briefing.",
+    "options": [
+      "appoint",
+      "appointment",
+      "appointed",
+      "appointive"
+    ],
+    "answer": "appointment",
+    "explanation": "A noun must follow the article 'the', so the noun 'appointment' is correct. 'Appoint' is the base verb and cannot sit after an article. 'Appointed' is a past participle that would need a noun to modify. 'Appointive' is an adjective and leaves the verb 'announce' without an object.",
+    "grammar_category": "word form"
+  },
+  {
+    "id": "toeic_part5_059",
+    "sentence": "The hiring committee praised the shortlisted engineers for _______ willingness to relocate at short notice.",
+    "options": [
+      "them",
+      "theirs",
+      "their",
+      "they"
+    ],
+    "answer": "their",
+    "explanation": "A possessive determiner is needed in front of the noun 'willingness', so 'their' is correct. 'Them' is an object pronoun and cannot modify a noun. 'Theirs' is a possessive pronoun that stands alone and must not be followed by a noun. 'They' is a subject pronoun, and there is no second clause for it to head.",
+    "grammar_category": "pronoun"
+  },
+  {
+    "id": "toeic_part5_060",
+    "sentence": "All job openings posted this week are _______ to internal candidates until the end of the month.",
+    "options": [
+      "reduced",
+      "removed",
+      "delayed",
+      "restricted"
+    ],
+    "answer": "restricted",
+    "explanation": "'Restricted to' means access is limited to one group, which matches an internal-only posting period. 'Reduced' would describe a drop in quantity, not a limit on who may apply. 'Removed' suggests the openings were taken down altogether. 'Delayed' concerns timing and does not combine with 'to internal candidates'.",
+    "grammar_category": "vocabulary"
+  },
+  {
+    "id": "toeic_part5_061",
+    "sentence": "_______ the online modules are self-paced, trainees must finish all five units before the certification exam.",
+    "options": [
+      "Although",
+      "Despite",
+      "However",
+      "Therefore"
+    ],
+    "answer": "Although",
+    "explanation": "'Although' is a subordinating conjunction and can introduce the full clause 'the online modules are self-paced'. 'Despite' is a preposition and needs a noun phrase after it. 'However' is an adverb and cannot join two clauses by itself. 'Therefore' signals a result, which contradicts the contrast between self-paced study and a fixed deadline.",
+    "grammar_category": "conjunction"
+  },
+  {
+    "id": "toeic_part5_062",
+    "sentence": "The workshop on data security drew a _______ larger audience than the session on filing procedures.",
+    "options": [
+      "very",
+      "much",
+      "more",
+      "most"
+    ],
+    "answer": "much",
+    "explanation": "'Much' is one of the few intensifiers that can strengthen a comparative such as 'larger'. 'Very' modifies base adjectives but never comparative forms. 'More' would create a double comparative alongside 'larger'. 'Most' builds superlatives and cannot appear in a structure that ends with 'than'.",
+    "grammar_category": "comparison"
+  },
+  {
+    "id": "toeic_part5_063",
+    "sentence": "The trainer explained the new safety procedures _______ so that every participant understood the evacuation route.",
+    "options": [
+      "clear",
+      "clarity",
+      "clearly",
+      "clearer"
+    ],
+    "answer": "clearly",
+    "explanation": "An adverb is needed to describe how the trainer explained the procedures, so 'clearly' is correct. 'Clear' is an adjective and cannot modify a verb. 'Clarity' is a noun and would leave two objects after 'explained'. 'Clearer' is a comparative form with nothing in the sentence to compare against.",
+    "grammar_category": "word form"
+  },
+  {
+    "id": "toeic_part5_064",
+    "sentence": "The manual _______ the instructors distributed on the first morning covers every machine on the assembly line.",
+    "options": [
+      "who",
+      "whose",
+      "what",
+      "that"
+    ],
+    "answer": "that",
+    "explanation": "'That' introduces a relative clause modifying 'manual' and works as the object of 'distributed'. 'Who' refers only to people. 'Whose' marks possession and would need a noun immediately after it. 'What' carries its own antecedent, so it cannot follow the noun it is meant to modify.",
+    "grammar_category": "relative clause"
+  },
+  {
+    "id": "toeic_part5_065",
+    "sentence": "The appraisal forms were distributed to the department heads, but several of _______ were returned incomplete.",
+    "options": [
+      "them",
+      "they",
+      "their",
+      "theirs"
+    ],
+    "answer": "them",
+    "explanation": "An object pronoun is required after the preposition 'of', so 'them' is correct. 'They' is a subject pronoun and cannot follow a preposition. 'Their' is a possessive determiner and needs a noun after it. 'Theirs' replaces an entire noun phrase, which leaves 'several of' without a group to point back to.",
+    "grammar_category": "pronoun"
+  },
+  {
+    "id": "toeic_part5_066",
+    "sentence": "Supervisors are asked to give _______ feedback that points to specific examples rather than general impressions.",
+    "options": [
+      "consecutive",
+      "constructive",
+      "constrained",
+      "conclusive"
+    ],
+    "answer": "constructive",
+    "explanation": "'Constructive' feedback is intended to help someone improve, which fits the emphasis on specific examples. 'Consecutive' describes items that follow one after another in time. 'Constrained' means limited or held back. 'Conclusive' describes evidence that settles a question, not advice offered to staff.",
+    "grammar_category": "vocabulary"
+  },
+  {
+    "id": "toeic_part5_067",
+    "sentence": "Of all the regional teams evaluated this year, the Osaka branch achieved the _______ improvement in customer retention.",
+    "options": [
+      "greater",
+      "great",
+      "greatest",
+      "greatly"
+    ],
+    "answer": "greatest",
+    "explanation": "Ranking one branch against every other calls for the superlative 'greatest' after 'the'. 'Greater' compares only two items and would need 'than'. 'Great' is the base form and ignores the comparison signalled by 'of all the regional teams'. 'Greatly' is an adverb and cannot modify the noun 'improvement'.",
+    "grammar_category": "comparison"
+  },
+  {
+    "id": "toeic_part5_068",
+    "sentence": "The final ratings will remain confidential _______ the employee agrees to share them with an assigned mentor.",
+    "options": [
+      "so that",
+      "in case",
+      "whereas",
+      "unless"
+    ],
+    "answer": "unless",
+    "explanation": "'Unless' means 'except if', which fits a rule that stops applying only when the employee consents. 'So that' introduces a purpose, but confidentiality is not the aim of the agreement. 'In case' describes a precaution taken in advance. 'Whereas' draws a contrast between two facts and cannot state a condition.",
+    "grammar_category": "conjunction"
+  },
+  {
+    "id": "toeic_part5_069",
+    "sentence": "Because the damaged blender was replaced the same afternoon, the customer withdrew her complaint and posted a _______ review instead.",
+    "options": [
+      "favorable",
+      "reluctant",
+      "hesitant",
+      "vacant"
+    ],
+    "answer": "favorable",
+    "explanation": "'Favorable' describes a positive review, which matches a customer who dropped her complaint. 'Reluctant' and 'hesitant' both describe unwillingness rather than praise, and 'vacant' means empty or unoccupied, so it cannot modify a review at all.",
+    "grammar_category": "vocabulary"
+  },
+  {
+    "id": "toeic_part5_070",
+    "sentence": "_______ of the two refund policies applies to digital downloads, so the billing team had to draft a new one for that channel.",
+    "options": [
+      "No",
+      "Neither",
+      "None",
+      "Not any"
+    ],
+    "answer": "Neither",
+    "explanation": "'Neither' is the quantifier used for exactly two items and takes the singular verb 'applies'. 'None' refers to three or more things, 'no' cannot be followed by 'of the', and 'not any' does not work as the subject of a sentence in this pattern.",
+    "grammar_category": "quantifier"
+  },
+  {
+    "id": "toeic_part5_071",
+    "sentence": "Customers who file a complaint _______ seven days of delivery are entitled to a replacement unit at no extra cost.",
+    "options": [
+      "during",
+      "since",
+      "within",
+      "until"
+    ],
+    "answer": "within",
+    "explanation": "'Within' marks the period by the end of which the action must happen, so it fits 'seven days of delivery'. 'During' needs a named period rather than a length of time, 'since' looks back to a starting point, and 'until' names an end point instead of a span.",
+    "grammar_category": "preposition"
+  },
+  {
+    "id": "toeic_part5_072",
+    "sentence": "The call center manager apologized for _______ the shipping error and promised to notify affected buyers by email the same day.",
+    "options": [
+      "overlook",
+      "to overlook",
+      "overlooked",
+      "overlooking"
+    ],
+    "answer": "overlooking",
+    "explanation": "The preposition 'for' must be followed by a gerund, so 'overlooking' is the only possible form. 'To overlook' cannot follow a preposition, the bare form 'overlook' leaves the phrase with no valid verb form, and 'overlooked' would need an auxiliary verb to stand here.",
+    "grammar_category": "gerund/infinitive"
+  },
+  {
+    "id": "toeic_part5_073",
+    "sentence": "The summer campaign generated _______ more sign-ups than the spring one, even though both ran on the same social media budget.",
+    "options": [
+      "far",
+      "very",
+      "so",
+      "too"
+    ],
+    "answer": "far",
+    "explanation": "A comparative such as 'more' is strengthened by 'far', 'much' or 'even'. 'Very' modifies only plain adjectives and adverbs, and neither 'so' nor 'too' can intensify a comparative that is followed by 'than'.",
+    "grammar_category": "comparison"
+  },
+  {
+    "id": "toeic_part5_074",
+    "sentence": "By the time the product video airs next month, the agency _______ the slogan in three different languages.",
+    "options": [
+      "has translated",
+      "will have translated",
+      "translated",
+      "is translating"
+    ],
+    "answer": "will have translated",
+    "explanation": "'By the time' plus a future event calls for the future perfect 'will have translated'. 'Has translated' reports a result already reached, 'translated' puts the work entirely in the past, and 'is translating' cannot express completion by a future deadline.",
+    "grammar_category": "verb tense"
+  },
+  {
+    "id": "toeic_part5_075",
+    "sentence": "Sales of the limited edition tote bag rose sharply after the launch event, so the brand chose to _______ the promotion for another month.",
+    "options": [
+      "postpone",
+      "withdraw",
+      "extend",
+      "decline"
+    ],
+    "answer": "extend",
+    "explanation": "'Extend' means to keep something running for a longer period, which matches sharply rising sales. 'Postpone' would delay a promotion that is already under way, 'withdraw' would cancel it, and 'decline' means to refuse or to fall, none of which follows from strong sales.",
+    "grammar_category": "vocabulary"
+  },
+  {
+    "id": "toeic_part5_076",
+    "sentence": "The design team built the entire holiday campaign _______ a single photograph taken at the company's first storefront.",
+    "options": [
+      "along",
+      "among",
+      "across",
+      "around"
+    ],
+    "answer": "around",
+    "explanation": "The fixed expression is to build something 'around' a central idea or image. 'Along' suggests movement beside a line, 'among' requires a group of several things, and 'across' describes movement from one side to the other, so none of them suits a single photograph.",
+    "grammar_category": "preposition"
+  },
+  {
+    "id": "toeic_part5_077",
+    "sentence": "Third quarter marketing spending was slightly _______ than the forecast, so the controller released the remaining contingency funds.",
+    "options": [
+      "lower",
+      "low",
+      "lowest",
+      "as low"
+    ],
+    "answer": "lower",
+    "explanation": "The word 'than' requires a comparative form, so 'lower' is the only option that fits. The plain form 'low' makes no comparison, 'lowest' is a superlative that pairs with 'of' or 'in', and 'as low' would have to be completed by a second 'as' rather than 'than'.",
+    "grammar_category": "comparison"
+  },
+  {
+    "id": "toeic_part5_078",
+    "sentence": "The auditors _______ the quarterly statements since Monday, and they expect to deliver their findings on Friday afternoon.",
+    "options": [
+      "reviewed",
+      "have been reviewing",
+      "are reviewing",
+      "had reviewed"
+    ],
+    "answer": "have been reviewing",
+    "explanation": "'Since Monday' marks work that began in the past and is still going on, which the present perfect continuous 'have been reviewing' expresses. The simple past 'reviewed' closes the action off, 'are reviewing' cannot take a 'since' phrase, and 'had reviewed' needs a later past reference point.",
+    "grammar_category": "verb tense"
+  },
+  {
+    "id": "toeic_part5_079",
+    "sentence": "The finance director warned that there is very _______ room left in the travel budget before the fiscal year closes.",
+    "options": [
+      "few",
+      "a few",
+      "little",
+      "many"
+    ],
+    "answer": "little",
+    "explanation": "'Room' is uncountable in this sense, so it takes 'little'. 'Few' and 'a few' count separate items, and 'many' is also countable, so all three clash with an uncountable noun and with the singular verb 'is'.",
+    "grammar_category": "quantifier"
+  },
+  {
+    "id": "toeic_part5_080",
+    "sentence": "The committee agreed _______ the equipment purchase until the next fiscal year, when the depreciation rules will be simpler.",
+    "options": [
+      "postponing",
+      "postpone",
+      "having postponed",
+      "to postpone"
+    ],
+    "answer": "to postpone",
+    "explanation": "The verb 'agree' is followed by an infinitive, so 'to postpone' is correct. The gerund 'postponing' would need a preposition such as 'on' in front of it, the bare form 'postpone' cannot follow another finite verb, and 'having postponed' points to an action already finished.",
+    "grammar_category": "gerund/infinitive"
   }
 ]
