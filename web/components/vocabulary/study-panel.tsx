@@ -3,6 +3,31 @@
 import Link from "next/link";
 import type { Word } from "@/lib/types";
 
+/** 側欄一行放不下整串釋義，取第一個義項就夠認出是哪個字。 */
+function shortDefinition(word: Word): string {
+  const raw = word.definition_zh || word.definition_en || "";
+  return raw.split(/[;；]/)[0].trim();
+}
+
+/** 側欄的字：上面單字與音標，下面一行釋義。 */
+function PanelWord({ word }: { word: Word }) {
+  return (
+    <li className="border-b border-dotted border-border pb-2 last:border-0 last:pb-0">
+      <div className="flex items-baseline justify-between gap-2">
+        <span className="font-medium">{word.word}</span>
+        {word.phonetic ? (
+          <span className="truncate text-xs text-muted-foreground">
+            [{word.phonetic}]
+          </span>
+        ) : null}
+      </div>
+      <p className="truncate text-xs text-muted-foreground">
+        {shortDefinition(word)}
+      </p>
+    </li>
+  );
+}
+
 /* 背單字頁桌機版右邊的常駐欄。
  *
  * 只放拿得到的資料：這一輪的進度、書籤、這次在例句點開過的字。
@@ -48,17 +73,9 @@ export function StudyPanel({
             還沒有標記，卡片右上角點書籤就會收進來。
           </p>
         ) : (
-          <ul className="space-y-1">
+          <ul className="space-y-2">
             {bookmarks.map((word) => (
-              <li
-                key={word.id}
-                className="flex justify-between gap-2 border-b border-dotted border-border pb-1"
-              >
-                <span className="truncate">{word.word}</span>
-                <span className="truncate text-muted-foreground">
-                  {word.definition_zh || word.definition_en}
-                </span>
-              </li>
+              <PanelWord key={word.id} word={word} />
             ))}
           </ul>
         )}
@@ -79,14 +96,9 @@ export function StudyPanel({
             點例句裡有虛線的字就會記在這裡。
           </p>
         ) : (
-          <ul className="space-y-1" data-testid="looked-list">
+          <ul className="space-y-2" data-testid="looked-list">
             {looked.map((word) => (
-              <li key={word.id} className="flex justify-between gap-2">
-                <span className="truncate">{word.word}</span>
-                <span className="truncate text-muted-foreground">
-                  {word.definition_zh || word.definition_en}
-                </span>
-              </li>
+              <PanelWord key={word.id} word={word} />
             ))}
           </ul>
         )}
