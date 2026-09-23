@@ -22,7 +22,6 @@ import {
 } from "@/lib/part2-sequence";
 
 const QUESTION_COUNT = 10;
-const LETTERS_KEY = "toeic:part2-letters";
 
 // A、B、C 對應的是聽到的三個回答的順序，畫面上要講明白，
 // 不然只看到三顆字母會不知道在選什麼。
@@ -49,8 +48,6 @@ export function Part2Runner() {
   const sequenceRef = useRef<SequenceHandle | null>(null);
   // 每題的回答播放順序，出題時決定，檢討時照同一個順序顯示。
   const [orders, setOrders] = useState<Record<string, number[]>>({});
-  // 練習時唸出 A B C，關掉就只播回答本身。記在這台裝置上。
-  const [withLetters, setWithLetters] = useState(true);
 
   const current = questions[index];
   const isLast = index === questions.length - 1;
@@ -83,28 +80,6 @@ export function Part2Runner() {
     };
   }, [load]);
 
-  useEffect(() => {
-    try {
-      const saved = window.localStorage.getItem(LETTERS_KEY);
-      // React 19 的 react-hooks/set-state-in-effect：包 microtask 避免 cascading render
-      if (saved !== null) queueMicrotask(() => setWithLetters(saved === "1"));
-    } catch {
-      // 讀不到就維持預設的唸字母
-    }
-  }, []);
-
-  const toggleLetters = useCallback(() => {
-    setWithLetters((value) => {
-      const next = !value;
-      try {
-        window.localStorage.setItem(LETTERS_KEY, next ? "1" : "0");
-      } catch {
-        // 存不了就只在這次有效
-      }
-      return next;
-    });
-  }, []);
-
   // 一題只播一次，跟實際考試一樣，播完就要作答。
   const play = useCallback(() => {
     if (!current) return;
@@ -114,7 +89,7 @@ export function Part2Runner() {
 
     // 換下一段之前先停掉上一段，不然舊的播放會被打斷、丟出看起來像故障的錯誤。
     sequenceRef.current?.stop();
-    sequenceRef.current = playPart2(current.id, order, withLetters, {
+    sequenceRef.current = playPart2(current.id, order, true, {
       onEnd: () => setPhase("answering"),
       // 載不到就退回可重播的狀態。網路斷一下就把這題判死、逼人盲猜是不對的。
       onError: (reason) => {
@@ -122,7 +97,7 @@ export function Part2Runner() {
         setPhase("ready");
       },
     });
-  }, [current, orders, withLetters]);
+  }, [current, orders]);
 
   const pick = useCallback(
     (slot: number) => {
@@ -225,7 +200,7 @@ export function Part2Runner() {
                       sequenceRef.current = playPart2(
                         review.id,
                         orders[review.id] ?? [1, 2, 3],
-                        withLetters,
+                        true,
                         { onEnd: () => undefined, onError: () => undefined },
                       );
                     }}
@@ -282,19 +257,6 @@ export function Part2Runner() {
         應答問題：你會聽到一個問句，接著是三個回答。題目與選項都不會顯示在畫面上，
         聽完後選出最適合的那個回答。每題只播一次，三個回答的順序每次都會打亂。
       </p>
-
-      <label className="flex items-center gap-2 text-sm text-muted-foreground">
-        <input
-          type="checkbox"
-          checked={withLetters}
-          onChange={toggleLetters}
-          disabled={phase === "playing"}
-          data-testid="toggle-letters"
-          className="size-4 accent-primary"
-        />
-        回答前唸出 A B C
-        <span className="text-xs">（正式考試不唸，想模擬真實情境就關掉）</span>
-      </label>
 
       <Card>
         <CardContent className="space-y-6">
