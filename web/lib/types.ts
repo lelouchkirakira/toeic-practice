@@ -70,6 +70,11 @@ export interface SessionResult {
   estimated_toeic_score?: string;
 }
 
+export interface BookmarkList {
+  words: Word[];
+  total: number;
+}
+
 export interface WordListEntry {
   rank: number;
   band?: number;

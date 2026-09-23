@@ -27,6 +27,7 @@ import {
   saveBookmark,
   saveWordProgress,
 } from "@/lib/api";
+import { takeReviewFlag } from "@/lib/review-handoff";
 import type { Word, WordLevel } from "@/lib/types";
 
 // Select 不接受空字串當值，「全部」用哨兵值表示，送出前轉回空字串
@@ -123,8 +124,8 @@ export default function VocabularyPage() {
   const filterRef = useRef({ list, bandMin, bandMax, level, count, bookmarkOnly });
   filterRef.current = { list, bandMin, bandMax, level, count, bookmarkOnly };
 
-  const load = useCallback(async () => {
-    const filter = filterRef.current;
+  const load = useCallback(async (override?: { bookmarkOnly?: boolean }) => {
+    const filter = { ...filterRef.current, ...override };
     const min = Math.min(filter.bandMin, filter.bandMax);
     const max = Math.max(filter.bandMin, filter.bandMax);
 
@@ -150,7 +151,14 @@ export default function VocabularyPage() {
     }
   }, []);
 
+  // 從書籤頁按「用書籤複習」進來的話，第一次抽卡就帶著書籤條件，不白抽一輪再重抽。
   useEffect(() => {
+    if (takeReviewFlag()) {
+      // React 19 的 react-hooks/set-state-in-effect：包 microtask 避免 cascading render
+      queueMicrotask(() => setBookmarkOnly(true));
+      void load({ bookmarkOnly: true });
+      return;
+    }
     void load();
   }, [load]);
 

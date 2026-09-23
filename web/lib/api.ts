@@ -1,4 +1,5 @@
 import type {
+  BookmarkList,
   DialogueQuestion,
   DialogueReview,
   ListeningQuestion,
@@ -134,6 +135,11 @@ export function saveWordProgress(
     word_id: wordId,
     level,
   });
+}
+
+// 書籤頁要的是穩定排序的完整清單，不能用隨機抽樣的 /vocabulary/words。
+export function fetchBookmarks(limit = 200): Promise<BookmarkList> {
+  return request<BookmarkList>(`/vocabulary/bookmarks?limit=${limit}`);
 }
 
 export interface BookmarkResult {
