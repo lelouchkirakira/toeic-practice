@@ -30,21 +30,21 @@ const RATINGS: {
     level: "unknown",
     label: "不會",
     className:
-      "border-rose-500/40 text-rose-700 hover:bg-rose-500/10 dark:text-rose-300",
+      "border-[var(--tone-poor)] text-[var(--tone-poor)] hover:bg-[var(--tone-poor-soft)]",
     testId: "rate-unknown",
   },
   {
     level: "fuzzy",
     label: "模糊",
     className:
-      "border-amber-500/40 text-amber-700 hover:bg-amber-500/10 dark:text-amber-300",
+      "border-[var(--tone-fair)] text-[var(--tone-fair)] hover:bg-[var(--tone-fair-soft)]",
     testId: "rate-fuzzy",
   },
   {
     level: "known",
     label: "會了",
     className:
-      "border-emerald-500/40 text-emerald-700 hover:bg-emerald-500/10 dark:text-emerald-300",
+      "border-[var(--tone-good)] text-[var(--tone-good)] hover:bg-[var(--tone-good-soft)]",
     testId: "rate-known",
   },
 ];

@@ -17,8 +17,8 @@ export function CountdownBadge({
       data-testid="countdown"
       className={cn(
         "inline-flex items-center gap-2 rounded-lg px-3 py-1.5 text-lg font-bold tabular-nums",
-        expired && "bg-rose-500/10 text-rose-700 dark:text-rose-300",
-        warning && "bg-amber-500/10 text-amber-700 dark:text-amber-300",
+        expired && "bg-[var(--tone-poor-soft)] text-[var(--tone-poor)]",
+        warning && "bg-[var(--tone-fair-soft)] text-[var(--tone-fair)]",
         !expired && !warning && "bg-muted text-foreground",
       )}
     >

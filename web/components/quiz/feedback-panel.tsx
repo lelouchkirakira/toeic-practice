@@ -16,8 +16,8 @@ export function FeedbackPanel({
         className={cn(
           "flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold",
           isCorrect
-            ? "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300"
-            : "bg-rose-500/10 text-rose-700 dark:text-rose-300",
+            ? "bg-[var(--tone-good-soft)] text-[var(--tone-good)]"
+            : "bg-[var(--tone-poor-soft)] text-[var(--tone-poor)]",
         )}
       >
         {isCorrect ? (

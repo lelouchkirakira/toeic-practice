@@ -7,16 +7,16 @@ export type OptionState = "idle" | "selected" | "correct" | "incorrect" | "muted
 const SHELL: Record<OptionState, string> = {
   idle: "border-border bg-card hover:border-primary/50 hover:bg-muted/60",
   selected: "border-primary bg-primary/5",
-  correct: "border-emerald-500 bg-emerald-500/10",
-  incorrect: "border-rose-500 bg-rose-500/10",
+  correct: "border-[var(--tone-good)] bg-[var(--tone-good-soft)]",
+  incorrect: "border-[var(--tone-poor)] bg-[var(--tone-poor-soft)]",
   muted: "border-border bg-card opacity-55",
 };
 
 const MARKER: Record<OptionState, string> = {
   idle: "bg-muted text-muted-foreground",
   selected: "bg-primary text-primary-foreground",
-  correct: "bg-emerald-500 text-white",
-  incorrect: "bg-rose-500 text-white",
+  correct: "bg-[var(--tone-good)] text-[var(--background)]",
+  incorrect: "bg-[var(--tone-poor)] text-[var(--background)]",
   muted: "bg-muted text-muted-foreground",
 };
 

@@ -227,7 +227,7 @@ export function Part3Runner({ part = "3" }: { part?: "3" | "4" }) {
                   <div key={q.number} className="space-y-1">
                     <p className="text-sm font-medium">
                       {q.number}. {q.text}{" "}
-                      <span className={right ? "text-emerald-600" : "text-destructive"}>
+                      <span className={right ? "text-[var(--tone-good)]" : "text-destructive"}>
                         {right ? "答對" : "答錯"}
                       </span>
                     </p>

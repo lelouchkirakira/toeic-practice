@@ -84,21 +84,21 @@ export function scoreTone(score: number): ScoreTone {
 }
 
 export const SCORE_TEXT_CLASS: Record<ScoreTone, string> = {
-  good: "text-emerald-600 dark:text-emerald-400",
-  fair: "text-amber-600 dark:text-amber-400",
-  poor: "text-rose-600 dark:text-rose-400",
+  good: "text-[var(--tone-good)]",
+  fair: "text-[var(--tone-fair)]",
+  poor: "text-[var(--tone-poor)]",
 };
 
 export const SCORE_BAR_CLASS: Record<ScoreTone, string> = {
-  good: "bg-emerald-500",
-  fair: "bg-amber-500",
-  poor: "bg-rose-500",
+  good: "bg-[var(--tone-good)]",
+  fair: "bg-[var(--tone-fair)]",
+  poor: "bg-[var(--tone-poor)]",
 };
 
 export const SCORE_BADGE_CLASS: Record<ScoreTone, string> = {
-  good: "border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300",
-  fair: "border-amber-500/40 bg-amber-500/10 text-amber-700 dark:text-amber-300",
-  poor: "border-rose-500/40 bg-rose-500/10 text-rose-700 dark:text-rose-300",
+  good: "border-[var(--tone-good)] bg-[var(--tone-good-soft)] text-[var(--tone-good)]",
+  fair: "border-[var(--tone-fair)] bg-[var(--tone-fair-soft)] text-[var(--tone-fair)]",
+  poor: "border-[var(--tone-poor)] bg-[var(--tone-poor-soft)] text-[var(--tone-poor)]",
 };
 
 export function optionLetter(index: number): string {
