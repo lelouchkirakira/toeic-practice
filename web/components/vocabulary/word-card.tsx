@@ -103,6 +103,7 @@ export function WordCard({
   const lookedUpRef = useRef("");
   const openTimer = useRef<number | null>(null);
   const closeTimer = useRef<number | null>(null);
+  const lookedTimer = useRef<number | null>(null);
 
   useEffect(() => {
     const query = window.matchMedia("(hover: hover) and (pointer: fine)");
@@ -124,28 +125,36 @@ export function WordCard({
     return () => {
       if (openTimer.current) window.clearTimeout(openTimer.current);
       if (closeTimer.current) window.clearTimeout(closeTimer.current);
+      if (lookedTimer.current) window.clearTimeout(lookedTimer.current);
     };
   }, []);
 
   const clearTimers = useCallback(() => {
     if (openTimer.current) window.clearTimeout(openTimer.current);
     if (closeTimer.current) window.clearTimeout(closeTimer.current);
+    if (lookedTimer.current) window.clearTimeout(lookedTimer.current);
     openTimer.current = null;
     closeTimer.current = null;
+    lookedTimer.current = null;
   }, []);
 
   // 滑鼠掃過整句時不要一路開好幾張，停留 150 毫秒才開。點擊則立刻開。
   const pick = useCallback(
     (target: Word, anchor: PopoverAnchor | null, hover: boolean) => {
       clearTimers();
-      onLookup?.(target);
       if (!hover) {
+        onLookup?.(target);
         setPicked({ word: target, anchor });
         return;
       }
       openTimer.current = window.setTimeout(() => {
         setPicked({ word: target, anchor });
       }, 150);
+      // 滑鼠移過去要往下面的按鈕，一路上每個字都會開一下小卡。停留超過 0.8 秒
+      // 才算真的在查，不然右側的「剛查過」會被沿路掃過的字洗掉。
+      lookedTimer.current = window.setTimeout(() => {
+        onLookup?.(target);
+      }, 800);
     },
     [clearTimers, onLookup],
   );
