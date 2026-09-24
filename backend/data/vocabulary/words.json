@@ -1,20 +1,38 @@
 [
   {
+    "id": 1,
     "word": "accommodate",
     "phonetic": "/əˈkɑːmədeɪt/",
     "meaning": "容納；配合",
+    "definition": "容納；配合",
     "part_of_speech": "v.",
+    "band": 1,
     "level": 1,
     "example": "The hotel can accommodate up to 500 guests.",
     "example_translation": "這家飯店最多可容納 500 位客人。"
   },
   {
+    "id": 2,
     "word": "collaborate",
     "phonetic": "/kəˈlæbəreɪt/",
-    "meaning": "合作；協作",
+    "meaning": "合作；共同協作",
+    "definition": "合作；共同協作",
     "part_of_speech": "v.",
+    "band": 1,
     "level": 1,
-    "example": "The two teams will collaborate on the project.",
+    "example": "The two teams will collaborate on the new project.",
     "example_translation": "這兩個團隊將就新專案進行合作。"
+  },
+  {
+    "id": 3,
+    "word": "negotiate",
+    "phonetic": "/nɪˈɡoʊʃieɪt/",
+    "meaning": "談判；協商",
+    "definition": "談判；協商",
+    "part_of_speech": "v.",
+    "band": 2,
+    "level": 2,
+    "example": "They are trying to negotiate a new contract.",
+    "example_translation": "他們正試圖協商一份新合約。"
   }
 ]
