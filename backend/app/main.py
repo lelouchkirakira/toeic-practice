@@ -75,3 +75,16 @@ async def status():
             'vocabulary': vocabulary.get_status()
         }
     }
+# 聽力相容路由（防止前端 404）
+@app.get("/api/listening/questions")
+async def get_listening_questions(part: int = 2, count: int = 10):
+    return {"questions": []}
+
+# 書籤與動態相容路由（防止前端 404）
+@app.get("/api/vocabulary/bookmarks")
+async def get_bookmarks(limit: int = 200):
+    return {"bookmarks": []}
+
+@app.get("/api/vocabulary/activity")
+async def get_activity(days: int = 30):
+    return {"activity": []}
