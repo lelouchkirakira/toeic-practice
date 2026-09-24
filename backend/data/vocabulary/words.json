@@ -1,0 +1,20 @@
+[
+  {
+    "word": "accommodate",
+    "phonetic": "/əˈkɑːmədeɪt/",
+    "meaning": "容納；配合",
+    "part_of_speech": "v.",
+    "level": 1,
+    "example": "The hotel can accommodate up to 500 guests.",
+    "example_translation": "這家飯店最多可容納 500 位客人。"
+  },
+  {
+    "word": "collaborate",
+    "phonetic": "/kəˈlæbəreɪt/",
+    "meaning": "合作；協作",
+    "part_of_speech": "v.",
+    "level": 1,
+    "example": "The two teams will collaborate on the project.",
+    "example_translation": "這兩個團隊將就新專案進行合作。"
+  }
+]
