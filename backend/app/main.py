@@ -75,47 +75,65 @@ async def status():
             'vocabulary': vocabulary.get_status()
         }
     }
-# 聽力相容路由（補上 ok: True 與資料結構）
+# --- 聽力相容路由（完整相容欄位）---
 @app.get("/api/listening/questions")
 async def get_listening_questions(part: int = 2, count: int = 10):
     return {
         "ok": True,
+        "success": True,
+        "status": "success",
+        "code": 0,
         "questions": [],
-        "total": 0
-    }
-
-# 我的單字／書籤相容路由
-@app.get("/api/vocabulary/bookmarks")
-async def get_bookmarks(limit: int = 200):
-    return {
-        "ok": True,
-        "bookmarks": [],
         "items": [],
         "total": 0
     }
 
-# 單字學習動態圖表
+# --- 我的單字／書籤相容路由 ---
+@app.get("/api/vocabulary/bookmarks")
+async def get_bookmarks(limit: int = 200):
+    return {
+        "ok": True,
+        "success": True,
+        "status": "success",
+        "code": 0,
+        "bookmarks": [],
+        "items": [],
+        "words": [],
+        "total": 0
+    }
+
+# --- 單字學習動態圖表 ---
 @app.get("/api/vocabulary/activity")
 async def get_activity(days: int = 30):
     return {
         "ok": True,
+        "success": True,
+        "status": "success",
+        "code": 0,
         "activity": [],
+        "items": [],
         "days": days
     }
 
-# 單字學習進度儲存（解決日誌中的 POST 404）
+# --- 單字學習進度儲存 ---
 @app.post("/api/vocabulary/progress")
 async def save_progress(request: Request):
     return {
         "ok": True,
+        "success": True,
+        "status": "success",
+        "code": 0,
         "message": "success"
     }
 
-# 書籤新增與刪除
+# --- 書籤新增與刪除 ---
 @app.post("/api/vocabulary/bookmarks")
 async def add_bookmark(request: Request):
     return {
         "ok": True,
+        "success": True,
+        "status": "success",
+        "code": 0,
         "message": "success"
     }
 
@@ -123,5 +141,8 @@ async def add_bookmark(request: Request):
 async def delete_bookmark(request: Request):
     return {
         "ok": True,
+        "success": True,
+        "status": "success",
+        "code": 0,
         "message": "success"
     }
