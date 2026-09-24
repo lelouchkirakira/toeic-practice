@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { learnerId } from "@/lib/learner";
 
@@ -21,7 +22,9 @@ const PROGRAM = process.env.NEXT_PUBLIC_ORG_PROGRAM || "指派課程";
 
 export function SiteNav() {
   const pathname = usePathname();
+  const router = useRouter();
   const [code, setCode] = useState("");
+  const [query, setQuery] = useState("");
 
   // 代號存在瀏覽器，伺服器端算不出來，掛載後才補上，免得兩邊對不起來。
   useEffect(() => {
@@ -43,7 +46,47 @@ export function SiteNav() {
           /
         </span>
         <span>{PROGRAM}</span>
-        <span className="ml-auto tabular-nums" data-testid="learner-code">
+        {/* 搜尋頁自己有輸入框，這裡就不重複。手機寬度只放放大鏡，點了進搜尋頁再輸入。 */}
+        {pathname === "/search" ? null : (
+          <>
+            <form
+              role="search"
+              className="ml-auto hidden items-center gap-1 border-b border-border focus-within:border-foreground sm:flex"
+              onSubmit={(event) => {
+                event.preventDefault();
+                const q = query.trim();
+                if (!q) return;
+                setQuery("");
+                router.push(`/search?q=${encodeURIComponent(q)}`);
+              }}
+            >
+              <Search className="size-3.5" aria-hidden />
+              <input
+                type="search"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                maxLength={40}
+                enterKeyHint="search"
+                placeholder="搜尋單字或題目"
+                aria-label="搜尋單字與題目"
+                data-testid="nav-search-input"
+                className="w-40 bg-transparent py-0.5 text-xs text-foreground outline-none placeholder:text-muted-foreground"
+              />
+            </form>
+            <Link
+              href="/search"
+              aria-label="搜尋單字與題目"
+              data-testid="nav-search-link"
+              className="ml-auto grid size-6 place-items-center text-foreground sm:hidden"
+            >
+              <Search className="size-4" aria-hidden />
+            </Link>
+          </>
+        )}
+        <span
+          className={cn("tabular-nums", pathname === "/search" ? "ml-auto" : "sm:ml-3")}
+          data-testid="learner-code"
+        >
           學員{code ? ` ${code}` : ""}
         </span>
       </div>

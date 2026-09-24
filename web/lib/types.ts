@@ -223,3 +223,21 @@ export interface DialogueReview {
     explanation: string;
   }[];
 }
+
+/** 全域搜尋命中的一題。payload 是完整題目，依 part 決定形狀。 */
+export interface SearchHit {
+  id: string;
+  part: string;
+  snippet: string;
+  payload: unknown;
+}
+
+/** 全域搜尋結果。terms 是後端實際比對題目用的字形，拿來標粗體。 */
+export interface SearchResult {
+  query: string;
+  terms: string[];
+  words: Word[];
+  questions: SearchHit[];
+  /** 命中的題數，questions 最多只列 20 題。 */
+  question_total: number;
+}

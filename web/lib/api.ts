@@ -11,6 +11,7 @@ import type {
   MockTestPayload,
   QuizItem,
   Question,
+  SearchResult,
   SessionHistory,
   SessionResult,
   StatsOverview,
@@ -236,4 +237,11 @@ export function errorMessage(e: unknown, fallback: string): string {
   if (e instanceof ApiError) return e.message;
   if (e instanceof Error) return e.message;
   return fallback;
+}
+
+/** 全域搜尋。parts 沒給就是全部 Part。 */
+export function searchAll(query: string, parts?: string[]): Promise<SearchResult> {
+  const params = new URLSearchParams({ q: query });
+  if (parts?.length) params.set("parts", parts.join(","));
+  return request<SearchResult>(`/search?${params.toString()}`);
 }
