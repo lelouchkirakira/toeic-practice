@@ -1,6 +1,6 @@
 import logging
 from contextlib import asynccontextmanager
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 
 from .models.database import init_db
@@ -37,6 +37,21 @@ app.add_middleware(
     allow_headers=['*'],
 )
 
+from fastapi import Request
+
+@app.middleware("http")
+async def fix_toeic_path_middleware(request: Request, call_next):
+    path = request.scope.get("path", "")
+    while "//" in path:
+        path = path.replace("//", "/")
+    if path.startswith("/toeic/"):
+        path = "/api/" + path[len("/toeic/"):]
+    elif path == "/toeic":
+        path = "/api"
+    request.scope["path"] = path
+    response = await call_next(request)
+    return response
+    
 app.include_router(quiz.router)
 app.include_router(stats.router)
 app.include_router(vocabulary_router.router)
